@@ -13,9 +13,6 @@
   transition: transform 0.5s;
   background-color: rgb(255, 255, 255);
   animation: contentMove 6s linear infinite;
-  // background-image: url('../../../assets/img/ferrari_spider_488_2.png');
-  // background-size: cover;
-  // background-position: center;
 }
 
 @keyframes contentMove {
@@ -36,7 +33,7 @@
 }
 
 .home .image img {
-  width: 100%;
+  width:75%;
   padding: 1rem;
 }
 
