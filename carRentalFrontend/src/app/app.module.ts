@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    MatCardModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
