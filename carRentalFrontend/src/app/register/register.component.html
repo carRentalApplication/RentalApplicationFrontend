@@ -1,30 +1,30 @@
 <div class="container-fluid">
   <div class="form-container">
     <!-- registration form start -->
-    <h2 class="text-primary text-center">Registration Form</h2>
+    <h2 class="text-dark text-center">Registration Form</h2>
     <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" #form="ngForm">
 
       <div class="row mb-2 mt-3">
         <!-- first name filed start -->
         <div class="col">
-          <label class="form-label text-primary" for="first_name">First Name:</label>
-          <input type="text" id="first_name" formControlName="first_name"  class="form-control">
-          <div *ngIf="registrationForm.get('first_name')?.touched && registrationForm.get('first_name')?.hasError('required')" class="error-message">
+          <label class="form-label text-primary" for="firstname">First Name:</label>
+          <input type="text" id="firstname" formControlName="firstname"  class="form-control">
+          <div *ngIf="registrationForm.get('firstname')?.touched && registrationForm.get('firstname')?.hasError('required')" class="error-message">
             First name is required.
           </div>
-          <div *ngIf="registrationForm.get('first_name')?.dirty && registrationForm.get('first_name')?.errors?.['pattern']" class="error-message">
+          <div *ngIf="registrationForm.get('firstname')?.dirty && registrationForm.get('firstname')?.errors?.['pattern']" class="error-message">
             Only alphabets are allowed in the first name.
           </div>
         </div>
         <!-- first name filed end -->
         <!-- second name filed start -->
         <div class="col">
-          <label for="last_name" class="form-label text-primary">Last Name:</label>
-          <input type="text" id="last_name" formControlName="last_name" class="form-control">
-          <div *ngIf="registrationForm.get('last_name')?.touched && registrationForm.get('last_name')?.hasError('required')" class="error-message">
+          <label for="lastname" class="form-label text-primary">Last Name:</label>
+          <input type="text" id="lastname" formControlName="lastname" class="form-control">
+          <div *ngIf="registrationForm.get('lastname')?.touched && registrationForm.get('lastname')?.hasError('required')" class="error-message">
             Last name is required.
           </div>
-          <div *ngIf="registrationForm.get('last_name')?.dirty && registrationForm.get('last_name')?.errors?.['pattern']" class="error-message">
+          <div *ngIf="registrationForm.get('lastname')?.dirty && registrationForm.get('lastname')?.errors?.['pattern']" class="error-message">
             Only alphabets are allowed in the last name.
           </div>
         </div>
@@ -39,6 +39,18 @@
         </div>
         <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['email']" class="error-message">
           Invalid email format.
+        </div>
+      </div>
+      <!-- email filed end -->
+      <!-- email filed start -->
+      <div class="mb-2 mt-3">
+        <label for="mobileNumber" class="form-label text-primary">Mobile Number:</label>
+        <input type="text" id="mobileNumber" formControlName="mobileNumber" class="form-control">
+        <div *ngIf="registrationForm.get('mobileNumber')?.touched && registrationForm.get('mobileNumber')?.errors?.['required']" class="error-message">
+          Mobile Number is required.
+        </div>
+        <div *ngIf="registrationForm.get('mobileNumber')?.touched && registrationForm.get('mobileNumber')?.errors?.['mobileNumber']" class="error-message">
+          Invalid MobileNumber format.
         </div>
       </div>
       <!-- email filed end -->

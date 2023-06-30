@@ -8,10 +8,11 @@ import { AnimationComponent } from './shared/animation/animation.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { LoginComponent } from './login/login.component';
 
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-
-import {MatCardModule} from '@angular/material/card';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     FormsModule,
     MatCardModule,
+    HttpClientModule
 
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

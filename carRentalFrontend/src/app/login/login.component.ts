@@ -1,5 +1,6 @@
+import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,36 +9,40 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm:FormGroup;
-  submitted:boolean = false;
+  isUserValid: boolean = false;
+  loginForm: FormGroup;
+  submitted: boolean = false;
 
-
-  constructor(private formBuilder:FormBuilder)
-  {
+  constructor(private formBuilder: FormBuilder,
+    private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
+  ngOnInit(): void {}
 
-  ngOnInit(): void
-  {
-
-  }
-
-  loginSubmit()
-  {
-    console.log(this.loginForm.value);
-
+  loginSubmit() {
     this.submitted = true;
-    if (this.loginForm.invalid)
-    {
+    if (this.loginForm.invalid) {
       return;
     }
-    else
-    {
+    else {
       console.log("Ready to go in Service Logic");
-
+      this.authService.loginUser(this.loginForm.value)
+        .subscribe(res => {
+          if (res == "Login Not Success") {
+            console.log("Internal Server Error");
+          }
+          else if (res == "Failed to LoginIn") {
+            this.isUserValid = false;
+            alert("Invalid Credentials")
+          }
+          else {
+            this.isUserValid = true;
+            alert("Login Success")
+          }
+        })
     }
   }
 }
