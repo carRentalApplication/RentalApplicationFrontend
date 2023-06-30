@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <!-- -------------Login form starts------- -->
+  <div class="form-container">
+    <h2 class="text-primary text-center">Login</h2>
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="loginSubmit()">
+      <!-- Email input -->
+      <div class=" mb-2 mt-3">
+        <label class="form-label text-dark" for="email" >Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && loginForm.controls['email'].errors }"/>
+      </div>
+      <!-- Error message starts-->
+      <div *ngIf="submitted || (loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched))">
+        <span *ngIf="loginForm.controls['email'].errors?.['required']" class="text-danger">
+          Email is required!
+        </span>
+        <span *ngIf="loginForm.controls['email'].errors?.['email']" class="text-danger">
+          Email is not valid,Please enter valid email address!
+        </span>
+      </div>
+      <!-- Error message ends-->
+      <!-- Password input -->
+      <div class=" mb-2 mt-3">
+        <label class="form-label text-dark" for="password">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls['password'].errors }"/>
+      </div>
+      <!-- Error message starts-->
+      <div *ngIf="submitted || (loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched))">
+        <span *ngIf="loginForm.controls['password'].errors?.['required']" class="text-danger">
+          Password is required!
+        </span>
+      </div>
+      <!-- Error message ends-->
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-3 mt-2">
+        <div class="col forgot">
+          <!-- Simple link -->
+          <a href="/forgotpassword" class="text-danger">Forgot password?</a>
+        </div>
+      </div>
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+      <div class="row mb-3 mt-4">
+        <div class="col register">
+          <!-- Simple link -->
+          <p>Not Register Yet? <a class="text-danger" routerLink="/register"><b>Register here..!</b></a></p>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- -------------Login form ends------- -->
+</div>

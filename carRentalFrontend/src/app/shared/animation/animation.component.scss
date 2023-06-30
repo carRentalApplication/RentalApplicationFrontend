@@ -1,0 +1,83 @@
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  min-height: 100vh;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.445);
+}
+
+.home .content {
+  flex:  1 1  40rem;
+  padding: 60px;
+  transition: transform 0.5s;
+  background-color: rgb(255, 255, 255);
+  animation: contentMove 6s linear infinite;
+  // background-image: url('../../../assets/img/ferrari_spider_488_2.png');
+  // background-size: cover;
+  // background-position: center;
+}
+
+@keyframes contentMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(80%);
+  }
+}
+
+.home .image {
+  flex:  1 1  40rem;
+  animation: carMove 6s linear infinite;
+}
+
+.home .image img {
+  width: 100%;
+  padding: 1rem;
+}
+
+@keyframes carMove {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.home .content h3 {
+  font-size: 5rem;
+  color: #333;
+}
+
+.home .content p {
+  font-size: 1.7rem;
+  color: rgb(252, 245, 245);
+  padding: 1rem 0;
+}
+
+.content {
+  background-color: rgba(168, 23, 23, 0.2);
+}
+
+.content.hshift {
+  transform: translateX(80%);
+}
+
+.content h6,
+.content p {
+  text-align: center;
+  color: rgb(15, 12, 12);
+}
+
+h1 {
+  color: whitesmoke;
+  justify-content: center;
+}
