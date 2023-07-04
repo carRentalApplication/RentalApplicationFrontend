@@ -6,17 +6,25 @@
     <div class="row mr-2 ml-auto">
       <ul class="row m-0 align-items-center">
         <li>
-          <button mat-button [matMenuTriggerFor]="menu" class="user">
+            <button mat-button  class="user" data-mdb-toggle="dropdown">
             <img src="assets/img/acura_2.png" alt="" class="user-image mr-1 p-2" />
-            User Name
+            <b>Hey</b>, {{adminName}}
             <mat-icon class="user-image-icon">keyboard_arrow_down</mat-icon>
           </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              <mat-icon>exit_to_app</mat-icon>
-              Logout
-            </button>
-          </mat-menu>
+           <!-- Dropdown -->
+      <div class="dropdown">
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuAvatar"
+        >
+          <li>
+            <a class="dropdown-item" href="#">My profile</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
         </li>
       </ul>
     </div>

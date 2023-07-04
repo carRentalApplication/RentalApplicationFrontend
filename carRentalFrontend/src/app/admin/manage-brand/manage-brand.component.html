@@ -1,15 +1,18 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Brand</div>
+  <div class="d-flex page__box p-3 mt-2">Manage Brand</div>
+
   <div class="page__content shadow p-3 position-relative">
-    <!-- <div class="page__content-data position-absolute text-center"> -->
-      Manage Brand Content Goes Here
+      <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-sm btn-outline-dark">Add Brand</button>
+      </div>
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">First</th>
             <th scope="col">Last</th>
             <th scope="col">Handle</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -18,22 +21,12 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td>
+              <button class="btn btn-sm btn-outline-info">Edit</button>&nbsp;
+              <button class="btn btn-sm btn-outline-danger">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-  <!-- </div> -->
 </div>
-
-
