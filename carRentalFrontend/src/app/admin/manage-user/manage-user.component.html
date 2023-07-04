@@ -1,7 +1,7 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">All The Registered User</div>
+  <div class="d-flex page__box p-3 mt-2">Registered Users</div>
   <div class="page__content shadow p-3 position-relative">
-      {{authUser | json }}
+      <!-- {{authUser | json }} -->
       <table class="table" *ngIf="authUser && authUser.length > 0" border="1">
         <thead>
           <tr>
@@ -24,8 +24,18 @@
           </tr>
         </tbody>
       </table>
+
       <p *ngIf="!authUser || authUser.length <= 0">No Record Found</p>
     </div>
+
+    <!-- <ag-grid-angular
+    style="width: 100%; height: 500px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs">
+  </ag-grid-angular> -->
+
+
   <!-- </div> -->
 </div>
 

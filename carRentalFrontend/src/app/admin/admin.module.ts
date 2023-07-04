@@ -23,6 +23,9 @@ import { ManageBookingComponent } from './manage-booking/manage-booking.componen
 import { CommonModule } from '@angular/common';
 
 
+import { AgGridModule } from 'ag-grid-angular';
+
+
 
 @NgModule({
   declarations: [
@@ -50,7 +53,9 @@ import { CommonModule } from '@angular/common';
     MatDividerModule,
     MatMenuModule,
     MatListModule,
-    CommonModule
+    CommonModule,
+    AgGridModule
+
 
   ], exports: [
 
