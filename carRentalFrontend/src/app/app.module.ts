@@ -1,4 +1,4 @@
-import { MatIconModule } from '@angular/material/icon';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,10 +19,19 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CarouselComponent } from './shared/carousel/carousel.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AnimationComponent } from './shared/animation/animation.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
 
+//routing
+import {AdminRoutingModule} from 'src/app/admin/admin-routing.module'
+import {CustomerRoutingModule} from 'src/app/customer/customer-routing.module'
+
+
+// material
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -34,7 +43,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AdminComponent,
     NavbarComponent,
     CustomerComponent,
-    
     FooterComponent,
     AnimationComponent
   ],
@@ -49,11 +57,21 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     SharedModule,
     AdminModule,
     CustomerModule,
+
+    //materail
+    MatSidenavModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatSlideToggleModule
-    
-    
+    MatToolbarModule,
+    MatIconModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatListModule,
+
+    //routing
+    AdminRoutingModule,
+    CustomerRoutingModule
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
