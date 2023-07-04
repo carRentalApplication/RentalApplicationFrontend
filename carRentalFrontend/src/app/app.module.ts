@@ -20,10 +20,7 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AnimationComponent } from './shared/animation/animation.component';
 
-//routing
-import {AdminRoutingModule} from 'src/app/admin/admin-routing.module'
-import {CustomerRoutingModule} from 'src/app/customer/customer-routing.module'
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // material
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -35,7 +32,6 @@ import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
-    AppComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -48,6 +44,7 @@ import { MatListModule } from '@angular/material/list';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
@@ -55,6 +52,8 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     HttpClientModule,
     SharedModule,
+
+
     AdminModule,
     CustomerModule,
 
@@ -69,8 +68,8 @@ import { MatListModule } from '@angular/material/list';
     MatListModule,
 
     //routing
-    AdminRoutingModule,
-    CustomerRoutingModule
+    // AdminRoutingModule,
+    // CustomerRoutingModule
 
   ],
   providers: [AuthService],

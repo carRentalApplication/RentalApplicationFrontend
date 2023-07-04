@@ -1,2 +1,17 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="./assets/img/carlogo.png" height="30" style="margin-top: 2px" />
+    <b style="color: rgba(94, 92, 92, 0.788); font-size: medium"
+    >Rentalcars.com</b
+  >
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
 
-<p>Sidebar</p>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="admin/home">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="admin/dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+</mat-nav-list>

@@ -5,16 +5,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'admin', component: AdminComponent,
+    path: 'admin', component: AdminComponent, /* for admin */
     children: [
-      { path: '', component: DashboardComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent },
     ]
   },
-
+  { path: "**", redirectTo:"admin/dashboard"},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
+
   exports: [RouterModule]
 })
 export class AdminRoutingModule { }
