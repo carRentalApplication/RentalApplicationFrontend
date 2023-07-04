@@ -1,39 +1,34 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Manage User</div>
+  <div class="d-flex page__box p-3 mt-2">All The Registered User</div>
   <div class="page__content shadow p-3 position-relative">
-    <!-- <div class="page__content-data position-absolute text-center"> -->
-      Manage User Content Goes Here
-      <table class="table">
+      {{authUser | json }}
+      <table class="table" *ngIf="authUser && authUser.length > 0" border="1">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th>ID</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">MobileNumber</th>
+            <th scope="col">MemberSince</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+          <tr *ngFor="let user of authUser,let i=index">
+            <th>{{i+1}}</th>
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.mobileNumber}}</td>
+            <td>{{user.memberSince | date:'shortDate'}}</td>
           </tr>
         </tbody>
       </table>
+      <p *ngIf="!authUser || authUser.length <= 0">No Record Found</p>
     </div>
   <!-- </div> -->
 </div>
+
+
 
 

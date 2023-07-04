@@ -20,6 +20,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ManageVehicleComponent } from './manage-vehicle/manage-vehicle.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageBookingComponent } from './manage-booking/manage-booking.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -49,6 +50,7 @@ import { ManageBookingComponent } from './manage-booking/manage-booking.componen
     MatDividerModule,
     MatMenuModule,
     MatListModule,
+    CommonModule
 
   ], exports: [
 

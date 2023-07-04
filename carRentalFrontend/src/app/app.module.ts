@@ -59,7 +59,9 @@ import { MatButtonModule } from '@angular/material/button';
 
     //materail
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+
+    FormsModule
 
   ],
   providers: [AuthService],
