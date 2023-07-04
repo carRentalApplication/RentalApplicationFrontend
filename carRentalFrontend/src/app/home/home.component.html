@@ -1,115 +1,27 @@
-<!-- Navbar-->
-<nav class="navbar fixed-top navbar-light bg-light">
-  <div class="container-fluid justify-content-between">
-    <!-- Left elements -->
-    <div class="d-flex">
-      <!-- Brand -->
-      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
-        <img
-          src="assets/img/carlogo.png"
-          height="30"
-          style="margin-top: 2px;"
-        />
-        <b>Rentalcars.com</b>
-      </a>
-    </div>
-    <!-- Left elements -->
-    <!-- Right elements -->
-    <ul class="navbar-nav flex-row">
-      <li class="nav-item dropdown me-3 me-lg-1">
-        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" routerLink="/login">Login</button>
-      </li>
-      <li class="nav-item dropdown me-3 me-lg-1">
-        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" routerLink="/register">Register</button>
-      </li>
-    </ul>
-    <!-- Right elements -->
-  </div>
-</nav>
-<!-- Navbar -->
-<!-- Carousel wrapper start -->
-<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-interval="2000">
-  <!-- Indicators down bars starts-->
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
-  <!-- Indicators down bars ends-->
-  <!-- Inner start slider-->
-  <div class="carousel-inner">
-    <!-- Single item slide 1-->
-    <div class="carousel-item active">
-      <img src="assets/img/WelcomeImage.jpg" class="d-block w-100" alt="Sunset Over the City" style="height: 500px;"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>"Unlock the Road to Adventure"</h5>
-        <p>With our car rental application, you can unlock the road to endless adventures. Discover new destinations, create unforgettable memories, and embrace the thrill of the open road with our diverse fleet of vehicles.</p>
-      </div>
-    </div>
-    <!-- Single item slide 2-->
-    <div class="carousel-item">
-      <img src="assets/img/CaroselImage2.jpg" class="d-block w-100" alt="Canyon at Night" style="height: 500px;"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>"Simplify Your Journey, Rent with Ease"</h5>
-        <p>Say goodbye to complicated car rentals. Our user-friendly application simplifies the entire process, ensuring a seamless and hassle-free experience. Renting a car has never been this easy and convenient.</p>
-      </div>
-    </div>
-    <!-- Single item slide 3-->
-    <div class="carousel-item">
-      <img src="assets/img/carose3.jpg" class="d-block w-100" alt="Cliff Above a Stormy Sea"  style="height: 500px;"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Cultivate Your Green Paradise</h5>
-        <p>Unleash your inner gardener and cultivate your own green paradise, where serenity and beauty harmoniously coexist</p>
-      </div>
-    </div>
-  </div>
-  <!-- Inner end slider-->
-  <!-- Controls arrow buttons starts-->
-  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-  <!-- Controls arrow buttons ends-->
-</div>
-<!-- Carousel wrapper end -->
-<hr>
+<app-navbar></app-navbar>
+<app-carousel></app-carousel>
+<hr />
 <h1 class="text-center"><i> "Choose Your Adventure"</i></h1>
 <!-- Card -->
 <div class="displayCard">
   <ul>
-    <li >
+    <li>
       <!-- Card -->
       <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>Indian</mat-card-title>
           <mat-card-subtitle>Desi khana</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="../.././assets/img/ferrari_spider_488_0.png" alt="Photo of a Shiba Inu">
+        <img
+          mat-card-image
+          src="../.././assets/img/ferrari_spider_488_0.png"
+          alt="Photo of a Shiba Inu"
+        />
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-
+            The Shiba Inu is the smallest of the six original and distinct spitz
+            breeds of dog from Japan. The Shiba Inu is the smallest of the six
+            original and distinct spitz breeds of dog from Japan.
           </p>
         </mat-card-content>
       </mat-card>
@@ -122,11 +34,15 @@
           <mat-card-title>Italian</mat-card-title>
           <mat-card-subtitle>Spicy and Tasty</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="../.././assets/img/citroen_0.png" alt="Photo of a Shiba Inu">
+        <img
+          mat-card-image
+          src="../.././assets/img/citroen_0.png"
+          alt="Photo of a Shiba Inu"
+        />
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-           bred for hunting.
+            The Shiba Inu is the smallest of the six original and distinct spitz
+            breeds of dog from Japan. bred for hunting.
           </p>
         </mat-card-content>
       </mat-card>
@@ -139,15 +55,19 @@
           <mat-card-title>Chinese</mat-card-title>
           <mat-card-subtitle>Mix and match</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="../.././assets/img/fiat_1.png" alt="Photo of a Shiba Inu">
+        <img
+          mat-card-image
+          src="../.././assets/img/fiat_1.png"
+          alt="Photo of a Shiba Inu"
+        />
         <mat-card-content>
           <span>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-             </span>
+            The Shiba Inu is the smallest of the six original and distinct spitz
+            breeds of dog from Japan.
+          </span>
         </mat-card-content>
       </mat-card>
       <!-- Card End -->
-
     </li>
   </ul>
 </div>
@@ -156,7 +76,7 @@
 <!-- Animation Start-->
 <app-animation></app-animation>
 <!-- Animation End-->
-<hr>
+<hr />
 <!-- Footer Start-->
 <app-footer></app-footer>
 <!-- Footer End-->
