@@ -17,39 +17,50 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { ManageVehicleComponent } from './manage-vehicle/manage-vehicle.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
+import { ManageBookingComponent } from './manage-booking/manage-booking.component';
 
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
-     HeaderComponent,
-     DashboardComponent,
-     ManageBrandComponent,
-     AppComponent,
-     AdminHomeComponent,
-     AdminHomeComponent
-    ],
+    HeaderComponent,
+    DashboardComponent,
+    ManageBrandComponent,
+    AppComponent,
+    AdminHomeComponent,
+    AdminHomeComponent,
+    ManageVehicleComponent,
+    ManageUserComponent,
+    ManageBookingComponent
+  ],
   imports: [
     MatSidenavModule,
     MatIconModule,
     AdminRoutingModule,
-      //materail
-      MatSidenavModule,
-      MatToolbarModule,
-      MatSidenavModule,
-      MatToolbarModule,
-      MatIconModule,
-      MatDividerModule,
-      MatMenuModule,
-      MatListModule,
-  ],exports: [
+    //materail
+    MatSidenavModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatListModule,
+
+  ], exports: [
+
     SidebarComponent,
-    MatIconModule, HeaderComponent,
-     DashboardComponent,
-     ManageBrandComponent,
-     AppComponent,
-     AdminHomeComponent
-   ],
+    HeaderComponent,
+    DashboardComponent,
+    ManageBrandComponent,
+    AppComponent,
+    AdminHomeComponent,
+    ManageVehicleComponent,
+    ManageUserComponent,
+    ManageBookingComponent
+  ],
 })
 export class AdminModule { }

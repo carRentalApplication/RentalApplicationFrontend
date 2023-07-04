@@ -20,15 +20,16 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AnimationComponent } from './shared/animation/animation.component';
 
+
+
+import { MatMenuModule } from '@angular/material/menu';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // material
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -52,24 +53,13 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     HttpClientModule,
     SharedModule,
-
-
     AdminModule,
     CustomerModule,
+    MatMenuModule,
 
     //materail
     MatSidenavModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatDividerModule,
-    MatMenuModule,
-    MatListModule,
-
-    //routing
-    // AdminRoutingModule,
-    // CustomerRoutingModule
+    MatButtonModule
 
   ],
   providers: [AuthService],
