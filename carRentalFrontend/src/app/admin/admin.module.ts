@@ -24,6 +24,8 @@ import { CommonModule } from '@angular/common';
 
 
 import { AgGridModule } from 'ag-grid-angular';
+import { AddBrandComponent } from './manage-brand/add-brand/add-brand.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -38,7 +40,8 @@ import { AgGridModule } from 'ag-grid-angular';
     AdminHomeComponent,
     ManageVehicleComponent,
     ManageUserComponent,
-    ManageBookingComponent
+    ManageBookingComponent,
+    AddBrandComponent
   ],
   imports: [
     MatSidenavModule,
@@ -54,7 +57,10 @@ import { AgGridModule } from 'ag-grid-angular';
     MatMenuModule,
     MatListModule,
     CommonModule,
-    AgGridModule
+    AgGridModule,
+
+    ReactiveFormsModule,
+    FormsModule,
 
 
   ], exports: [
@@ -67,7 +73,8 @@ import { AgGridModule } from 'ag-grid-angular';
     AdminHomeComponent,
     ManageVehicleComponent,
     ManageUserComponent,
-    ManageBookingComponent
+    ManageBookingComponent,
+    AddBrandComponent
   ],
 })
 export class AdminModule { }

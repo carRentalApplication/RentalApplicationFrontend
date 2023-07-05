@@ -1,0 +1,27 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Add Brand</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center">
+      <!-- Content -->
+      <form style="border: 1px solid black; background-size: cover;
+       width: 200%; height: 400%; margin: 20px; padding: 20px;"
+       [formGroup]="brandProperty" (ngSubmit)="submitBrand()" #form="ngForm" >
+        <div class="col">
+          <label class="form-label text-danger" for="brandName">Add New Brand Here</label>
+          <input type="text" id="brandName" formControlName="brandName" placeholder="enter brand name"  class="form-control">
+          <div *ngIf="brandProperty.get('brandName')?.touched && brandProperty.get('brandName')?.hasError('required')" class="error-message">
+            Brand name is required.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="brandProperty.invalid" >Save</button>&nbsp;
+        <button type="submit" class="btn btn-danger" routerLink="/admin/managebrand">Cancel</button>
+      </form>
+      <!-- Content End -->
+    </div>
+  </div>
+</div>
+
+<!-- <div class="mb-3">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" [(ngModel)]="brand.name" />
+</div> -->
