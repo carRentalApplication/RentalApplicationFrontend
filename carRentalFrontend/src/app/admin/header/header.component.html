@@ -4,26 +4,47 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div class="row mr-2 ml-auto">
-      <ul class="row m-0 align-items-center">
-        <li>
-            <button mat-button  class="user" data-mdb-toggle="dropdown">
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <button mat-button class="user" data-mdb-toggle="dropdown">
             <img src="assets/img/acura_2.png" alt="" class="user-image mr-1 p-2" />
             <b>Hey</b>, {{adminName}}
             <mat-icon class="user-image-icon">keyboard_arrow_down</mat-icon>
           </button>
-           <!-- Dropdown -->
-      <div class="dropdown">
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a class="dropdown-item" href="#"><mat-icon>logout</mat-icon>Logout</a>
-          </li>
-        </ul>
-      </div>
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+              <li>
+                <a type="button" class="dropdown-item btn-danger" (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
+              </li>
+
+            </ul>
+          </div>
         </li>
       </ul>
+
+      <!-- <ul class="navbar-nav flex-row">
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            data-mdb-ripple-color="dark"
+            routerLink="/login"
+          >
+            Login
+          </button>
+        </li>
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            data-mdb-ripple-color="dark"
+            routerLink="/register"
+          >
+            Register
+          </button>
+        </li>
+      </ul> -->
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
