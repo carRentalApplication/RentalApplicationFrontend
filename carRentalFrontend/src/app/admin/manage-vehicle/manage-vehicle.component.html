@@ -2,31 +2,52 @@
   <div class="d-flex page__box p-3 mt-2">Manage Vehicle</div>
 
   <div class="page__content shadow p-3 position-relative">
-      <div class="d-flex justify-content-end mb-3">
-        <button class="btn btn-sm btn-outline-dark">Add Vehicle</button>
-      </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <button class="btn btn-sm btn-outline-info">Edit</button>&nbsp;
-              <button class="btn btn-sm btn-outline-danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-sm btn-outline-dark">Add Vehicle</button>
     </div>
+    <table class="table text-center">
+      <!-- {{ vehicleData | json }} -->
+      <thead>
+        <tr>
+          <!-- vehicleId": 1, "vehicleName": "string", "vehicleNumber": "string",
+          "seatingCapacity": 0, "fuelType": "string",
+          "brandId": 1, "brand": {"brandId": 1, "brandName": "BMW" },
+          "rent_Id": { "rentId": 1, "rentAmount": 0 },
+          "image_Id": { "imageId": 1, "frontImage": "string","backImage": "string", "sideImage": "string" -->
+
+          <th><strong>ID</strong></th>
+          <th><strong>Vehicle Name</strong></th>
+          <th><strong>Vehicle Number</strong></th>
+          <th><strong>Seats</strong></th>
+          <th><strong>fuelType </strong></th>
+          <th><strong>Brand </strong></th>
+          <th><strong>Per Day Rent</strong></th>
+          <th><strong>Action</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of vehicleData; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ vehicle.vehicleName }}</td>
+          <td>{{ vehicle.vehicleNumber }}</td>
+          <td>{{ vehicle.seatingCapacity }}</td>
+          <td>{{ vehicle.fuelType }}</td>
+          <td>{{ vehicle.brandId }}</td>
+          <td>{{ vehicle.rent_Id.rentAmount }}</td>
+
+          <td>
+            <button class="bordernone">
+              <i
+                class="fa-solid fa-pen-to-square fa-lg"
+                style="color: #1160e8"
+              ></i></button
+            >&nbsp;
+            <button class="bordernone">
+              <i class="fa-solid fa-trash" style="color: #ff0000"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
