@@ -2,6 +2,7 @@ import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GlobalConstants } from '../shared/global-constants';
 
 @Component({
   selector: 'app-register',
