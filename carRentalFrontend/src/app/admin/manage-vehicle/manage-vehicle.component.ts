@@ -1,3 +1,5 @@
+import { Vehicle } from 'src/app/model/Vehicle.model';
+import { VehicleService } from './../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageVehicleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private vehicleService:VehicleService) { }
 
+
+  public vehicleData: Vehicle[] =[]
   ngOnInit(): void {
+    this.getAllVehicle();
   }
 
+  getAllVehicle(){
+    this.vehicleService.getAllVehicles().subscribe(res=>{
+      console.log(res);
+      this.vehicleData=res
+    })
+  }
 }

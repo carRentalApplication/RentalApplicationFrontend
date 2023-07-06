@@ -12,6 +12,7 @@ export class BrandService {
   baseUrl = environment.urlCar;
 
   constructor(private http: HttpClient, private route: Router) { }
+
   getAllBrands():Observable<Brand[]>{
     console.log("Brand Service all Brand control");
 

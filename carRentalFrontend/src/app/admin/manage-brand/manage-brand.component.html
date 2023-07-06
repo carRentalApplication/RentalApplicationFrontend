@@ -5,28 +5,33 @@
       <div class="d-flex justify-content-end mb-3">
         <button class="btn btn-sm btn-outline-dark" routerLink="/admin/addbrand">Add Brand</button>
       </div>
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Brand Name</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let brand of brandData,let i=index">
+            <th>{{i+1}}</th>
+            <td>{{brand.brandName}}</td>
             <td>
-              <button class="btn btn-sm btn-outline-info">Edit</button>&nbsp;
-              <button class="btn btn-sm btn-outline-danger">Delete</button>
+              <button class="bordernone"><i class="fa-solid fa-pen-to-square fa-lg" style="color: #1160e8;"></i></button>&nbsp;
+              <button class="bordernone"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button>
             </td>
           </tr>
         </tbody>
+
       </table>
+      <!-- <div class="pagination">
+        <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(1)">1</button>
+        <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"> << </button>
+        <button class="btn btn-success">{{currentPage}} / {{totalPages}}</button>
+        <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">>></button>
+        <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">{{totalPages}}</button>
+      </div> -->
     </div>
+
 </div>
