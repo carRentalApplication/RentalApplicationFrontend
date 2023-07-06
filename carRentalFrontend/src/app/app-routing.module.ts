@@ -22,6 +22,9 @@ const routes: Routes = [
   path: "admin",
   canActivate:[AuthenticationGuard],
   loadChildren:()=> import ('./admin/admin.module').then(x=> x.AdminModule)
+},{
+  path: "customer",
+  loadChildren:()=> import ('./customer/customer.module').then(x=> x.CustomerModule)
 },
 
 // { path: "**", redirectTo:"home"},
