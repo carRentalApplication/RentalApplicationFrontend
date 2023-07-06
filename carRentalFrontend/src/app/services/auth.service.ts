@@ -24,11 +24,26 @@ export class AuthService {
     return this.http.post(this.baseUrl + "/api/Authuser/login", data, { responseType: 'text' })
   }
 
-  getAllUser():Observable<AuthUser []>{
+  getAllUser(): Observable<AuthUser[]> {
     console.log("Service");
 
     return this.http.get<AuthUser[]>(this.baseUrl + '/api/Authuser')
   }
 
+  storeToken(token: string) {
+    localStorage.setItem('token', token)
+  }
+
+  logoutMethod() {
+    localStorage.clear()
+    this.route.navigate(['home'])
+  }
+  getToken() {
+    localStorage.getItem('token')
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token')
+  }
 
 }

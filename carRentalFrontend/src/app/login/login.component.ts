@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
           }
           else {
             this.isUserValid = true;
+            console.log(res);
+            localStorage.setItem('token',res);
             alert("Login Success")
           }
         })
