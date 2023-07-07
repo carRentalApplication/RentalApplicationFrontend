@@ -1,0 +1,132 @@
+.maincard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 2rem;
+
+}
+
+.bdy {
+  background: #efebeb4f;
+  position: relative;
+  /* margin-top: 7rem; */
+}
+
+
+ .properties-filter-inner-wrapper {
+  position: sticky;
+  top: 5rem;
+    border: 1px solid #f2f2f2;
+    border-radius: 0.1875rem;
+    box-shadow: 0 3px 5px rgba(0,0,0,.03);
+    color: #000;
+    width: 80%;
+    /* z-index: 2; */
+    background: #fff;
+    font-size: 14px;
+    font-family: proxi-regular;
+    display: -webkit-inline-box;
+    display: inline-flex;
+    min-height: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.propshare-page-benner-container .cover-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.propshare-page-benner-container .cover-img {
+  width: 100%;
+  opacity: 2.7;
+  padding: 0px;
+}
+
+
+
+img, svg {
+  vertical-align: middle;
+}
+
+img {
+  border-style: none;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+.card1 {
+  width: 30%;
+  height: fit-content;
+  background-color: #fff;
+  margin-bottom: 7rem;
+  box-sizing: border-box;
+  height: fit-content;
+}
+
+img {
+  height: 276px;
+  padding: 1rem;
+}
+.title {
+  text-align: center;
+  color: #000;
+  font-weight: 400;
+  font-family: gourmand-regular;
+}
+.div1 {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.propertyvalues {
+  margin-left: 5rem;
+}
+
+.butt {
+  text-align: center;
+  margin: 30px;
+}
+
+.search{
+  display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.search:focus{
+  outline: none;
+}
+
+.operation{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.city:focus{
+  outline: none;
+}
+
+.sort:focus{
+  outline: none;
+}
+
+input:focus{
+  outline: none;
+}
+
+input{
+  border:solid 1px rgb(228, 227, 227);
+  border-radius: 5px;
+}
+
+

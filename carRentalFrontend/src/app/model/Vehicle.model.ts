@@ -11,5 +11,4 @@ export interface Vehicle{
   brandId:Brand;
   rent_Id:Rent;
   image_Id:VehicleImages;
-
 }
