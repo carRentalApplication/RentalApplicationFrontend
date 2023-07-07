@@ -1,24 +1,123 @@
+/* Base styles */
 .page {
   color: white;
   padding: 0 1rem;
   background: #f1f5f9;
-  &__box {
-    min-height: 120px;
-    background: #1e293b;
-    margin: 0 -1rem;
-    font-size: 36px;
+}
+
+.page__box {
+  min-height: 120px;
+  background: #1e293b;
+  margin: 0 -1rem;
+  font-size: 36px;
+}
+
+.page__content {
+  min-height: calc(104vh - 178px);
+  border-radius: 10px;
+  margin-top: -2rem;
+  background: white;
+  color: black;
+  font-size: 2rem;
+}
+
+.page__content-data {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hs_inner-service {
+  position: relative;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid rebeccapurple;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.hs_icon {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+  transition: all 300ms ease;
+}
+
+.hs_icon img {
+  width: 60%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hs_inner-service h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.hs_inner-service p {
+  font-size: 14px;
+}
+
+.hs_inner-service:hover .hs_icon {
+  background: rgb(213 53 55 / 20%);
+  border: none;
+}
+
+.hs_inner-service:hover {
+  background-color: #c2bdbd49;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+  transform: translateY(-10px);
+  border-bottom: 4px solid #d53537;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .page__box {
+    font-size: 24px;
   }
-  &__content {
-    min-height: calc(104vh - 178px);
-    border-radius: 10px;
-    margin-top: -2rem;
-    background: white;
-    color: black;
-    font-size: 2rem;
-    &-data {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+
+  .page__content {
+    min-height: calc(100vh - 178px);
+    font-size: 1.5rem;
+  }
+
+  .hs_inner-service {
+    padding: 5px;
+  }
+
+  .hs_inner-service h2 {
+    font-size: 16px;
+  }
+
+  .hs_inner-service p {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page__box {
+    font-size: 18px;
+  }
+
+  .page__content {
+    min-height: calc(100vh - 150px);
+    font-size: 1.2rem;
+  }
+
+  .hs_inner-service h2 {
+    font-size: 14px;
+  }
+
+  .hs_inner-service p {
+    font-size: 12px;
   }
 }
