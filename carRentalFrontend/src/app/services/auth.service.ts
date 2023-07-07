@@ -29,6 +29,11 @@ export class AuthService {
 
     return this.http.get<AuthUser[]>(this.baseUrl + '/api/Authuser')
   }
+  getAllUserCount(): Observable<AuthUser> {
+    console.log("register-user-count Service");
+
+    return this.http.get<AuthUser>(this.baseUrl + '/api/Authuser/register-user-count')
+  }
 
   storeToken(token: string) {
     localStorage.setItem('token', token)
