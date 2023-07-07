@@ -30,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { TokenInterceptor } from './interceptor/token.interceptor';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { MatButtonModule } from '@angular/material/button';
     NavbarComponent,
     CustomerComponent,
     FooterComponent,
-    AnimationComponent
+    AnimationComponent,
+    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,11 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule
 
   ],
-  providers: [AuthService],
+  providers: [AuthService,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable ,of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthUser } from '../model/AuthUser.model';
 
@@ -24,6 +24,13 @@ export class AuthService {
     return this.http.post(this.baseUrl + "/api/Authuser/login", data, { responseType: 'text' })
   }
 
+  changePassword(data: any) {
+    console.log(data);
+
+    console.log("Change Password Works");
+    return this.http.put(this.baseUrl + "/api/Authuser/changepassword", data, { responseType: 'text' })
+  }
+
   getAllUser(): Observable<AuthUser[]> {
     console.log("Service");
 
@@ -31,7 +38,7 @@ export class AuthService {
   }
   getAllUserCount(): Observable<AuthUser> {
     console.log("register-user-count Service");
-
+    // console.log(this.getToken());
     return this.http.get<AuthUser>(this.baseUrl + '/api/Authuser/register-user-count')
   }
 
@@ -44,12 +51,16 @@ export class AuthService {
     this.route.navigate(['home'])
   }
   getToken() {
-    localStorage.getItem('token')
+    return localStorage.getItem('token')
   }
+
+
+
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token')
   }
+
   // isLoggedInCustomer(): Observable<AuthUser | any> {
   //   const token = localStorage.getItem('token');
 
