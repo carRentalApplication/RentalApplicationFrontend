@@ -1,54 +1,55 @@
-<!-- Navbar-->
-<nav class="navbar fixed-top navbar-light bg-light">
-  <div class="container-fluid justify-content-between">
-    <!-- Left elements -->
-    <div class="d-flex">
-      <!-- Brand -->
-      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" routerLink="/">
-        <img src="assets/img/carlogo.png" height="30" style="margin-top: 2px" />
-        <b style="color: rgba(94, 92, 92, 0.788); font-size: medium"
-          >Rentalcars.com</b
-        >
-      </a>
+<div class="container"><!-- Navbar-->
+  <nav class="navbar fixed-top navbar-light bg-light">
+    <div class="container-fluid justify-content-between">
+      <!-- Left elements -->
+      <div class="d-flex">
+        <!-- Brand -->
+        <a class="navbar-brand me-2 mb-1 d-flex align-items-center" routerLink="/">
+          <img src="assets/img/carlogo.png" height="30" style="margin-top: 2px" />
+          <b style="color: rgba(94, 92, 92, 0.788); font-size: medium"
+            >Rentalcars.com</b
+          >
+        </a>
 
+        <ul class="navbar-nav flex-row">
+          <li class="nav-item dropdown me-3 me-lg-1">
+            <a class="navbar-brand me-2 mb-1 d-flex align-items-center" routerLink="/admin/dashboard"
+              ><b style="color: rgba(94, 92, 92, 0.788)">Admin DashBoard</b></a
+            >
+          </li>
+          <li class="nav-item dropdown me-3 me-lg-1">
+            <a class="navbar-brand me-2 mb-1 d-flex align-items-center" routerLink="/customer"
+              ><b style="color: rgba(94, 92, 92, 0.788)">Car DashBoard</b></a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Left elements -->
+      <!-- Right elements -->
       <ul class="navbar-nav flex-row">
         <li class="nav-item dropdown me-3 me-lg-1">
-          <a class="navbar-brand me-2 mb-1 d-flex align-items-center" routerLink="/admin/dashboard"
-            ><b style="color: rgba(94, 92, 92, 0.788)">Admin DashBoard</b></a
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            data-mdb-ripple-color="dark"
+            routerLink="/login"
           >
+            Login
+          </button>
         </li>
         <li class="nav-item dropdown me-3 me-lg-1">
-          <a class="navbar-brand me-2 mb-1 d-flex align-items-center" routerLink="/customer"
-            ><b style="color: rgba(94, 92, 92, 0.788)">Car DashBoard</b></a
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            data-mdb-ripple-color="dark"
+            routerLink="/register"
           >
+            Register
+          </button>
         </li>
       </ul>
+      <!-- Right elements -->
     </div>
-    <!-- Left elements -->
-    <!-- Right elements -->
-    <ul class="navbar-nav flex-row">
-      <li class="nav-item dropdown me-3 me-lg-1">
-        <button
-          type="button"
-          class="btn btn-outline-dark"
-          data-mdb-ripple-color="dark"
-          routerLink="/login"
-        >
-          Login
-        </button>
-      </li>
-      <li class="nav-item dropdown me-3 me-lg-1">
-        <button
-          type="button"
-          class="btn btn-outline-dark"
-          data-mdb-ripple-color="dark"
-          routerLink="/register"
-        >
-          Register
-        </button>
-      </li>
-    </ul>
-    <!-- Right elements -->
+  </nav>
+  <!-- Navbar -->
   </div>
-</nav>
-<!-- Navbar -->
