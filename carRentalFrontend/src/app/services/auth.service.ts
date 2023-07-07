@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable ,of} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthUser } from '../model/AuthUser.model';
 
@@ -50,5 +50,16 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token')
   }
+  // isLoggedInCustomer(): Observable<AuthUser | any> {
+  //   const token = localStorage.getItem('token');
+
+  //   if (token) {
+  //     // If the token exists, you can make an HTTP request to retrieve the logged-in user
+  //     return this.http.get<AuthUser>(this.baseUrl + '/api/Authuser/loggedInUser');
+  //   } else {
+  //     // If the token doesn't exist, return null or an empty object, depending on your preference
+  //     return of(null); // or return of({});
+  //   }
+  // }
 
 }

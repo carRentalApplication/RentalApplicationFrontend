@@ -33,6 +33,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
+
   declarations: [
     HomeComponent,
     LoginComponent,
@@ -61,7 +62,6 @@ import { MatButtonModule } from '@angular/material/button';
     //materail
     MatSidenavModule,
     MatButtonModule,
-
     FormsModule
 
   ],

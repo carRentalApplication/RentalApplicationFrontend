@@ -1,0 +1,93 @@
+<app-customer-nav></app-customer-nav>
+<div class="bdy">
+  <div class="propshare-page-benner-container">
+    <div class="cover-img-wrapper">
+      <img class="cover-img" src="../../../../assets/img/sven-d-a4S6KUuLeoM-unsplash.jpg"
+        alt="property listing cover page" />
+      <!-- <div class="cover-content">
+            <h6 class="title">All Properties</h6>
+        </div> -->
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="properties-filter-inner-wrapper operation" style="flex-direction: row; padding-left: 50px;">
+
+
+      <select style="border: none;" class="city">
+        <option style="border: none; " [defaultSelected]="" value="">All Cars</option>
+        <option style="border: none; padding-bottom: 3px;" *ngFor="let city of vehicles" value="{{city}}">{{city}}</option>
+      </select>
+
+
+      <select  style=" border: none;" class="sort">
+        <option style="border: none;padding-bottom: 3px;" value="Fuel Type">Fuel Type</option>
+        <option style="border: none;padding-bottom: 3px;" value="Seating Capacity">Seating Capacity</option>
+        <option style="border: none;padding-bottom: 3px;" value="Brand">Brand</option>
+        <option [defaultSelected]="sortBy" value="Most Blocked By Users">Most Booked</option>
+      </select>
+
+      <div class="search">
+        <input type="text"  style="width: 100%;height: 75%;" placeholder="Search car type here "  class="" >
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+  <div class="maincard">
+    <!-- {{vehicles | json}} -->
+    <!-- loop through properties using ngFor directive -->
+    <div class="card card1" *ngFor="let property of vehicles">
+      <!-- <h1 class="title">{{ property?.brand?.brandName}}</h1> -->
+
+      <h1 class="title">{{ property.vehicleName }}</h1>
+      <div class="title">
+        <i class="fas fa-map-marker-alt"></i>
+
+        {{ property?.vehicleNumber}}
+      </div>
+      <img class="card-img-top" src="{{ property.image_Id.frontImage }}" alt="Card image cap" />
+      <div class="div1">
+        <div><i class="fas fa-car"></i>Car Number</div>
+        <div class="propertyvalues">
+          {{ property.vehicleNumber  }}
+        </div>
+      </div>
+      <div class="div1">
+        <div><i class="	fas fa-car-side"></i>seating capacity</div>
+        <div class="propertyvalues">{{ property.seatingCapacity }} <sup>Seater</sup></div>
+      </div>
+      <div class="div1">
+        <div><i class="fas fa-gas-pump"></i>FuelType</div>
+        <div class="propertyvalues">
+          {{ property.fuelType  }}
+        </div>
+      </div>
+
+      <div class="div1">
+        <div><i class="fas fa-rupee-sign"></i> Rent </div>
+        <div class="propertyvalues">
+          {{ property.rent_Id.rentAmount |currency : "INR" : "symbol" }}
+        </div>
+      </div>
+
+
+      <div class="butt">
+        <!-- <button type="button" class="btn btn-primary" *ngIf="customer != null"
+          [disabled]="property.remainingUnits === 0" [routerLink]="['/home', property.id]">
+          View Opportunities
+        </button>
+        <button type="button" class="btn btn-primary" *ngIf="customer == null" routerLink="/signin">
+          View Opportunities
+        </button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

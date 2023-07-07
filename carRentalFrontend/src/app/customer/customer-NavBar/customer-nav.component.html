@@ -1,0 +1,68 @@
+<div class="navbar" [ngClass]="{'navbar-scrolled': isScrolled}">
+  <div class="site-name">
+    <img src="assets/img/carlogo.png" height="30" style="margin-top: 2px" />
+        <b style="color: rgba(94, 92, 92, 0.788); font-size: medium"
+          >Rentalcars.com</b
+        >
+  </div>
+  <div class="site-menu">
+    <ul class="list">
+      <li></li>
+      <li>
+        <button class="buttons" [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/home">HOME</button>
+      </li>
+      <li>
+        <button class="buttons" routerLink="/customer" [ngClass]="{'buttons-scrolled': isScrolled}"
+          routerLinkActive="router-link-active">
+          CARS
+        </button>
+      </li>
+      <li>
+        <button class="buttons" routerLink="/customer/about" [ngClass]="{'buttons-scrolled': isScrolled}"
+          routerLinkActive="router-link-active">
+          ABOUT US
+        </button>
+      </li>
+      <li>
+        <button class="buttons" [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/contact">CONTACT US</button>
+      </li>
+      <!-- <li>
+        <button class="buttons " [ngClass]="{'buttons-scrolled': isScrolled}" *ngIf="customer == null"
+          routerLink="/admin/login">
+          ADMIN LOGIN
+        </button>
+      </li> -->
+    </ul>
+  </div>
+
+  <div style="float: right; padding-right: 3rem">
+    <button class=" login" [ngClass]="{'buttons-scrolled': isScrolled}" *ngIf="customer == null" routerLink="/login">
+      SIGN IN
+    </button>
+    <button class=" login" [ngClass]="{'buttons-scrolled': isScrolled}" *ngIf="customer == null" routerLink="/register">
+      REGISTER
+    </button>
+
+    <div style="padding-right: 3rem" class="profile" *ngIf="customer != null"
+      [ngClass]="{'buttons-scrolled': isScrolled}" (mouseenter)="showDropdown()">
+      {{ customer.firstname! + " "
+      }}<span style="
+          background-image: url(https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-1.png);
+        " class="ggdl93"></span>
+      <div class="dropdown" *ngIf="isDropdownVisible">
+        <div class="dropdown-content">
+          <ul style="list-style: none; padding-left: inherit;" (mouseleave)="hideDropdown()">
+
+            <li class="fas fa-clipboard-list" style="font-weight: unset; color: black;" (click)="viewCustomer()" (mouseover)="holdDropdown()">view orders</li>
+            <li class="fa fa-sign-out" (click)="removeCustomer()" (mouseover)="holdDropdown()"> Log Out</li>
+          </ul>
+        </div>
+        <!-- <div class="dropdown-content"  (mouseover)="showDropdown()" (mouseout)="hideDropdown()">
+          orders
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+  <hr style="color: whitesmoke;width: 100%;margin: 0px;">
+</div>
