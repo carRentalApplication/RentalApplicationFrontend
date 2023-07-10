@@ -6,6 +6,7 @@ import { DisplaycarsComponent } from './customer-displaycar/displaycars.componen
 import { ContactComponent } from './contact/contact.component';
 import { CustomerNavComponent } from './customer-NavBar/customer-nav.component';
 import { AboutComponent } from './about us/about.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AboutComponent } from './about us/about.component';
   imports: [
     CommonModule,
     CustomerRoutingModule,
+    FormsModule,
 
   ],
   exports:[

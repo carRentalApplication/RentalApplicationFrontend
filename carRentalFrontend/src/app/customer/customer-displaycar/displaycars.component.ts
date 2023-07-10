@@ -12,11 +12,11 @@ import { VehicleService } from 'src/app/services/vehicle.service';
   styleUrls: ['./displaycars.component.scss']
 })
 export class DisplaycarsComponent implements OnInit {
-
+  searchByCarType: string ='';
+  filteredCars?: any[];
   filterText: string = '';
   public vehicles: Vehicle[] = [];
   public props?: Vehicle[];
-  public names?: String[];
   public searchByName?: string = '';
   public sortBy?: string = "Most Blocked By Users";
   public brands? :any;
@@ -37,10 +37,10 @@ export class DisplaycarsComponent implements OnInit {
       this.props = this.vehicles.filter(p => p.vehicleName.toLocaleLowerCase() === this.filterText.toLocaleLowerCase());
     }
 
-    if (this.sortBy === "seatingcapacity") {
+    if (this.sortBy === "seatingCapacity") {
       this.props.sort((a, b) => a.seatingCapacity - b.seatingCapacity);
-    } else if (this.sortBy === "rent") {
-      this.props.sort((a, b) => b.rent_Id.rentAmount - a.rent_Id.rentAmount);
+    } else if (this.sortBy === "rentAmount") {
+      this.props.sort((a, b) => b.rent.rentAmount - a.rent.rentAmount);
     }
 
     if (this.searchByName !== '') {
@@ -53,13 +53,12 @@ export class DisplaycarsComponent implements OnInit {
   get customer(): AuthUser | any {
     return this.userService.isLoggedIn();
   }
-  // loadVehicles() {
-  //   this.vehicles.forEach((vehicle) => {
-  //     const brand = this.brands.find((b: { brandId: Brand; }) => b.brandId === vehicle.brandId);
-  //     if (brand) {
-  //       vehicle.brandId = brand;
-  //     }
-  //   });
-  // }
+
+  applyFilter() {
+    this.filteredCars = this.vehicles.filter((car) =>
+      car.vehicleName.toLowerCase().includes(this.searchByCarType.toLowerCase())
+    );
+  }
+
 
 }

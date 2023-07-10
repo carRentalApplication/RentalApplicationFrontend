@@ -8,7 +8,7 @@ export interface Vehicle{
   vehicleNumber:string;
   seatingCapacity:number;
   fuelType:string;
-  brandId:Brand;
-  rent_Id:Rent;
-  image_Id:VehicleImages;
+  brand:Brand;
+  rent:Rent;
+  vehicleImage:VehicleImages;
 }
