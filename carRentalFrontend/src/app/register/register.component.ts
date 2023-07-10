@@ -1,8 +1,10 @@
+import { SharedModule } from './../shared/shared.module';
 import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalConstants } from '../shared/global-constants';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +18,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  constructor(private formBuilder: FormBuilder
+  constructor(private formBuilder: FormBuilder, private sharedModule:SharedModule
     , private authService: AuthService,
     private route: Router) {
     this.registrationForm = this.formBuilder.group({
@@ -37,11 +39,18 @@ export class RegisterComponent implements OnInit {
     if (this.registrationForm.valid) {
       this.authService.registerUser(this.registrationForm.value)
         .subscribe(res => {
-          if (res == null)
-            alert("Something went wrong")
-          else if (res != null) {
-            alert("Registerd SuccessFully");
+          if (res == null){
+            this.sharedModule.showToast('Something went wrong','Hello','error')
+          }
+          else if (res != null && res=='register success') {
+            this.sharedModule.showToast('Success','Registration','success')
             this.route.navigateByUrl('/login')
+          }
+          else if(res != null && res=='already present') {
+            this.sharedModule.showToast('Email already present','Registration','info')
+            this.route.navigateByUrl('/login')
+          }else{
+            this.sharedModule.showToast('Internal server error','Registration','error')
           }
         })
     }
@@ -58,4 +67,5 @@ export class RegisterComponent implements OnInit {
     }
     return null;
   }
+
 }
