@@ -19,7 +19,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CarouselComponent } from './shared/carousel/carousel.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AnimationComponent } from './shared/animation/animation.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -65,7 +65,14 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     //materail
     MatSidenavModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true,
+      progressBar: true
+    })
 
   ],
   providers: [AuthService,{
