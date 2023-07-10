@@ -41,7 +41,7 @@ export class AuthService {
 
     return this.http.get<AuthUser[]>(this.baseUrl + '/api/Authuser')
   }
-  
+
   getAllUserCount(): Observable<AuthUser> {
     console.log("register-user-count Service");
     // console.log(this.getToken());
@@ -51,7 +51,6 @@ export class AuthService {
   storeToken(token: string) {
     localStorage.setItem('token', token)
   }
-
   logoutMethod() {
     localStorage.clear()
     this.route.navigate(['home'])
@@ -74,11 +73,11 @@ export class AuthService {
   }
 
   getFirstNameFromToken() {
-    if(this.userPayload)
-    return this.userPayload.firstname;
+    if (this.userPayload)
+      return this.userPayload.firstname;
   }
   getRoleFromToken() {
-    if(this.userPayload)
-    return this.userPayload.role;
+    if (this.userPayload)
+      return this.userPayload.role;
   }
 }

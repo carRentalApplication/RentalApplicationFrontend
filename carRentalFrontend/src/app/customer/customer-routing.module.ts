@@ -3,10 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerComponent } from './customer.component';
 import { AboutComponent } from './about us/about.component';
 
-const routes: Routes = [
-  { path: '', component: CustomerComponent,},
-  { path: 'about', component: AboutComponent },
-{ path: "**", redirectTo:"home"},
+const routes: Routes = [ // Redirect empty path to 'customer'
+  { path: '', component: CustomerComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({

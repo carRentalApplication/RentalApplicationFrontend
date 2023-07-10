@@ -11,19 +11,19 @@ import { AddVehicleComponent } from './manage-vehicle/add-vehicle/add-vehicle.co
 
 const routes: Routes = [
   {
-    path: '', component: AdminComponent, /* for admin */
+    path: '', // Remove the empty path as it's already defined in the AppRoutingModule
+    component: AdminComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'managebrand', component: ManageBrandComponent },
       { path: 'managebooking', component: ManageBookingComponent },
       { path: 'managevehicle', component: ManageVehicleComponent },
       { path: 'manageuser', component: ManageUserComponent },
-      { path: 'home', component: DashboardComponent },
-      { path: 'admin/addbrand', component: AddBrandComponent },
-      { path: 'admin/addvehicle', component: AddVehicleComponent },
+      { path: 'home', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirect 'home' to 'dashboard'
+      { path: 'addbrand', component: AddBrandComponent }, // Remove 'admin/' prefix
+      { path: 'addvehicle', component: AddVehicleComponent }, // Remove 'admin/' prefix
     ]
   },
-  { path: "**", redirectTo:"admin/dashboard"},
 ];
 
 @NgModule({
