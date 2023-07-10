@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthUser } from '../model/AuthUser.model';
+import { JwtHelperService } from '@auth0/angular-jwt'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,11 @@ export class AuthService {
 
   baseUrl = environment.url
 
-  constructor(private http: HttpClient, private route: Router,) { }
+  private userPayload: any;
+
+  constructor(private http: HttpClient, private route: Router,) {
+    this.userPayload = this.decodedToken();
+  }
 
   registerUser(data: any) {
     console.log(data);
@@ -54,23 +59,22 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 
-
-
-
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token')
   }
 
-  // isLoggedInCustomer(): Observable<AuthUser | any> {
-  //   const token = localStorage.getItem('token');
+  decodedToken() {
+    const jwtHelper = new JwtHelperService();
+    const token = this.getToken()!;
+    return jwtHelper.decodeToken(token)
+  }
 
-  //   if (token) {
-  //     // If the token exists, you can make an HTTP request to retrieve the logged-in user
-  //     return this.http.get<AuthUser>(this.baseUrl + '/api/Authuser/loggedInUser');
-  //   } else {
-  //     // If the token doesn't exist, return null or an empty object, depending on your preference
-  //     return of(null); // or return of({});
-  //   }
-  // }
-
+  getFirstNameFromToken() {
+    if(this.userPayload)
+    return this.userPayload.firstname;
+  }
+  getRoleFromToken() {
+    if(this.userPayload)
+    return this.userPayload.role;
+  }
 }

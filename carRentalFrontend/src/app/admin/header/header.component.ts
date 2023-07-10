@@ -1,6 +1,7 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +10,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  adminName:string="Ankush";
+ public userName:string="Ankush";
 
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router,private authService:AuthService) {}
+  constructor(private router: Router,private authService:AuthService,
+    private userStore:UserStoreService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userStore.getFirstNameFromStore().subscribe(res=>{
+      let firstNameFromToken = this.authService.getFirstNameFromToken();
+      this.userName= res || firstNameFromToken
+    })
+  }
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
@@ -25,4 +32,6 @@ export class HeaderComponent implements OnInit {
     console.log("Logout trigger");
     this.authService.logoutMethod()
   }
+
+
 }

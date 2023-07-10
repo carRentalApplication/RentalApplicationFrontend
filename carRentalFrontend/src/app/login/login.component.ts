@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
+    private sharedModule:SharedModule,
     private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
             this.isUserValid = true;
             console.log(res);
             localStorage.setItem('token',res);
-            alert("Login Success")
+            this.sharedModule.showToast("Login Success","Hello","success")
           }
         })
     }
