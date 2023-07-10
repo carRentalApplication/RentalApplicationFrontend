@@ -41,6 +41,7 @@ export class AuthService {
 
     return this.http.get<AuthUser[]>(this.baseUrl + '/api/Authuser')
   }
+  
   getAllUserCount(): Observable<AuthUser> {
     console.log("register-user-count Service");
     // console.log(this.getToken());
@@ -64,7 +65,7 @@ export class AuthService {
   }
 
   decodedToken() {
-    
+
     const jwtHelper = new JwtHelperService();
     const token = this.getToken()!;
     console.log(jwtHelper.decodeToken(token));

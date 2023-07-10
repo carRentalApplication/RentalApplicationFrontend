@@ -1,6 +1,5 @@
-export interface VehicleImages{
-  imageId:number;
-  frontImage:string;
-  backImage:string;
-  sideImage:string;
+export interface VehicleImages {
+  imageId: number;
+  imageUrl: string;
 }
+

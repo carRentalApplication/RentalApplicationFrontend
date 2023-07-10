@@ -30,9 +30,14 @@ export class VehicleService {
   updateVehicle(id:number,vehicle:Vehicle){
     console.log('Updating Vehicle Service');
     return this.http.put(this.baseUrl+`/api/Vehicles/${id}`,vehicle);
-
   }
-  
+
+  getAllVehicleCount(): Observable<Vehicle> {
+    console.log("register-user-count Service");
+    // console.log(this.getToken());
+    return this.http.get<Vehicle>(this.baseUrl + '/api/Vehicles/register-vehicle-count')
+  }
+
 
 
 }

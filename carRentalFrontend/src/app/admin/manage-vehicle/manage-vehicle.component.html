@@ -3,7 +3,9 @@
 
   <div class="page__content shadow p-3 position-relative">
     <div class="d-flex justify-content-end mb-3">
-      <button class="btn btn-sm btn-outline-dark">Add Vehicle</button>
+      <button class="btn btn-sm btn-outline-dark" routerLink="/admin/addvehicle">Add Vehicle</button>
+      <!-- <button class="btn btn-sm btn-outline-dark" routerLink="/admin/editVehicle">Edit</button> -->
+
     </div>
     <table class="table text-center">
       <!-- {{ vehicleData | json }} -->
@@ -26,11 +28,14 @@
           <td>{{ vehicle.vehicleNumber }}</td>
           <td>{{ vehicle.seatingCapacity }}</td>
           <td>{{ vehicle.fuelType }}</td>
-          <td>{{ vehicle.brand }}</td>
+          <td>{{ vehicle.brand.brandName }}</td>
           <td>{{ vehicle.rent.rentAmount }}</td>
+
 
           <td>
             <button class="bordernone">
+            <!-- <button class="bordernone" (click)="editVehicle(vehicle.vehicleId)"> -->
+
               <i
                 class="fa-solid fa-pen-to-square fa-lg"
                 style="color: #1160e8"

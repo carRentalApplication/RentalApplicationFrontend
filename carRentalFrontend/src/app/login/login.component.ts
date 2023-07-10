@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(this.loginForm.value)
         .subscribe(
           res => {
-
           if (res == "Login Not Success") {
             console.log("Internal Server Error");
           }
@@ -51,13 +50,24 @@ export class LoginComponent implements OnInit {
             this.isUserValid = true;
             console.log(res);
             localStorage.setItem('token',res);
+            const tokenPayload = this.authService.decodedToken();
+            this.userStoreService.setFirstNameForStore(tokenPayload.firstname);
+            this.userStoreService.setRoleForStore(tokenPayload.role);
             this.sharedModule.showToast("Login Success","Hello","success")
-            this.router.navigate(['home'])
+            if(tokenPayload.role==='admin')
+            {
+              this.router.navigate(['admin/dashboard'])
+            }
+            else{
+              this.router.navigate(['home'])
+            }
           }
-          const tokenPayload = this.authService.decodedToken();
-          this.userStoreService.setFirstNameForStore(tokenPayload.firstname);
-          this.userStoreService.setRoleForStore(tokenPayload.role);
         })
     }
+
   }
+
+
 }
+
+

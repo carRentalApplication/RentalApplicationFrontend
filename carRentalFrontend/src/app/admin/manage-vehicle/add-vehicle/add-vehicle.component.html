@@ -1,0 +1,75 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+  <div class="page__content shadow p-1 position-relative">
+    <div class="page__content-data position-absolute">
+
+
+      <form class="container-fluid p-1" id="group" [formGroup]="addVehicleDetails" (ngSubmit)="onSubmit()">
+        <div>
+          <div>
+            <label for="vehicleName" class="form-label">Vehicle Name</label>
+            <input type="text" class="form-control" id="vehicleName" placeholder="Enter Vehicle Name" formControlName="vehicleName">
+          </div>
+          <div>
+            <label for="vehicleNumber" class="form-label">Vehicle Number</label>
+            <input type="text" class="form-control" id="vehicleNumber" placeholder="Enter Vehicle Number" formControlName="vehicleNumber">
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="dropdown">
+                <label for="seatingCapacity">Seating Capacity</label>
+                <select id="seatingCapacity" class="form-control" formControlName="seatingCapacity">
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="9">9</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <label for="fuelType">Fuel Type</label>
+              <select id="fuelType" class="form-control" formControlName="fuelType">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="brandName">Brand Details</label>
+              <select id="brandName" class="form-control" formControlName="brand.brandName">
+                <option *ngFor="let brandDetail of brandDetailsBackend" [value]="brandDetail.brandName">
+                  {{brandDetail.brandName}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="rentAmount" class="form-label">Rent Details</label>
+              <input type="text" class="form-control" id="rentAmount" placeholder="Enter Rent Details" formControlName="rent[0].rentAmount">
+            </div>
+          </div>
+          <div class="row">
+            <label for="imageUrl" class="form-label">Images</label>
+            <div class="col">
+              <input type="text" class="form-control" id="imageUrl" formControlName="VehicleImage.imageUrl" placeholder="Image 1 URL">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" id="imageUrl" formControlName="VehicleImage.imageUrl" placeholder="Image 1 URL">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" id="imageUrl" formControlName="VehicleImage.imageUrl" placeholder="Image 1 URL">
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          &nbsp;
+          <button type="submit" class="btn btn-danger" routerLink="/admin/managevehicle">Back</button>
+        </div>
+      </form>
+
+
+
+
+    </div>
+  </div>
+</div>

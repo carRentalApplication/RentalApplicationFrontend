@@ -26,6 +26,7 @@ import { CommonModule } from '@angular/common';
 import { AgGridModule } from 'ag-grid-angular';
 import { AddBrandComponent } from './manage-brand/add-brand/add-brand.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddVehicleComponent } from './manage-vehicle/add-vehicle/add-vehicle.component';
 
 
 
@@ -41,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ManageVehicleComponent,
     ManageUserComponent,
     ManageBookingComponent,
-    AddBrandComponent
+    AddBrandComponent,
+    AddVehicleComponent
   ],
   imports: [
     MatSidenavModule,

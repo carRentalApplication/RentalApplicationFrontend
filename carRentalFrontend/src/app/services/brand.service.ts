@@ -30,6 +30,11 @@ export class BrandService {
   updateBrand(id:number,brand:Brand){
     console.log('Updating Brand Service');
     return this.http.put(this.baseUrl+`/api/Brand/${id}`,brand);
+  }
 
+  getAllBrandCount(): Observable<Brand> {
+    console.log("register-user-count Service");
+    // console.log(this.getToken());
+    return this.http.get<Brand>(this.baseUrl + '/api/Brand/register-brand-count')
   }
 }

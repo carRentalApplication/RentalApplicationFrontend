@@ -10,5 +10,5 @@ export interface Vehicle{
   fuelType:string;
   brand:Brand;
   rent:Rent;
-  vehicleImage:VehicleImages;
+  vehicleImages:VehicleImages[];
 }

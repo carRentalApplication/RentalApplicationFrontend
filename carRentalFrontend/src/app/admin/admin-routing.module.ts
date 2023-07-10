@@ -7,6 +7,7 @@ import { ManageBookingComponent } from './manage-booking/manage-booking.componen
 import { ManageVehicleComponent } from './manage-vehicle/manage-vehicle.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { AddBrandComponent } from './manage-brand/add-brand/add-brand.component';
+import { AddVehicleComponent } from './manage-vehicle/add-vehicle/add-vehicle.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'manageuser', component: ManageUserComponent },
       { path: 'home', component: DashboardComponent },
       { path: 'admin/addbrand', component: AddBrandComponent },
+      { path: 'admin/addvehicle', component: AddVehicleComponent },
     ]
   },
   { path: "**", redirectTo:"admin/dashboard"},
