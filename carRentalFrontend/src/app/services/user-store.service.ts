@@ -19,6 +19,7 @@ export class UserStoreService {
   public setRoleForStore(role:string){
     this.role$.next(role)
   }
+  
   public getFirstNameFromStore(){
     return this.fullName$.asObservable();
   }

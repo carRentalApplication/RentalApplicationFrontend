@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserStoreService } from './../services/user-store.service';
 import { SharedModule } from './../shared/shared.module';
 import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private sharedModule:SharedModule,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private userStoreService:UserStoreService,
+    private router:Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -26,13 +30,16 @@ export class LoginComponent implements OnInit {
 
   loginSubmit() {
     this.submitted = true;
+
     if (this.loginForm.invalid) {
       return;
     }
     else {
       console.log("Ready to go in Service Logic");
       this.authService.loginUser(this.loginForm.value)
-        .subscribe(res => {
+        .subscribe(
+          res => {
+
           if (res == "Login Not Success") {
             console.log("Internal Server Error");
           }
@@ -45,7 +52,11 @@ export class LoginComponent implements OnInit {
             console.log(res);
             localStorage.setItem('token',res);
             this.sharedModule.showToast("Login Success","Hello","success")
+            this.router.navigate(['home'])
           }
+          const tokenPayload = this.authService.decodedToken();
+          this.userStoreService.setFirstNameForStore(tokenPayload.firstname);
+          this.userStoreService.setRoleForStore(tokenPayload.role);
         })
     }
   }
