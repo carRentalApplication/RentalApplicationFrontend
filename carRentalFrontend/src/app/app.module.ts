@@ -32,7 +32,7 @@ import { NgxUiLoaderModule ,NgxUiLoaderHttpModule, NgxUiLoaderConfig} from 'ngx-
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig=
 {
-  "bgsColor": "red",
+  "bgsColor": "#0f172a",
   "bgsOpacity": 1,
   "bgsPosition": "center-center",
   "bgsSize": 80,
@@ -40,7 +40,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig=
   "blur": 6,
   "delay": 0,
   "fastFadeOut": true,
-  "fgsColor": "red",
+  "fgsColor": "#0f172a",
   "fgsPosition": "center-center",
   "fgsSize": 80,
   "fgsType": "square-jelly-box",

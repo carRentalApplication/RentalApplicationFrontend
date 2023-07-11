@@ -10,7 +10,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ManageBrandComponent implements OnInit {
 
-  constructor(private brandService:BrandService,private toster:ToastrService) { }
+  constructor(private brandService:BrandService,private toster:ToastrService) {
+
+    this.brandService.getAllBrands().subscribe(res=>{
+      this.brandData=res;
+      console.log(this.brandData.length);
+      this.getCurrentPageProducts();
+    })
+   }
 
     //for pagination
     currentPage: number = 1;
@@ -21,31 +28,26 @@ export class ManageBrandComponent implements OnInit {
   public brandData: Brand[] =[]
 
   ngOnInit(): void {
-    this.getAllBrand()
+
+
   }
 
-  getAllBrand(){
-    this.brandService.getAllBrands().subscribe(res=>{
-      console.log(res);
-      this.brandData=res;
-    })
+
+  // for pagination methods start
+  changePage(pageNumber: number) {
+    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+      this.currentPage = pageNumber;
+    }
   }
-
-  //for pagination methods start
-  // changePage(pageNumber: number) {
-  //   if (pageNumber >= 1 && pageNumber <= this.totalPages) {
-  //     this.currentPage = pageNumber;
-  //   }
-  // }
-
-  //  getCurrentPageProducts(): Brand[] {
-  //   this.getAllBrand();
-  //   this.totalItems = this.brandData.length;
-  //   this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-  //   const startIndex = (this.currentPage - 1) * this.pageSize;
-  //   const endIndex = startIndex + this.pageSize;
-  //   return this.brandData.slice(startIndex, endIndex);
-  //  }
+   getCurrentPageProducts(): Brand[] {
+    console.log(this.brandData.length);
+    this.totalItems = this.brandData.length;
+    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    console.log(this.brandData.slice(startIndex, endIndex));
+    return this.brandData.slice(startIndex, endIndex);
+   }
   //for oagination method ends
 
 
