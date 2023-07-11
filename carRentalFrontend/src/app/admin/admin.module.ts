@@ -27,7 +27,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AddBrandComponent } from './manage-brand/add-brand/add-brand.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddVehicleComponent } from './manage-vehicle/add-vehicle/add-vehicle.component';
-
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -60,6 +60,7 @@ import { AddVehicleComponent } from './manage-vehicle/add-vehicle/add-vehicle.co
     MatListModule,
     CommonModule,
     AgGridModule,
+    NgxUiLoaderModule,
 
     ReactiveFormsModule,
     FormsModule,

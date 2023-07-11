@@ -20,19 +20,47 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AnimationComponent } from './shared/animation/animation.component';
 import { ToastrModule } from 'ngx-toastr';
-
-
 import { MatMenuModule } from '@angular/material/menu';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 // material
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { NgxUiLoaderModule ,NgxUiLoaderHttpModule, NgxUiLoaderConfig} from 'ngx-ui-loader';
 
+const ngxUiLoaderConfig: NgxUiLoaderConfig=
+{
+  "bgsColor": "red",
+  "bgsOpacity": 1,
+  "bgsPosition": "center-center",
+  "bgsSize": 80,
+  "bgsType": "square-jelly-box",
+  "blur": 6,
+  "delay": 0,
+  "fastFadeOut": true,
+  "fgsColor": "red",
+  "fgsPosition": "center-center",
+  "fgsSize": 80,
+  "fgsType": "square-jelly-box",
+  "gap": 24,
+  "logoPosition": "center-center",
+  "logoSize": 120,
+  "logoUrl": "",
+  "masterLoaderId": "master",
+  "overlayBorderRadius": "0",
+  "overlayColor": "rgba(40, 40, 40, 0.8)",
+  "pbColor": "red",
+  "pbDirection": "ltr",
+  "pbThickness": 3,
+  "hasProgressBar": false,
+  "text": "Please wait..",
+  "textColor": "#FFFFFF",
+  "textPosition": "center-center",
+  "maxTime": -1,
+  "minTime": 300
+}
 
 @NgModule({
 
@@ -61,11 +89,15 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     AdminModule,
     CustomerModule,
     MatMenuModule,
-
-    //materail
     MatSidenavModule,
     MatButtonModule,
     FormsModule,
+    //ngxloader
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true,
+    }),
+    //toast
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
@@ -73,7 +105,6 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
       closeButton: true,
       progressBar: true
     })
-
   ],
   providers: [AuthService,{
     provide:HTTP_INTERCEPTORS,

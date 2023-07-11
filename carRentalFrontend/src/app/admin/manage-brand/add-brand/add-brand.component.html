@@ -5,10 +5,10 @@
       <!-- Content -->
       <form style="border: 1px solid black; background-size: cover;
        width: 200%; height: 400%; margin: 20px; padding: 20px;"
-       [formGroup]="brandProperty" (ngSubmit)="submitBrand()" #form="ngForm" >
+       [formGroup]="brandProperty" (ngSubmit)="submitBrand()" #form="ngForm" id="group">
         <div class="col">
           <label class="form-label text-danger" for="brandName">Add New Brand Here</label>
-          <input type="text" id="brandName" formControlName="brandName" placeholder="enter brand name"  class="form-control">
+          <input type="text" id="brandName" formControlName="brandName" placeholder="Enter brand name"  class="form-control">
           <div *ngIf="brandProperty.get('brandName')?.touched && brandProperty.get('brandName')?.hasError('required')" class="error-message">
             Brand name is required.
           </div>
