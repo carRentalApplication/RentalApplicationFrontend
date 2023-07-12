@@ -1,4 +1,4 @@
-export interface Rent{
-  rentId:number;
-  rentAmount:number;
+export class Rent{
+  rentId?:number;
+  rentAmount?:number;
 }

@@ -2,10 +2,16 @@
 <div class="bdy">
   <div class="propshare-page-benner-container">
     <div class="cover-img-wrapper">
-      <img class="cover-img" src="../../../../assets/img/coverpic1.jpg"alt="property listing cover page" />
-        <!-- <div class="cover-content">
-              <h6 class="title">All Vehicles</h6>
-          </div> -->
+      <section>
+        <div class="image-container">
+          <img class="cover-img" src="../../../../assets/img/coverpic1.jpg" alt="property listing cover page" />
+          <div class="quote-container">
+            <h1 class="quote-title">The perfect car for your next trip is just around the corner</h1>
+            <p class="quote-subtitle">Book your drive now!</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
   <div class="col-md-12">
@@ -14,7 +20,7 @@
 
         <select class="city" [(ngModel)]="filterText">
           <option [selected]="true" value="">All Cars</option>
-          <option *ngFor="let car of vehicles" [value]="car.brand.brandName">{{ car.brand.brandName }}</option>
+          <option *ngFor="let car of vehicles" [value]="car.brand?.brandName">{{ car.brand?.brandName }}</option>
         </select>
 
         <select class="sort" [(ngModel)]="sortBy">
@@ -58,7 +64,7 @@
 
         <!-- {{ property?.vehicleName}} -->
       </div>
-      <img class="card-img-top" src="{{ property.vehicleImages[0].imageUrl }}" alt="Card image cap" />
+      <img class="card-img-top" src="{{  property.vehicleImages?.[0]?.imageUrl }}" alt="Card image cap" />
       <div class="div1">
         <div><i class="fas fa-car"></i> Car Number</div>
         <div class="propertyvalues">
@@ -79,19 +85,19 @@
       <div class="div1">
         <div><i class="fas fa-rupee-sign"></i> Rent Per Day</div>
         <div class="propertyvalues">
-          {{ property.rent.rentAmount |currency : "INR" : "symbol" }}
+          {{ property.rent?.rentAmount |currency : "INR" : "symbol" }}
         </div>
       </div>
 
 
       <div class="butt">
         <button type="button" class="btn btn-success" *ngIf="customer != null"
-          [routerLink]="['/home', property.vehicleId]">
+          [routerLink]="['/customer/vehicle-details', property.vehicleId]">
           View Car Details
         </button>
-        <button type="button" class="btn btn-primary" *ngIf="customer == null" routerLink="">
+        <!-- <button type="button" class="btn btn-primary" *ngIf="customer == null" routerLink="/vehicle-details">
           View Car Details
-        </button>
+        </button> -->
       </div>
     </div>
   </div>

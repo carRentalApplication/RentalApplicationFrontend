@@ -23,9 +23,9 @@ export class VehicleService {
     return this.http.post(this.baseUrl + `/api/Vehicles`, data)
   }
 
-  getVehicle(id: number): Observable<Vehicle[]> {
+  getVehicle(id: number): Observable<Vehicle> {
     console.log("getvehicle by id " + id);
-    return this.http.get<Vehicle[]>(this.baseUrl + `/api/Vehicles/${id}`);
+    return this.http.get<Vehicle>(this.baseUrl + `/api/Vehicles/${id}`);
   }
   updateVehicle(id:number,vehicle:Vehicle){
     console.log('Updating Vehicle Service');

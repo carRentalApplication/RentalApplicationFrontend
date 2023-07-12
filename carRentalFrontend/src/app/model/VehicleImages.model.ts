@@ -1,5 +1,5 @@
-export interface VehicleImages {
-  imageId: number;
-  imageUrl: string;
+export class VehicleImages {
+  imageId?: number;
+  imageUrl?: string;
 }
 

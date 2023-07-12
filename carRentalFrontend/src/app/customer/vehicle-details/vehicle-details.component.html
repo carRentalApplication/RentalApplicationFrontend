@@ -1,0 +1,153 @@
+<app-customer-nav></app-customer-nav>
+
+<div class="main">
+   <!-- <div class="card mb-3 imgcard">
+    <div class="carousel">
+      <i class="fas fa-chevron-left prev-icon" (click)="showPreviousImage()"></i>
+      <img [src]="currentImage" class="card-img-top" alt="..." />
+      <i class="fas fa-chevron-right next-icon" (click)="showNextImage()"></i>
+    </div> -->
+    <div class="card mb-3 imgcard">
+      <img src="{{ vehicle.vehicleImages?.[0]?.imageUrl }}" class="card-img-top" alt="..." />
+
+    <div class="address">
+      <div class="addressgraph">
+        <address>
+          <span></span>
+          <strong>{{ vehicle.brand?.brandName }}</strong><br />
+          <!-- <span>{{ vehicle.vehicleName }}</span> -->
+        </address>
+      </div>
+      <hr />
+      <div class="propDetails">
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-chair"></i> Seating Capacity</p>
+          {{ vehicle.seatingCapacity }} Seater
+        </div>
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-tags"></i> Rent Per Day</p>
+          {{ vehicle.rent?.rentAmount | currency : "INR" : "symbol" }}
+        </div>
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-car"></i> Car Name</p>
+          {{ vehicle.vehicleName }}
+        </div>
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-sitemap"></i> Vehicle Number</p>
+          {{ vehicle.vehicleNumber }}
+        </div>
+      </div>
+      <div class="propDetails">
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-calendar"></i> From Date</p>
+          <input type="datetime-local" name="fromDate" id="fromDate">
+        </div>
+      </div>
+      <div class="propDetails">
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-calendar"></i> To Date</p>
+          <input type="datetime-local" name="ToDate" id="ToDate">
+        </div>
+      </div>
+      <div class="button">
+        <button type="button" class="btn btn-link invest-now-btn" data-toggle="modal" data-target="#investmentInitModal" (click)="openBookingForm()">
+          <i class="fas fa-calendar-plus"></i> Book Now
+        </button>
+        <div style="float: left; margin-left: 2rem;" routerLink="/customer" class="btn btn-secondary">
+          <i class="fas fa-arrow-left"></i> Back
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+</div>
+
+<div>
+  <div>
+    <!-- Booking Form Popup -->
+    <div class="overlay" *ngIf="showBookingForm">
+      <div class="content">
+        <div class="close" (click)="closeBookingForm()" style="cursor: pointer">&times;</div>
+        <h2>Book Now</h2>
+        <form [formGroup]="bookingForm" (ngSubmit)="submitBookingForm()">
+          <div class="form-group">
+            <label for="travellerName"><i class="fas fa-user"></i> Traveller Name</label>
+            <input type="text" id="travellerName" [formControlName]="'travellerName'" class="form-control" required />
+            <div *ngIf="bookingForm.get('travellerName')?.invalid && bookingForm.get('travellerName')?.touched" class="error">
+              Please enter the traveller name.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="travellerNumber"><i class="fas fa-phone"></i> Traveller Number</label>
+            <input type="text" id="travellerNumber" formControlName="travellerNumber" class="form-control" required />
+            <div *ngIf="bookingForm.get('travellerNumber')?.invalid && bookingForm.get('travellerNumber')?.touched" class="error">
+              Please enter a valid traveller number.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pickUpDate"><i class="fas fa-calendar"></i> Pick-Up Date</label>
+            <input type="date" id="pickUpDate" formControlName="pickUpDate" class="form-control" required />
+            <div *ngIf="bookingForm.get('pickUpDate')?.invalid && bookingForm.get('pickUpDate')?.touched" class="error">
+              Please enter the pick-up date.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dropDate"><i class="fas fa-calendar"></i> Drop Date</label>
+            <input type="date" id="dropDate" formControlName="dropDate" class="form-control" required />
+            <div *ngIf="bookingForm.get('dropDate')?.invalid && bookingForm.get('dropDate')?.touched" class="error">
+              Please enter the drop date.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pickUpAddress"><i class="fas fa-location"></i> Pick-Up Address</label>
+            <input type="text" id="pickUpAddress" formControlName="pickUpAddress" class="form-control" required />
+            <div *ngIf="bookingForm.get('pickUpAddress')?.invalid && bookingForm.get('pickUpAddress')?.touched" class="error">
+              Please enter a valid Address
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="advanceAmount"><i class="fas fa-rupee-sign"></i> Advance Amount</label>
+            <input type="text" id="advanceAmount" formControlName="advanceAmount" class="form-control" required />
+            <div *ngIf="bookingForm.get('advanceAmount')?.invalid && bookingForm.get('advanceAmount')?.touched" class="error">
+              Please enter a valid Address
+            </div>
+          </div>
+
+
+
+          <button type="submit" [disabled]="bookingForm.invalid" class="btn btn-primary">
+            <i class="fas fa-calendar-check"></i> Book Now
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Contact Us</h4>
+        <p>123 Car Rental Street, City</p>
+        <p>Phone: +1 123-456-7890</p>
+        <p>Email: info@carrental.com</p>
+      </div>
+      <div class="col-md-6">
+        <h4>Follow Us</h4>
+        <ul class="social-media-list">
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-bar">
+    <div class="container">
+      <div class="text-center">
+        <p>&copy; 2023 Car Rental. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -29,34 +29,13 @@ export class DisplaycarsComponent implements OnInit {
     });
   }
 
-
-  get vehiclesBasedOn(): Vehicle[] {
-    if (this.filterText === '') {
-      this.props = this.vehicles;
-    } else {
-      this.props = this.vehicles.filter(p => p.vehicleName.toLocaleLowerCase() === this.filterText.toLocaleLowerCase());
-    }
-
-    if (this.sortBy === "seatingCapacity") {
-      this.props.sort((a, b) => a.seatingCapacity - b.seatingCapacity);
-    } else if (this.sortBy === "rentAmount") {
-      this.props.sort((a, b) => b.rent.rentAmount - a.rent.rentAmount);
-    }
-
-    if (this.searchByName !== '') {
-      this.props = this.props.filter(p => p.vehicleName.toLocaleLowerCase().match(this.searchByName!.toLocaleLowerCase().trim()));
-    }
-
-    return this.props;
-  }
-
   get customer(): AuthUser | any {
     return this.userService.isLoggedIn();
   }
 
   applyFilter() {
     this.filteredCars = this.vehicles.filter((car) =>
-      car.vehicleName.toLowerCase().includes(this.searchByCarType.toLowerCase())
+      car.vehicleName?.toLowerCase().includes(this.searchByCarType.toLowerCase())
     );
   }
 

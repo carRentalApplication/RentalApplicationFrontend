@@ -6,7 +6,8 @@ import { DisplaycarsComponent } from './customer-displaycar/displaycars.componen
 import { ContactComponent } from './contact/contact.component';
 import { CustomerNavComponent } from './customer-NavBar/customer-nav.component';
 import { AboutComponent } from './about us/about.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 
 
 @NgModule({
@@ -14,19 +15,22 @@ import { FormsModule } from '@angular/forms';
     CustomerNavComponent,
     DisplaycarsComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    VehicleDetailsComponent
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
+    ReactiveFormsModule
 
   ],
   exports:[
     CustomerNavComponent,
     DisplaycarsComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    VehicleDetailsComponent
   ]
 })
 export class CustomerModule { }

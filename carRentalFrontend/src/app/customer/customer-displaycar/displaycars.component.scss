@@ -50,7 +50,7 @@ img {
 }
 
 img {
-  height: 276px;
+  height: 30rem;
   padding: 1rem;
 }
 .title {
@@ -159,6 +159,32 @@ input{
   min-height: 60px;
   height: 60px;
 }
+// '''''''''''''''''''''
+.image-container {
+  position: relative;
+}
+
+.quote-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 50px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.958);
+  background-color: rgba(102, 98, 93, 0.671);
+}
+
+.quote-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.quote-subtitle {
+  font-size: 20px;
+}
+
+
 
 
 
