@@ -1,0 +1,59 @@
+/* Navbar styles */
+// .navbar {
+//   position: relative;
+//   transition: all 0.3s ease;
+// }
+
+// .navbar:hover {
+//   background-color: #f0f0f0;
+// }
+
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: rotate(360deg);
+}
+
+/* Button styles */
+.btn-outline-dark {
+  border-color: #333;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Animation styles */
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

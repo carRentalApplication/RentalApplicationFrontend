@@ -45,7 +45,7 @@ export class AddVehicleComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
-      let vid=parseInt(id!)
+      let vid = parseInt(id!);
       if (id) {
         this.editable = true;
         this.vehicleService.getVehicle(vid).subscribe(vehicle => {
@@ -73,69 +73,59 @@ export class AddVehicleComponent implements OnInit {
         image3: this.vehicle.vehicleImages[2]?.imageUrl
       });
     }
-
   }
 
   submitVehicle() {
-    console.log("submit");
 
     if (this.addVehicleForm.valid) {
-      console.log(this.vehicle instanceof Vehicle);
-    console.log("Submitted");
-    console.log(this.addVehicleForm.value);
-    var formValues=this.addVehicleForm.value;
+      this.vehicle = this.getFormValues();
 
-   this.vehicle.vehicleName=this.addVehicleForm.get('vehiclename')?.value ?? ""
-    this.vehicle.vehicleNumber=this.addVehicleForm.get('vehiclenumber')?.value ?? ''
-    this.vehicle.fuelType=this.addVehicleForm.get('fueltype')?.value!
+      var vehImg: VehicleImages[] = [];
 
-    var brand=new Brand()
-    brand.brandName=this.addVehicleForm.get('branddetails')?.value ?? ''
-    this.vehicle.brand=brand
-    var rent=new Rent()
-    rent.rentAmount=parseInt(this.addVehicleForm.get('rentdetails')?.value!)
-    this.vehicle.rent=rent
-    this.vehicle.seatingCapacity=parseInt(this.addVehicleForm.get('seatingcapacity')?.value!)
-    this.vehicle=this.vehicle as Vehicle
+      var image1Url = this.addVehicleForm.get('image1')?.value;
+      if (image1Url) {
+        var image1 = new VehicleImages();
+        image1.imageUrl = image1Url;
+        vehImg.push(image1);
+      }
 
-    var vehImg:VehicleImages[]=[]
-  //  var vehImg1:VehicleImages=new VehicleImages()
-  vehImg.push( new VehicleImages().imageUrl=this.addVehicleForm.get('image1')?.value!)
-  vehImg.push( new VehicleImages().imageUrl=this.addVehicleForm.get('image2')?.value!)
-  vehImg.push( new VehicleImages().imageUrl=this.addVehicleForm.get('image3')?.value!)
+      var image2Url = this.addVehicleForm.get('image2')?.value;
+      if (image2Url) {
+        var image2 = new VehicleImages();
+        image2.imageUrl = image2Url;
+        vehImg.push(image2);
+      }
 
+      var image3Url = this.addVehicleForm.get('image3')?.value;
+      if (image3Url) {
+        var image3 = new VehicleImages();
+        image3.imageUrl = image3Url;
+        vehImg.push(image3);
+      }
 
-  //  vehImg[0]=vehImg1
-  //  vehImg.push(vehImg1)
-  //  console.log(vehImg[0].imageUrl);
+      this.vehicle.vehicleImages = vehImg;
 
+      console.log(this.vehicle);
 
-  //  vehImg1.imageUrl=this.addVehicleForm.get('image2')?.value!
-  //  vehImg[1]=vehImg1
-  //  vehImg1.imageUrl=this.addVehicleForm.get('image3')?.value!
-  //  vehImg[2]=vehImg1
- for(let i of vehImg)
- {
-  console.log(i.imageUrl);
- }
-
-   this.vehicle.vehicleImages=this.vehicle.vehicleImages?.concat(vehImg)
-
-   console.log(this.vehicle.vehicleImages);
-
-    // this.vehicleService.registeringVehicle(this.vehicle).subscribe(res=>{
-    // console.log(res);
-    //  this.router.navigate(['admin/managevehicle'])
-    // })
+      // this.vehicleService.registeringVehicle(this.vehicle).subscribe(res=>{
+      // console.log(res);
+      //  this.router.navigate(['admin/managevehicle'])
+      // })
+      this.vehicleService.registeringVehicle(this.vehicle).subscribe(res=>{
+        console.log(res);
+        this.router.navigate(['/admin/managevehicle'])
+    })
   }
-}
+  }
 
   update() {
     if (this.addVehicleForm.valid) {
-      this.vehicle = this.getFormValues();
-      this.vehicleService.updateVehicle(this.vehicle.vehicleId,this.vehicle).subscribe(res => {
+
+      this.vehicle=this.getFormValues()
+      console.log(this.vehicle,"/nupdate");
+      this.vehicleService.updateVehicle(this.vehicle.vehicleId, this.vehicle).subscribe(res => {
         console.log(res);
-        this.router.navigate(['admin/manageVehicle'])
+        this.router.navigate(['/admin/managevehicle']);
       });
     }
   }
@@ -151,20 +141,19 @@ export class AddVehicleComponent implements OnInit {
       seatingCapacity: formValues.seatingcapacity,
       fuelType: formValues.fueltype,
       brand: {
-        brandId:this.vehicle.brand?.brandId,
+        brandId: this.vehicle.brand?.brandId,
         brandName: formValues.branddetails
       },
+
+
       rent: {
-        rentId:this.vehicle.rent?.rentId,
+        rentId: this.vehicle.rent?.rentId,
         rentAmount: formValues.rentdetails
       },
-      vehicleImages: [
-         formValues.image1 ,
-         formValues.image2 ,
-         formValues.image3
-      ]
+      vehicleImages: []
     };
-    console.log(vehicle);
+
+    console.log(vehicle,formValues.rentdetails);
     return vehicle;
   }
 }

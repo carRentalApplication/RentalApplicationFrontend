@@ -10,11 +10,10 @@ import { Form } from '@angular/forms';
   styleUrls: ['./manage-vehicle.component.scss']
 })
 export class ManageVehicleComponent implements OnInit {
-
   searchText:any;
     //for pagination
     currentPage: number = 1;
-    pageSize: number = 4;
+    pageSize: number = 5;
     totalItems: number = 0;
     totalPages: number = 0;
 
@@ -47,6 +46,8 @@ export class ManageVehicleComponent implements OnInit {
       console.log(index );
       this.vehicleService.deleteVehicle(index ).subscribe(() => {
         // Delete successful, perform any additional actions if needed
+        this.getAllVehicle();
+        this.router.navigate(['/admin/managevehicle'])
       });
     } else {
       // User canceled the deletion, handle accordingly
