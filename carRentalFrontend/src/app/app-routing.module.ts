@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'customer',
-    canActivate: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard,HasRoleGuard],
     data: {
       role: 'user',
       role1: 'admin'

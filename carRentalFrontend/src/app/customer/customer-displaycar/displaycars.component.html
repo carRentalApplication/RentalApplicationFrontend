@@ -1,18 +1,15 @@
 <app-customer-nav></app-customer-nav>
 <div class="bdy">
   <div class="propshare-page-benner-container">
-    <div class="cover-img-wrapper">
-      <section>
-        <div class="image-container">
-          <img class="cover-img" src="../../../../assets/img/coverpic1.jpg" alt="property listing cover page" />
-          <div class="quote-container">
-            <h1 class="quote-title">The perfect car for your next trip is just around the corner</h1>
-            <p class="quote-subtitle">Book your drive now!</p>
-          </div>
+    <section>
+      <div class="image-container">
+        <img class="cover-img" src="../../../../assets/img/coverpic1.jpg" alt="property listing cover page" />
+        <div class="quote-container">
+          <h1 class="quote-title">The perfect car for your next trip is just around the corner</h1>
+          <p class="quote-subtitle">Book your drive now!</p>
         </div>
-      </section>
-
-    </div>
+      </div>
+    </section>
   </div>
   <div class="col-md-12">
     <div class="properties-filter-outer-wrapper">
@@ -20,19 +17,19 @@
 
         <select class="city" [(ngModel)]="filterText">
           <option [selected]="true" value="">All Cars</option>
-          <option *ngFor="let car of vehicles" [value]="car.brand?.brandName">{{ car.brand?.brandName }}</option>
+          <option *ngFor="let brand of brands" [value]="brand.brandName">{{ brand.brandName }}</option>
         </select>
 
-        <select class="sort" [(ngModel)]="sortBy">
+        <!-- <select class="sort" [(ngModel)]="sortBy">
           <option value="Fuel Type">Fuel Type</option>
           <option value="seatingCapacity">Seating Capacity</option>
           <option value="Brand">Brand</option>
           <option value="Most Blocked By Users">Most Booked</option>
-        </select>
+        </select> -->
 
         <div class="search">
           <i class="fas fa-search"></i>
-          <input type="text" [(ngModel)]="searchByCarType" placeholder="Search car type here" (input)="applyFilter()">
+          <input type="text" [(ngModel)]="searchByName" placeholder="Search car type here">
         </div>
 
         <!-- <div *ngFor="let car of vehiclesBasedOn">
@@ -55,7 +52,7 @@
   <div class="maincard">
     <!-- {{vehicles | json}} -->
     <!-- loop through properties using ngFor directive -->
-    <div class="card card1" *ngFor="let property of vehicles">
+    <div class="card card1" *ngFor="let property of vehiclesBasedOn">
       <h2 class="title">{{ property?.brand?.brandName}}</h2>
 
       <!-- <h1 class="title">{{ property.vehicleName }}</h1> -->
@@ -64,7 +61,7 @@
 
         <!-- {{ property?.vehicleName}} -->
       </div>
-      <img class="card-img-top" src="{{  property.vehicleImages?.[0]?.imageUrl }}" alt="Card image cap" />
+      <img class="card-img-top" src="{{ property.vehicleImages![0].imageUrl }}" alt="Card image cap" />
       <div class="div1">
         <div><i class="fas fa-car"></i> Car Number</div>
         <div class="propertyvalues">
@@ -95,13 +92,9 @@
           [routerLink]="['/customer/vehicle-details', property.vehicleId]">
           View Car Details
         </button>
-        <!-- <button type="button" class="btn btn-primary" *ngIf="customer == null" routerLink="/vehicle-details">
+        <button type="button" class="btn btn-primary" *ngIf="customer == null" routerLink="">
           View Car Details
-        </button> -->
+        </button>
       </div>
     </div>
   </div>
-
-
-
-
