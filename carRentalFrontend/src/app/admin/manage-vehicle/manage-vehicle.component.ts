@@ -11,9 +11,10 @@ import { Form } from '@angular/forms';
 })
 export class ManageVehicleComponent implements OnInit {
 
+  searchText:any;
     //for pagination
     currentPage: number = 1;
-    pageSize: number = 5;
+    pageSize: number = 4;
     totalItems: number = 0;
     totalPages: number = 0;
 

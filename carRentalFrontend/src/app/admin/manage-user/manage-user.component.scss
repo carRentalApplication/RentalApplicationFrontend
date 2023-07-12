@@ -3,3 +3,35 @@
   background-color: rgb(255, 5, 5);
   border: white;
 }
+
+
+//filter
+.search-data {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 45px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.search-data:hover {
+  background-color: #e0e0e0;
+}
+
+.search-data input[type="text"] {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  background-color: transparent;
+  width: 200px;
+  transition: width 0.3s ease;
+}
+
+.search-data input[type="text"]:focus {
+  width: 300px;
+}

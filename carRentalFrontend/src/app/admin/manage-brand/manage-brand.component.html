@@ -3,47 +3,43 @@
 
   <div class="page__content shadow p-3 position-relative">
     <div class="d-flex justify-content-end mb-3">
-      <button class="btn btn-sm btn-outline-dark" routerLink="/admin/addbrand">Add Brand</button>
+      <!-- Filter -->
+      <div class="search-data">
+        <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search here">
+        <button class="btn btn-sm btn-outline-dark" routerLink="/admin/addbrand">Add Brand</button>
+      </div>
     </div>
+
     <div class="row">
       <div class="col-md-6">
-        <section class="text-gray-600 body-font">
-          <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-            <div
-              class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-              <table class="table text-center">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Brand Name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let brand of getCurrentPageProducts(), let i=index">
-                    <th>{{i+1}}</th>
-                    <td>{{brand.brandName}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- Pagination controls -->
-            <div class="pagination">
-              <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(1)">1</button>
-              <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"><<
-              </button>
-              <button class="btn btn-success">{{currentPage}} / {{totalPages}} </button>
-              <button class="pagination-button" [disabled]="currentPage === totalPages"
-                (click)="changePage(currentPage + 1)">>></button>
-              <button class="pagination-button" [disabled]="currentPage === totalPages"
-                (click)="changePage(totalPages)">{{totalPages}}</button>
-            </div>
-          </div>
-        </section>
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Brand Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let brand of getCurrentPageProducts() | filter:searchText, let i=index">
+              <th>{{i+1}}</th>
+              <td>{{brand.brandName}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Pagination controls -->
+    <div class="pagination">
+      <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(1)">1</button>
+      <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">&lt;&lt;</button>
+      <button class="btn btn-success">{{currentPage}} / {{totalPages}}</button>
+      <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">&gt;&gt;</button>
+      <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">{{totalPages}}</button>
+    </div>
       </div>
       <div class="col-md-6">
-        <img class="object-cover object-center rounded" alt="hero" src="https://source.unsplash.com/420x360/?car">
-      </div>
+        <img class="object-cover object-center rounded" alt="hero" src="../../../assets/img/Timer.jpg">
 
+        <!-- <img class="object-cover object-center rounded" alt="hero" src="https://source.unsplash.com/420x360/?car"> -->
+      </div>
     </div>
 
 

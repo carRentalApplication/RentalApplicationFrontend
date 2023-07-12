@@ -23,13 +23,10 @@ export class ManageBrandComponent implements OnInit {
 
   public brandData: Brand[] = []
 
-  ngOnInit(): void {
-
-
-  }
+  public dataSource:any;
+  ngOnInit(): void {}
 
   getAllBrand() {
-
     this.brandService.getAllBrands().subscribe(res => {
       this.brandData = res;
       console.log(this.brandData.length);
@@ -53,5 +50,15 @@ export class ManageBrandComponent implements OnInit {
   }
   //for oagination method ends
 
+
+  //filter
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue);
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  searchText:any;
 
 }

@@ -1,4 +1,5 @@
 
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -92,6 +93,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig=
     MatSidenavModule,
     MatButtonModule,
     FormsModule,
+    MatFormFieldModule,
     //ngxloader
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({

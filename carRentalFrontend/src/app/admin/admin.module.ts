@@ -9,8 +9,10 @@ import { ManageBrandComponent } from './manage-brand/manage-brand.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AppComponent } from '../app.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 // material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -65,7 +67,10 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     MatSlideToggleModule,
     ReactiveFormsModule,
     FormsModule,
-
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    Ng2SearchPipeModule
 
   ], exports: [
 

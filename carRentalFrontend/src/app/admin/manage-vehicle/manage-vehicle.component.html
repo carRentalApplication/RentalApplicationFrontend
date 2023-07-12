@@ -3,9 +3,11 @@
 
   <div class="page__content shadow p-3 position-relative">
     <div class="d-flex justify-content-end mb-3">
-      <button class="btn btn-sm btn-outline-dark" routerLink="/admin/addvehicle">Add Vehicle</button>
-      <!-- <button class="btn btn-sm btn-outline-dark" routerLink="/admin/editVehicle">Edit</button> -->
 
+      <div class="search-data">
+        <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search here">
+        <button class="btn btn-sm btn-outline-dark extra-css" routerLink="/admin/addvehicle">Add Vehicle</button>
+      </div>
     </div>
     <table class="table text-center">
       <!-- {{ vehicleData | json }} -->
@@ -22,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let vehicle of getCurrentPageProducts(); let i = index">
+        <tr *ngFor="let vehicle of getCurrentPageProducts() | filter:searchText , let i = index">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ vehicle.vehicleName }}</td>
           <td>{{ vehicle.vehicleNumber }}</td>

@@ -14,6 +14,7 @@ export class ManageUserComponent implements OnInit {
   public rowData: any[];
   public columnDefs: ColDef[];
 
+  searchText:any;
   public authUser: AuthUser[] =
     []
   // [
