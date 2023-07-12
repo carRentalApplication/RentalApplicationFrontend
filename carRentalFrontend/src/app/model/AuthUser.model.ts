@@ -7,4 +7,5 @@ export interface AuthUser{
   mobileNumber:string
   role:string
   memberSince:string
+  status:any
 }

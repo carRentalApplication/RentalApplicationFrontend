@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -46,6 +46,12 @@ export class AuthService {
     console.log("register-user-count Service");
     // console.log(this.getToken());
     return this.http.get<AuthUser>(this.baseUrl + '/api/Authuser/register-user-count')
+  }
+
+  updateStatus(data:any){
+    console.log(data);
+    return this.http.put(this.baseUrl+"/api/Authuser/updatestatus",data,{responseType:'text'
+    })
   }
 
   storeToken(token: string) {

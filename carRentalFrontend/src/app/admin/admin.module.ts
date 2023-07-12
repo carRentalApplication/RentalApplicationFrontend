@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageBrandComponent } from './manage-brand/manage-brand.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AppComponent } from '../app.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
@@ -61,7 +62,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     CommonModule,
     AgGridModule,
     NgxUiLoaderModule,
-
+    MatSlideToggleModule,
     ReactiveFormsModule,
     FormsModule,
 

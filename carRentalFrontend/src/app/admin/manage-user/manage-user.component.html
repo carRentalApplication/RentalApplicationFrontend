@@ -1,34 +1,55 @@
 <div class="container-fluid page">
   <div class="d-flex page__box p-3 mt-2">Registered Users</div>
   <div class="page__content shadow p-3 position-relative">
-      <!-- {{authUser | json }} -->
-      <table class="table" *ngIf="authUser && authUser.length > 0" border="1">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th scope="col">FirstName</th>
-            <th scope="col">LastName</th>
-            <th scope="col">Email</th>
-            <th scope="col">MobileNumber</th>
-            <th scope="col">MemberSince</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of authUser,let i=index">
-            <th>{{i+1}}</th>
-            <td>{{user.firstname}}</td>
-            <td>{{user.lastname}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.mobileNumber}}</td>
-            <td>{{user.memberSince | date:'shortDate'}}</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- {{authUser | json }} -->
+    <table class="table" *ngIf="authUser && authUser.length > 0" border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th scope="col">FirstName</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Email</th>
+          <th scope="col">MobileNumber</th>
+          <th scope="col">MemberSince</th>
+          <!-- <th scope="col">Role</th> -->
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of authUser,let i=index">
+          <th>{{i+1}}</th>
+          <td>{{user.firstname}}</td>
+          <td>{{user.lastname}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.mobileNumber}}</td>
+          <td>{{user.memberSince | date:'shortDate'}}</td>
+          <!-- <td>{{user.role}}</td> -->
 
-      <p *ngIf="!authUser || authUser.length <= 0">No Record Found</p>
-    </div>
+          <!-- <td>
+            <mat-slide-toggle (change)="onChange($event.checked, user.userId)"
+              [checked]="user.role=='admin'">Clickme</mat-slide-toggle>
+          </td> -->
+          <!-- Checked switch -->
+          <td>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox"
+                (change)="onChange($any($event).target.checked, user.userId)"
+                [checked]="user.role=='admin'"
+                role="switch" id="flexSwitchCheckChecked"  />
+              <label class="form-check-label" for="flexSwitchCheckChecked">Switch</label>
+            </div>
 
-    <!-- <ag-grid-angular
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+
+    <p *ngIf="!authUser || authUser.length <= 0">No Record Found</p>
+  </div>
+
+  <!-- <ag-grid-angular
     style="width: 100%; height: 500px;"
     class="ag-theme-alpine"
     [rowData]="rowData"
@@ -38,7 +59,3 @@
 
   <!-- </div> -->
 </div>
-
-
-
-

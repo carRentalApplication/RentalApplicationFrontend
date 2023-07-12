@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthUser } from 'src/app/model/AuthUser.model';
@@ -27,8 +28,8 @@ export class ManageUserComponent implements OnInit {
   //     MemberSince: "string"
   //   },
   // ];
-  
-  constructor(private authService: AuthService) {
+
+  constructor(private authService: AuthService,private sharedModule:SharedModule) {
     this.rowData = [
       {
         "userId": "935b754a-1ae3-4451-8999-0b54d5c685f9",
@@ -59,5 +60,34 @@ export class ManageUserComponent implements OnInit {
       this.authUser = response
     })
   }
+  onChange(status:any,id:any){
+    console.log(status);
+    console.log(id);
+    console.log(status.toString());
 
+    var data={
+     status:status.toString(),
+     id:id
+    }
+console.log(data);
+    this.authService.updateStatus(data)
+    .subscribe((response:any)=>{
+      console.log(response);
+      if(response==='Admin updated successfully')
+      {
+        this.sharedModule.showToast("Admin updated successfully","",'success')
+      }
+      else{
+        this.sharedModule.showToast("User updated successfully","",'success')
+      }
+
+   },(error:any)=>{
+     console.log(error.error?.message);
+     if (error.error?.message) {
+      console.log(error.error?.message);
+     } else {
+      console.log(error.error?.message);
+     }
+   })
+   }
 }
