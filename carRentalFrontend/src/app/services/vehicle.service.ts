@@ -19,7 +19,9 @@ export class VehicleService {
     return this.http.get<Vehicle[]>(this.baseUrl + '/api/Vehicles')
   }
   registeringVehicle(data: any) {
-    console.log(data+" from vehicle serviceController..");
+    console.log("from vehicle serviceController..");
+    console.log(data);
+
     return this.http.post(this.baseUrl + `/api/Vehicles`, data)
   }
 
@@ -27,7 +29,7 @@ export class VehicleService {
     console.log("getvehicle by id " + id);
     return this.http.get<Vehicle>(this.baseUrl + `/api/Vehicles/${id}`);
   }
-  updateVehicle(id:number,vehicle:Vehicle){
+  updateVehicle(id:any,vehicle:Vehicle){
     console.log('Updating Vehicle Service');
     return this.http.put(this.baseUrl+`/api/Vehicles/${id}`,vehicle);
   }
@@ -37,7 +39,12 @@ export class VehicleService {
     // console.log(this.getToken());
     return this.http.get<Vehicle>(this.baseUrl + '/api/Vehicles/register-vehicle-count')
   }
+  deleteVehicle(vehicleId: any) {
+    // throw new Error('Method not implemented.');
+    console.log(vehicleId);
 
+     return this.http.delete(this.baseUrl+`/api/Vehicles/${vehicleId}`)
+   }
 
 
 }

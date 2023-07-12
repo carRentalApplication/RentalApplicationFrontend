@@ -33,15 +33,13 @@
 
 
           <td>
-            <button class="bordernone">
-            <!-- <button class="bordernone" (click)="editVehicle(vehicle.vehicleId)"> -->
-
+            <button (click)="edit(vehicle.vehicleId)" class="bordernone" >
               <i
                 class="fa-solid fa-pen-to-square fa-lg"
                 style="color: #1160e8"
               ></i></button
             >&nbsp;
-            <button class="bordernone">
+            <button (click)="delete(vehicle.vehicleId)" class="bordernone">
               <i class="fa-solid fa-trash" style="color: #ff0000"></i>
             </button>
           </td>

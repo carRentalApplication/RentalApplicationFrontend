@@ -22,6 +22,11 @@ const routes: Routes = [
       { path: 'home', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirect 'home' to 'dashboard'
       { path: 'addbrand', component: AddBrandComponent }, // Remove 'admin/' prefix
       { path: 'addvehicle', component: AddVehicleComponent }, // Remove 'admin/' prefix
+      { path: 'addvehicle/:id', component: AddVehicleComponent },
+
+
+
+
     ]
   },
 ];
