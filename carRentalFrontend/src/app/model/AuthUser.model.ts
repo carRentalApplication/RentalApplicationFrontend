@@ -4,8 +4,7 @@ export interface AuthUser{
   lastname:string
   email:string
   password:string
-  mobileNumber:string
+  mobileNumber:number
   role:string
   memberSince:string
-  status:any
 }

@@ -1,38 +1,81 @@
 <div class="container-fluid page">
-  <div class="d-flex page__box p-3 mt-2">Booking</div>
-  <div class="page__content shadow p-3 position-relative">
-    <!-- <div class="page__content-data position-absolute text-center"> -->
-      <table class="table">
+  <div class="container-fluid">
+    <div class="d-flex page__box p-3 mt-2">Booking</div>
+    <div class="page__content shadow p-3 position-relative">
+
+      <tr>
+        <th colspan="14">
+          <div class="search-data">
+            <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search...">
+          </div>
+        </th>
+      </tr>
+      <table class="table text-center">
         <thead>
           <tr>
-            <th scope="col">Id</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th>Action</th>
+            <th>Id</th>
+            <th>TravellerName</th>
+            <th>TravellerNumber</th>
+            <th>PickUpDate</th>
+            <th>DropDate</th>
+            <th>BookingTime</th>
+            <th>PickUpAddress</th>
+            <th>TotalAmount</th>
+            <th>VehicleName</th>
+            <th>Seats</th>
+            <th>FuelType</th>
+            <th>Email</th>
+            <th>Payment Mode</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+          <tr *ngFor="let item of booking |filter:searchText,let i=index">
+            <td *ngIf="item.status.statusName=='Pending'">
+              <button type="button" class="btn btn-link invest-now-btn" data-toggle="modal"
+                data-target="#investmentInitModal" (click)="openBookingForm()">
+                <i class="fas fa-calendar-plus"></i> Response Here
+              </button>
+            </td>
+            <td  *ngIf="item.status.statusName=='Confirm' ||item.status.statusName=='Cancel' ">
+              <h5>{{item.status.statusName}}</h5>
+            </td>
+            <td>{{i+1}}</td>
+            <td>{{item.travellerName}}</td>
+            <td>{{item.travellerNumber}}</td>
+            <td>{{item.pickUpDate | date}}</td>
+            <td>{{item.dropDate |date}}</td>
+            <td>{{item.bookingTime | date:'hh:mm a'}}</td>
+            <td>{{item.pickUpAddress}}</td>
+            <td>{{item.totalAmount}}</td>
+            <td>{{item.vehicle.vehicleName}}</td>
+            <td>{{item.vehicle.seatingCapacity}}</td>
+            <td>{{item.vehicle.fuelType}}</td>
+            <td>{{item.authUser.email}}</td>
+            <td>{{item.paymentType.paymentMode}}</td>
+            <td>{{item.status.statusName}}</td>
           </tr>
         </tbody>
       </table>
     </div>
-  <!-- </div> -->
+  </div>
+</div>
+<!-- Add this modal code to display the popup -->
+<!-- Booking Form Popup -->
+<div class="overlay" *ngIf="showBookingForm">
+  <div class="content">
+    <div class="close "(click)="closeBookingForm()" style="cursor: pointer">
+      <i class="fas fa-times"></i>
+    </div>
+    <h2>Response Now</h2>
+    <div class="button">
+      <button class="btn btn-sm btn-success">Confirm Booking</button>
+    </div>
+    <div class="button">
+      <button class="btn btn-sm btn-danger">Cancel Booking</button>
+    </div>
+  </div>
 </div>
 
-
+<!-- Add this modal code to display the popup -->

@@ -1,3 +1,4 @@
+import { Time } from "ngx-ui-loader";
 import { AuthUser } from "./AuthUser.model";
 import { PaymentType } from "./PaymentType.model";
 import { Status } from "./Status.model";
@@ -7,15 +8,13 @@ export class Booking{
   bookingId?:number;
   travellerName?:string;
   travellerNumber?:number;
-  pickUpDate?:Date;
-  dropDate?:Date;
-  bookingTime?:Date;
+  pickUpDate?:string;
+  dropDate?:string;
+  bookingTime?:string;
   pickUpAddress?:string;
-  advanceAmount?:number;
   totalAmount?:number;
   status?:Status;
   vehicle?:Vehicle;
   authUser?:AuthUser;
   paymentTpe?:PaymentType;
-
 }

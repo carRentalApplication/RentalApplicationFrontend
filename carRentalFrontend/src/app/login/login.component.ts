@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
             const tokenPayload = this.authService.decodedToken();
             this.userStoreService.setFirstNameForStore(tokenPayload.firstname);
             this.userStoreService.setRoleForStore(tokenPayload.role);
-            this.sharedModule.showToast("Login Success","Hello","success")
+            this.sharedModule.showToast("Login Success","","success")
             if(tokenPayload.role==='admin')
             {
               this.router.navigate(['admin/dashboard'])
