@@ -3,3 +3,48 @@
   border: none;
   background-color: white;
 }
+
+//pagination css
+.pagination-button{
+  border: none;
+  font-size: x-large;
+  background-color: #f5f5dc;
+}
+
+.pagination{
+  width: 20%;
+  margin-top:2%;
+  margin-left: 38%;
+  /* padding-left: 20%; */
+  display: flex;
+  justify-content: space-around;
+}
+
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  /* Adjust the layout for small screens */
+  .row {
+    flex-direction: column;
+  }
+
+  .col-md-6 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Adjust the layout for medium screens */
+  .col-md-6 {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Adjust the layout for large screens */
+  .col-md-6 {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}

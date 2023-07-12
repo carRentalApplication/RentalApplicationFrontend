@@ -10,16 +10,32 @@ import { Form } from '@angular/forms';
   styleUrls: ['./manage-vehicle.component.scss']
 })
 export class ManageVehicleComponent implements OnInit {
-  isEditMode = false;
 
+    //for pagination
+    currentPage: number = 1;
+    pageSize: number = 5;
+    totalItems: number = 0;
+    totalPages: number = 0;
 
-  constructor(private vehicleService:VehicleService,private router:Router) { }
+  constructor(private vehicleService:VehicleService,private router:Router) {
 
+    this.getAllVehicle();
+    this.getCurrentPageProducts();
+
+  }
+
+  // constructor(private brandService:BrandService,private toster:ToastrService) {
+
+  //   this.brandService.getAllBrands().subscribe(res=>{
+  //     this.brandData=res;
+  //     console.log(this.brandData.length);
+  //     this.getCurrentPageProducts();
+  //   })
+  //  }
 
   public vehicleData: Vehicle[] =[]
   public vehicaledit?:Vehicle
   ngOnInit(): void {
-    this.getAllVehicle();
   }
 
 
@@ -55,12 +71,22 @@ export class ManageVehicleComponent implements OnInit {
     })
   }
 
-  // editVehicle(vehicleId: number) {
-  //   this.router.navigate(['/admin/editVehicle', vehicleId]);
-  // }
 
-  // editButton(vehicleId:number){
-  //   this.router.navigate(['/edit',vehicleId]);
+  // for pagination methods start
+  changePage(pageNumber: number) {
+    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+      this.currentPage = pageNumber;
+    }
+  }
+   getCurrentPageProducts(): Vehicle[] {
+    console.log(this.vehicleData.length);
+    this.totalItems = this.vehicleData.length;
+    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    console.log(this.vehicleData.slice(startIndex, endIndex));
+    return this.vehicleData.slice(startIndex, endIndex);
+   }
+  //for oagination method ends
 
-  // }
 }

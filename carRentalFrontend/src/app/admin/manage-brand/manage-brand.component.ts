@@ -10,28 +10,31 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ManageBrandComponent implements OnInit {
 
-  constructor(private brandService:BrandService,private toster:ToastrService) {
+  constructor(private brandService: BrandService, private toster: ToastrService) {
+    this.getAllBrand();
+    this.getCurrentPageProducts();
+  }
 
-    this.brandService.getAllBrands().subscribe(res=>{
-      this.brandData=res;
-      console.log(this.brandData.length);
-      this.getCurrentPageProducts();
-    })
-   }
+  //for pagination
+  currentPage: number = 1;
+  pageSize: number = 4;
+  totalItems: number = 0;
+  totalPages: number = 0;
 
-    //for pagination
-    currentPage: number = 1;
-    pageSize: number = 4;
-    totalItems: number = 0;
-    totalPages: number = 0;
-
-  public brandData: Brand[] =[]
+  public brandData: Brand[] = []
 
   ngOnInit(): void {
 
 
   }
 
+  getAllBrand() {
+
+    this.brandService.getAllBrands().subscribe(res => {
+      this.brandData = res;
+      console.log(this.brandData.length);
+    })
+  }
 
   // for pagination methods start
   changePage(pageNumber: number) {
@@ -39,7 +42,7 @@ export class ManageBrandComponent implements OnInit {
       this.currentPage = pageNumber;
     }
   }
-   getCurrentPageProducts(): Brand[] {
+  getCurrentPageProducts(): Brand[] {
     console.log(this.brandData.length);
     this.totalItems = this.brandData.length;
     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
@@ -47,7 +50,7 @@ export class ManageBrandComponent implements OnInit {
     const endIndex = startIndex + this.pageSize;
     console.log(this.brandData.slice(startIndex, endIndex));
     return this.brandData.slice(startIndex, endIndex);
-   }
+  }
   //for oagination method ends
 
 

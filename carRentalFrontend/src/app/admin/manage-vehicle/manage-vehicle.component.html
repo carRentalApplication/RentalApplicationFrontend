@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let vehicle of vehicleData; let i = index">
+        <tr *ngFor="let vehicle of getCurrentPageProducts(); let i = index">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ vehicle.vehicleName }}</td>
           <td>{{ vehicle.vehicleNumber }}</td>
@@ -30,7 +30,6 @@
           <td>{{ vehicle.fuelType }}</td>
           <td>{{ vehicle.brand?.brandName }}</td>
           <td>{{ vehicle.rent?.rentAmount }}</td>
-
 
           <td>
             <button (click)="edit(vehicle.vehicleId)" class="bordernone" >
@@ -46,5 +45,16 @@
         </tr>
       </tbody>
     </table>
+    <!-- Pagination controls -->
+    <div class="pagination">
+      <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(1)">1</button>
+      <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"><<
+      </button>
+      <button class="btn btn-success">{{currentPage}} / {{totalPages}} </button>
+      <button class="pagination-button" [disabled]="currentPage === totalPages"
+        (click)="changePage(currentPage + 1)">>></button>
+      <button class="pagination-button" [disabled]="currentPage === totalPages"
+        (click)="changePage(totalPages)">{{totalPages}}</button>
+    </div>
   </div>
 </div>
