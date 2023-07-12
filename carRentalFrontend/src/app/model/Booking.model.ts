@@ -1,4 +1,4 @@
-import { Time } from "ngx-ui-loader";
+
 import { AuthUser } from "./AuthUser.model";
 import { PaymentType } from "./PaymentType.model";
 import { Status } from "./Status.model";

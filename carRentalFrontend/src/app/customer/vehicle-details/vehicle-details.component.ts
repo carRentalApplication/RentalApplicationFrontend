@@ -123,6 +123,7 @@ export class VehicleDetailsComponent implements OnInit {
       pickUpDate: [this.order.pickUpDate, Validators.required],
       dropDate: [this.order.dropDate, Validators.required],
       pickUpAddress: [this.order.pickUpAddress, Validators.required],
+      advanceAmount: [this.order.advanceAmount, Validators.required],
     });
   }
 
