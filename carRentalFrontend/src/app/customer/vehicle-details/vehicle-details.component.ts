@@ -71,13 +71,10 @@ export class VehicleDetailsComponent implements OnInit {
     }
     submitBookingForm(): void {
       if (this.bookingForm.valid) {
-        // Perform the necessary logic for booking the vehicle
-        // You can access the form values using this.bookingForm.value
-        // Example: Make an API call to book the vehicle
+
         console.log('Booking form submitted');
         console.log(this.bookingForm.value);
 
-        // Close the booking form
         this.closeBookingForm();
       }
     }
@@ -123,7 +120,6 @@ export class VehicleDetailsComponent implements OnInit {
       pickUpDate: [this.order.pickUpDate, Validators.required],
       dropDate: [this.order.dropDate, Validators.required],
       pickUpAddress: [this.order.pickUpAddress, Validators.required],
-      advanceAmount: [this.order.advanceAmount, Validators.required],
     });
   }
 

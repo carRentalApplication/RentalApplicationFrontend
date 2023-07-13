@@ -12,21 +12,22 @@ export class CustomerNavComponent implements OnInit {
   isDropdownVisible = false;
   isScrolled = false;
   navbarHeight = 100; // Set the height of your navbar here
+  public userName:string='';
   constructor(private userService:AuthService,private route:Router) { }
 
 
-  get customer():AuthUser{
+  get customer():any{
     const cust=localStorage.getItem("customer")
-    return JSON.parse(cust!)
-    // return this.customerRepo.getLogedInCustomer();
+    // return JSON.parse(cust!)
+    return this.userService.isLoggedIn();
   }
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled = (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0) >= this.navbarHeight;
   }
-  viewCustomer()
+  viewbookings()
   {
-    this.route.navigateByUrl(`/`);
+    this.route.navigateByUrl(`/customer/view-bookings`);
   }
 
   showDropdown() {
@@ -48,10 +49,9 @@ export class CustomerNavComponent implements OnInit {
 
 
 
-
-
-
   ngOnInit(): void {
+    this.userName = this.userService.getFirstNameFromToken();
+
   }
 
 }

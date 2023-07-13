@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerRoutingModule } from './customer-routing.module';
@@ -10,19 +11,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 
 
+import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
+
+
 @NgModule({
   declarations: [
     CustomerNavComponent,
     DisplaycarsComponent,
     AboutComponent,
     ContactComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+
+    ViewBookingsComponent
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
 
   ],
   exports:[
@@ -30,7 +37,8 @@ import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.compo
     DisplaycarsComponent,
     AboutComponent,
     ContactComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    ViewBookingsComponent,
   ]
 })
 export class CustomerModule { }
