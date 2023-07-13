@@ -15,19 +15,20 @@ export class DisplaycarsComponent implements OnInit {
   searchByCarType: string ='';
   filteredCars?: any[];
   filterText: string = '';
-  public vehicles: Vehicle[] = [];
-  public props?: Vehicle[];
-
-  public searchByName: string = '';
-  public sortBy?: string = "Most Blocked By Users";
-  public brands? :any;
-  public seats? :any;
-  currentPage: number = 1;
-  itemsPerPage: number = 6; // Number of items to display per page
-  displayedVehicles: any[] = [];
   seatingFilter: string = '';
   filteredSeatingOptions: number[] = [];
   seatingOptions:number[]=[];
+  public vehicles: Vehicle[] = [];
+  public props?: Vehicle[];
+
+  public searchByName: string='';
+  public sortBy?: string = "Most Blocked By Users";
+  public brands? :any;
+ // public seats? :any;
+  currentPage: number = 1;
+  itemsPerPage: number = 6; // Number of items to display per page
+  displayedVehicles: any[] = [];
+
 
   constructor(
     private vehicleService: VehicleService,
@@ -39,46 +40,64 @@ export class DisplaycarsComponent implements OnInit {
     this.vehicleService.getAllVehicles().subscribe((vehicles) => {
       this.vehicles = vehicles;
       this.updateSeatingOptions();
+      this.updateDisplayedVehicles();
     });
 
     this.brandService.getAllBrands().subscribe((brands) => {
       this.brands = brands;
     });
-
+    this.vehicleService.getAllVehicles().subscribe((vehicles) => {
+      this.vehicles = vehicles;
+      this.updateSeatingOptions();
+    });
   }
   updateSeatingOptions(): void {
+    let filteredVehicles = this.vehicles;
+
     if (this.filterText) {
-      this.filteredCars = this.vehicles.filter(vehicle => vehicle.brand?.brandName === this.filterText);
-    } else {
-      this.filteredCars = this.vehicles;
+      filteredVehicles = filteredVehicles.filter(
+        vehicle => vehicle.brand?.brandName === this.filterText
+      );
     }
 
-    this.filteredSeatingOptions = Array.from(new Set(this.filteredCars
-      .map(vehicle => vehicle.seatingCapacity)
-      .filter(seatingCapacity => seatingCapacity !== undefined)
-    )) as number[];
-  }
-
-get vehiclesBasedOn(): Vehicle[] {
-  let filteredVehicles = this.vehicles;
-
-  if (this.filterText) {
-    filteredVehicles = filteredVehicles.filter((vehicle) => vehicle.brand?.brandName?.toLowerCase() === this.filterText.toLowerCase());
+    this.filteredSeatingOptions = Array.from(
+      new Set(
+        filteredVehicles
+          .map(vehicle => vehicle.seatingCapacity)
+          .filter(seatingCapacity => seatingCapacity !== undefined)
+      )
+    ) as number[];
+    this.filteredSeatingOptions.sort((a, b) => a - b);
   }
 
-  if (this.seatingFilter) {
-    filteredVehicles = filteredVehicles.filter((vehicle) => vehicle.seatingCapacity === parseInt(this.seatingFilter));
+  get vehiclesBasedOn(): Vehicle[] {
+    let filteredVehicles = this.vehicles;
+
+    if (this.filterText) {
+      filteredVehicles = filteredVehicles.filter(
+        vehicle =>
+          vehicle.brand?.brandName?.toLowerCase().includes(this.filterText.toLowerCase()) ||
+          vehicle.vehicleName?.toLowerCase().includes(this.filterText.toLowerCase())
+      );
+    }
+
+    if (this.seatingFilter) {
+      filteredVehicles = filteredVehicles.filter(
+        vehicle => vehicle.seatingCapacity === parseInt(this.seatingFilter, 10)
+      );
+    }
+
+    if (this.searchByName) {
+      filteredVehicles = filteredVehicles.filter(
+        vehicle =>
+          vehicle.vehicleName?.toLowerCase().includes(this.searchByName.toLowerCase()) ||
+          vehicle.brand?.brandName?.toLowerCase().includes(this.searchByName.toLowerCase())
+      );
+    }
+
+    return filteredVehicles;
   }
 
-  if (this.searchByName) {
-    filteredVehicles = filteredVehicles.filter((vehicle) =>
-      vehicle.vehicleName?.toLowerCase().includes(this.searchByName.toLowerCase())
-    );
-
-      
-    }
-     return filteredVehicles;
-}
 
   get customer(): AuthUser | any {
     return this.userService.isLoggedIn();
@@ -92,6 +111,7 @@ get vehiclesBasedOn(): Vehicle[] {
 
   updateDisplayedVehicles() {
     const filteredVehicles = this.vehiclesBasedOn;
+
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.displayedVehicles = filteredVehicles.slice(startIndex, endIndex);
@@ -110,24 +130,13 @@ get vehiclesBasedOn(): Vehicle[] {
     }
     return pageNumbers;
   }
-  // get vehiclesBasedOn(): Vehicle[] {
-  //   let filteredVehicles = this.vehicles;
 
-  //   if (this.filterText !== '') {
-  //     filteredVehicles = filteredVehicles.filter(vehicle => vehicle.brand?.brandName?.toLowerCase() === this.filterText.toLowerCase());
-  //   }
-
-  //   if (this.searchByName !== '') {
-  //     filteredVehicles = filteredVehicles.filter(vehicle => vehicle.vehicleName?.toLowerCase().includes(this.searchByName!.toLowerCase()));
-  //   }
-  //   if (this.seatingFilter) {
-  //     filteredVehicles = filteredVehicles.filter((vehicle) => vehicle.seatingCapacity === parseInt(this.seatingFilter));
-  //   }
-
-  //   return filteredVehicles;
-  // }
   filterVehiclesByBrand() {
     this.currentPage = 1; // Reset to the first page
     this.updateDisplayedVehicles();
   }
+
+
+
+
 }

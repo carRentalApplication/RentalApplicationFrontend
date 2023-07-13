@@ -34,14 +34,16 @@
         <option [selected]="true" value="">All Cars</option>
         <option *ngFor="let brand of brands" [value]="brand.brandName">{{ brand.brandName }}</option>
       </select>
-      <select class="seating" [(ngModel)]="seatingFilter">
+      <select class="seating" [(ngModel)]="seatingFilter" (change)="filterVehiclesByBrand()">
         <option [selected]="true" value="">All Seats</option>
         <option *ngFor="let option of filteredSeatingOptions" [value]="option">{{ option }} Seater</option>
-       </select>
+      </select>
+
       <div class="search">
         <i class="fas fa-search"></i>
-        <input type="text" [(ngModel)]="searchByName" (ngModelChange)="filterVehiclesByBrand()" placeholder="Search car type here">
+        <input type="text" [(ngModel)]="searchByName" (ngModelChange)="filterVehiclesByBrand()" placeholder="Search car type or brand">
       </div>
+
     </div>
   </div>
 
