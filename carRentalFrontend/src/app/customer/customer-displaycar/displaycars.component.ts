@@ -17,50 +17,117 @@ export class DisplaycarsComponent implements OnInit {
   filterText: string = '';
   public vehicles: Vehicle[] = [];
   public props?: Vehicle[];
-  public searchByName?: string = '';
+
+  public searchByName: string = '';
   public sortBy?: string = "Most Blocked By Users";
   public brands? :any;
-  constructor(private vehicleService: VehicleService, private userService: AuthService
-    ,private brandService:BrandService) { }
+  public seats? :any;
+  currentPage: number = 1;
+  itemsPerPage: number = 6; // Number of items to display per page
+  displayedVehicles: any[] = [];
+  seatingFilter: string = '';
+  filteredSeatingOptions: number[] = [];
+  seatingOptions:number[]=[];
+
+  constructor(
+    private vehicleService: VehicleService,
+    private userService: AuthService,
+    private brandService: BrandService
+  ) { }
 
   ngOnInit(): void {
     this.vehicleService.getAllVehicles().subscribe((vehicles) => {
       this.vehicles = vehicles;
-      console.log(this.vehicles);
+      this.updateSeatingOptions();
     });
-    this.brandService.getAllBrands().subscribe((brands)=>{
-      console.warn(brands)
-      this.brands=brands;
-      console.warn(this.brands)
-    })
+
+    this.brandService.getAllBrands().subscribe((brands) => {
+      this.brands = brands;
+    });
+
+  }
+  updateSeatingOptions(): void {
+    if (this.filterText) {
+      this.filteredCars = this.vehicles.filter(vehicle => vehicle.brand?.brandName === this.filterText);
+    } else {
+      this.filteredCars = this.vehicles;
+    }
+
+    this.filteredSeatingOptions = Array.from(new Set(this.filteredCars
+      .map(vehicle => vehicle.seatingCapacity)
+      .filter(seatingCapacity => seatingCapacity !== undefined)
+    )) as number[];
+  }
+
+get vehiclesBasedOn(): Vehicle[] {
+  let filteredVehicles = this.vehicles;
+
+  if (this.filterText) {
+    filteredVehicles = filteredVehicles.filter((vehicle) => vehicle.brand?.brandName?.toLowerCase() === this.filterText.toLowerCase());
   }
 
-
-  get vehiclesBasedOn(): Vehicle[] {
-    if (this.filterText === '' && this.searchByName==='') {
-      this.props = this.vehicles;
-    } else if(this.filterText != '' && this.searchByName===''){
-      this.props = this.vehicles.filter(v=> v.brand?.brandName==this.filterText)
-    }
-    else if(this.filterText === '' && this.searchByName!=''){
-    this.props = this.vehicles.filter(v=> v.vehicleName?.includes(this.searchByName!))
-    }
-    else{
-      this.props=this.vehicles.filter((vehicle)=>{
-        return vehicle.brand?.brandName===this.filterText && vehicle.vehicleName?.includes(this.searchByName!)
-      })
-    }
-
-
-    return this.props;
+  if (this.seatingFilter) {
+    filteredVehicles = filteredVehicles.filter((vehicle) => vehicle.seatingCapacity === parseInt(this.seatingFilter));
   }
+
+  if (this.searchByName) {
+    filteredVehicles = filteredVehicles.filter((vehicle) =>
+      vehicle.vehicleName?.toLowerCase().includes(this.searchByName.toLowerCase())
+    );
+
+      
+    }
+     return filteredVehicles;
+}
 
   get customer(): AuthUser | any {
     return this.userService.isLoggedIn();
   }
 
+  // Method to set the current page
+  setCurrentPage(page: number) {
+    this.currentPage = page;
+    this.updateDisplayedVehicles();
+  }
 
+  updateDisplayedVehicles() {
+    const filteredVehicles = this.vehiclesBasedOn;
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.displayedVehicles = filteredVehicles.slice(startIndex, endIndex);
+  }
 
+  // Calculate the total number of pages
+  get totalPages(): number {
+    return Math.ceil(this.vehiclesBasedOn.length / this.itemsPerPage);
+  }
 
+  // Generate an array of page numbers
+  getPageNumbers(): number[] {
+    const pageNumbers: number[] = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  }
+  // get vehiclesBasedOn(): Vehicle[] {
+  //   let filteredVehicles = this.vehicles;
 
+  //   if (this.filterText !== '') {
+  //     filteredVehicles = filteredVehicles.filter(vehicle => vehicle.brand?.brandName?.toLowerCase() === this.filterText.toLowerCase());
+  //   }
+
+  //   if (this.searchByName !== '') {
+  //     filteredVehicles = filteredVehicles.filter(vehicle => vehicle.vehicleName?.toLowerCase().includes(this.searchByName!.toLowerCase()));
+  //   }
+  //   if (this.seatingFilter) {
+  //     filteredVehicles = filteredVehicles.filter((vehicle) => vehicle.seatingCapacity === parseInt(this.seatingFilter));
+  //   }
+
+  //   return filteredVehicles;
+  // }
+  filterVehiclesByBrand() {
+    this.currentPage = 1; // Reset to the first page
+    this.updateDisplayedVehicles();
+  }
 }

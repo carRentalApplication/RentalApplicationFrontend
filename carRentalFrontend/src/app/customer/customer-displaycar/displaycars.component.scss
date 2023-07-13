@@ -7,15 +7,12 @@
   padding-left: 1rem;
   padding-right: 1rem;
   margin-top: 2rem;
-
 }
 
 .bdy {
   background: #efebeb4f;
   position: relative;
-  /* margin-top: 7rem; */
 }
-
 
 .propshare-page-benner-container .cover-img-wrapper {
   position: relative;
@@ -26,11 +23,11 @@
   width: 100%;
   opacity: 2.7;
   padding: 0px;
+  height: 30rem;
 }
 
-
-
-img, svg {
+img,
+svg {
   vertical-align: middle;
 }
 
@@ -50,21 +47,24 @@ img {
 }
 
 img {
-  height: 30rem;
+  height: 22rem;
   padding: 1rem;
 }
+
 .title {
   text-align: center;
   color: #000;
   font-weight: 400;
   font-family: gourmand-regular;
 }
+
 .div1 {
   display: flex;
   justify-content: space-between;
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
 .propertyvalues {
   margin-left: 5rem;
 }
@@ -74,39 +74,38 @@ img {
   margin: 30px;
 }
 
-.search{
+.search {
   display: flex;
-    align-items: center;
-    width: 50%;
+  align-items: center;
+  width: 50%;
 }
 
-.search:focus{
+.search:focus {
   outline: none;
 }
 
-.operation{
+.operation {
   display: flex;
   justify-content: space-evenly;
 }
 
-.city:focus{
+.city:focus {
   outline: none;
 }
 
-.sort:focus{
+.sort:focus {
   outline: none;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
-input{
-  border:solid 1px rgb(228, 227, 227);
+input {
+  border: solid 1px rgb(228, 227, 227);
   border-radius: 5px;
 }
 
-// search bar filters
 .properties-filter-outer-wrapper {
   display: flex;
   justify-content: center;
@@ -144,12 +143,12 @@ input{
   padding-right: 1rem;
   margin-top: 2rem;
 }
+
 .properties-filter-inner-wrapper {
-  position: relative; /* Change from absolute to relative */
-  // top: rem; /* Adjust the top value as needed to create enough space */
+  position: relative;
   border: 1px solid #f2f2f2;
   border-radius: 0.1875rem;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .03);
+  box-shadow: 0 3px 5px rgb(0 0 0 / 33%);
   color: #000;
   width: 80%;
   background: #fff;
@@ -158,8 +157,9 @@ input{
   display: inline-flex;
   min-height: 60px;
   height: 60px;
+  top: -1.5rem;
 }
-// '''''''''''''''''''''
+
 .image-container {
   position: relative;
 }
@@ -184,7 +184,82 @@ input{
   font-size: 20px;
 }
 
+.web-banner-image {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+}
 
+.web-banner-image-img {
+  width: 100%;
+  height: fit-content;
+}
 
+.web-banner-image-block {
+  position: absolute;
+  top: 46px;
+  left: 53%;
+  transform: translateX(-50%);
+  max-width: 80%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  background-size: cover;
+}
 
+.web-banner-image-block-title {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.29;
+  letter-spacing: normal;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 16px;
+}
 
+.web-banner-image-block-sub-title {
+  margin: 32px;
+  margin-top: 26px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.29;
+  letter-spacing: normal;
+  color: #ffc;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.pagination-button {
+  background-color: #f0f0f0;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pagination-button.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.pagination-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

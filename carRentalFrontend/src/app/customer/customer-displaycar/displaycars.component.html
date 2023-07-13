@@ -1,4 +1,5 @@
 <app-customer-nav></app-customer-nav>
+
 <div class="bdy">
   <div class="propshare-page-benner-container">
     <section>
@@ -12,7 +13,7 @@
     </section>
   </div>
   <div class="col-md-12">
-    <div class="properties-filter-outer-wrapper">
+    <!-- <div class="properties-filter-outer-wrapper">
       <div class="properties-filter-inner-wrapper">
 
         <select class="city" [(ngModel)]="filterText">
@@ -20,46 +21,35 @@
           <option *ngFor="let brand of brands" [value]="brand.brandName">{{ brand.brandName }}</option>
         </select>
 
-        <!-- <select class="sort" [(ngModel)]="sortBy">
-          <option value="Fuel Type">Fuel Type</option>
-          <option value="seatingCapacity">Seating Capacity</option>
-          <option value="Brand">Brand</option>
-          <option value="Most Blocked By Users">Most Booked</option>
-        </select> -->
-
         <div class="search">
           <i class="fas fa-search"></i>
           <input type="text" [(ngModel)]="searchByName" placeholder="Search car type here">
         </div>
-
-        <!-- <div *ngFor="let car of vehiclesBasedOn">
-
-          <h3>{{ car.vehicleName }}</h3>
-          <p>{{ car.vehicleNumber }}</p>
-          <p>{{ car.brand.brandName }}</p>
-        </div> -->
-
       </div>
-
-
-
-
+    </div>
+  </div> -->
+  <div class="properties-filter-outer-wrapper">
+    <div class="properties-filter-inner-wrapper">
+      <select class="city" [(ngModel)]="filterText" (ngModelChange)="filterVehiclesByBrand()">
+        <option [selected]="true" value="">All Cars</option>
+        <option *ngFor="let brand of brands" [value]="brand.brandName">{{ brand.brandName }}</option>
+      </select>
+      <select class="seating" [(ngModel)]="seatingFilter">
+        <option [selected]="true" value="">All Seats</option>
+        <option *ngFor="let option of filteredSeatingOptions" [value]="option">{{ option }} Seater</option>
+       </select>
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="text" [(ngModel)]="searchByName" (ngModelChange)="filterVehiclesByBrand()" placeholder="Search car type here">
       </div>
     </div>
   </div>
 
-
   <div class="maincard">
-    <!-- {{vehicles | json}} -->
-    <!-- loop through properties using ngFor directive -->
-    <div class="card card1" *ngFor="let property of vehiclesBasedOn">
+    <div class="card card1" *ngFor="let property of displayedVehicles">
       <h2 class="title">{{ property?.brand?.brandName}}</h2>
-
-      <!-- <h1 class="title">{{ property.vehicleName }}</h1> -->
       <div class="title">
-        <h5><i class="fas fa-car"></i>&nbsp;{{ property?.vehicleName}}</h5>
-
-        <!-- {{ property?.vehicleName}} -->
+        <h4>{{ property?.vehicleName}}</h4>
       </div>
       <img class="card-img-top" src="{{ property.vehicleImages![0].imageUrl }}" alt="Card image cap" />
       <div class="div1">
@@ -78,15 +68,12 @@
           {{ property.fuelType  }}
         </div>
       </div>
-
       <div class="div1">
         <div><i class="fas fa-rupee-sign"></i> Rent Per Day</div>
         <div class="propertyvalues">
-          {{ property.rent?.rentAmount |currency : "INR" : "symbol" }}
+          {{ property.rent?.rentAmount | currency : "INR" : "symbol" }}
         </div>
       </div>
-
-
       <div class="butt">
         <button type="button" class="btn btn-success" *ngIf="customer != null"
           [routerLink]="['/customer/vehicle-details', property.vehicleId]">
@@ -97,4 +84,23 @@
         </button>
       </div>
     </div>
+    <div class="pagination">
+      <div class="pagination-inner">
+        <button [disabled]="currentPage === 1" (click)="setCurrentPage(currentPage - 1)" class="pagination-button">Previous</button>
+        <ng-container *ngFor="let page of getPageNumbers()">
+          <button [class.active]="currentPage === page" (click)="setCurrentPage(page)" class="pagination-button">{{ page }}</button>
+        </ng-container>
+        <button [disabled]="currentPage === totalPages" (click)="setCurrentPage(currentPage + 1)" class="pagination-button">Next</button>
+      </div>
+    </div>
+<div>
+    <section class="web-banner-image">
+      <img src="https://zoomcar-assets.zoomcar.com/images/original/1a66b1dffc1c18e0b598ee3bf564e35a5e462a53.jpg?1680853225" alt="web-banner" class="web-banner-image-img">
+      <div class="web-banner-image-block">
+        <h2 class="web-banner-image-block-title">Largest car rental platform</h2>
+        <p class="web-banner-image-block-sub-title">Sedans for short distances, SUVs for tough terrains, luxury cars for surprises - we’ve got it all!</p>
+      </div>
+    </section>
   </div>
+  </div>
+</div>
