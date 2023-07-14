@@ -21,10 +21,19 @@
       </div>
       <!-- Error message ends-->
       <!-- Password input -->
-      <div class=" mb-2 mt-3">
+      <div class="mb-2 mt-3">
         <label class="form-label text-dark" for="password">Password</label>
-        <input type="password" id="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls['password'].errors }"/>
+        <div class="input-group">
+          <input type="{{ showPassword ? 'text' : 'password' }}" id="password"class="form-control"
+            formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && loginForm.controls['password'].errors }"
+          />
+          <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+            <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
       </div>
+
       <!-- Error message starts-->
       <div *ngIf="submitted || (loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched))">
         <span *ngIf="loginForm.controls['password'].errors?.['required']" class="text-danger">

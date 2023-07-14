@@ -13,22 +13,9 @@
     </section>
   </div>
   <div class="col-md-12">
-    <!-- <div class="properties-filter-outer-wrapper">
-      <div class="properties-filter-inner-wrapper">
 
-        <select class="city" [(ngModel)]="filterText">
-          <option [selected]="true" value="">All Cars</option>
-          <option *ngFor="let brand of brands" [value]="brand.brandName">{{ brand.brandName }}</option>
-        </select>
-
-        <div class="search">
-          <i class="fas fa-search"></i>
-          <input type="text" [(ngModel)]="searchByName" placeholder="Search car type here">
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="properties-filter-outer-wrapper">
+
     <div class="properties-filter-inner-wrapper">
       <select class="city" [(ngModel)]="filterText" (ngModelChange)="filterVehiclesByBrand()">
         <option [selected]="true" value="">All Cars</option>
@@ -41,7 +28,7 @@
 
       <div class="search">
         <i class="fas fa-search"></i>
-        <input type="text" [(ngModel)]="searchByName" (ngModelChange)="filterVehiclesByBrand()" placeholder="Search car type or brand">
+        <input type="text" [(ngModel)]="searchByName" (ngModelChange)="filterVehiclesByBrand()" placeholder="Search by car name or brand">
       </div>
 
     </div>
@@ -86,7 +73,7 @@
         </button>
       </div>
     </div>
-    <div class="pagination">
+    <div class="pagination-container">
       <div class="pagination-inner">
         <button [disabled]="currentPage === 1" (click)="setCurrentPage(currentPage - 1)" class="pagination-button">Previous</button>
         <ng-container *ngFor="let page of getPageNumbers()">

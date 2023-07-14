@@ -12,6 +12,7 @@ import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.compo
 
 
 import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @NgModule({
@@ -21,15 +22,15 @@ import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
     AboutComponent,
     ContactComponent,
     VehicleDetailsComponent,
-
-    ViewBookingsComponent
+    ViewBookingsComponent,
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-  
+
+
 
   ],
   exports:[
@@ -39,6 +40,7 @@ import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
     ContactComponent,
     VehicleDetailsComponent,
     ViewBookingsComponent,
-  ]
+  ],
+  providers: [ToastrService]
 })
 export class CustomerModule { }

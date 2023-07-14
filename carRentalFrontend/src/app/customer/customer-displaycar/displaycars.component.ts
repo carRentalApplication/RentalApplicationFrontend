@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthUser } from 'src/app/model/AuthUser.model';
 import { Brand } from 'src/app/model/Brand.model';
 import { Vehicle } from 'src/app/model/Vehicle.model';
@@ -33,8 +34,16 @@ export class DisplaycarsComponent implements OnInit {
   constructor(
     private vehicleService: VehicleService,
     private userService: AuthService,
-    private brandService: BrandService
+    private brandService: BrandService,
+    private ngxLoaderService: NgxUiLoaderService
   ) { }
+  showLoader() {
+    this.ngxLoaderService.start(); // Show the loader
+  }
+
+  hideLoader() {
+    this.ngxLoaderService.stop(); // Hide the loader
+  }
 
   ngOnInit(): void {
     this.vehicleService.getAllVehicles().subscribe((vehicles) => {
@@ -110,11 +119,13 @@ export class DisplaycarsComponent implements OnInit {
   }
 
   updateDisplayedVehicles() {
+    this.showLoader();
     const filteredVehicles = this.vehiclesBasedOn;
 
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.displayedVehicles = filteredVehicles.slice(startIndex, endIndex);
+    this.hideLoader();
   }
 
   // Calculate the total number of pages
