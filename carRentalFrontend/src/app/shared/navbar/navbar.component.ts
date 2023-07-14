@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit {
 
   public isLoggedInDetails = false;
+  
   // expression:
   constructor(private userStore: UserStoreService,
     private authUser: AuthService) { }

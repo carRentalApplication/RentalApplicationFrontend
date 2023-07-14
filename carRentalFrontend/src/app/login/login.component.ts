@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   isUserValid: boolean = false;
   loginForm: FormGroup;
   submitted: boolean = false;
+  showPassword: boolean = false;
+
 
   constructor(private formBuilder: FormBuilder,
     private sharedModule:SharedModule,
@@ -65,6 +67,9 @@ export class LoginComponent implements OnInit {
         })
     }
 
+  }
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
 
