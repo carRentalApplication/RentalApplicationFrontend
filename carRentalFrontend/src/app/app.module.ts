@@ -30,6 +30,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NgxUiLoaderModule ,NgxUiLoaderHttpModule, NgxUiLoaderConfig} from 'ngx-ui-loader';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig=
 {
@@ -75,7 +77,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig=
     CustomerComponent,
     FooterComponent,
     AnimationComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

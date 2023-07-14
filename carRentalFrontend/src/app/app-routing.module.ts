@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { HasRoleGuard } from './guard/has-role-guard.guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect empty path to 'home'
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'changepassword', component: ChangepasswordComponent },
+  { path: 'forgotpassword', component: ForgotPasswordComponent },
+  { path: 'reset', component: ResetPasswordComponent },
   {
     path: 'admin',
     canActivate: [AuthenticationGuard, HasRoleGuard],

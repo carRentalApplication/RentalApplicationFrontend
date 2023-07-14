@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthUser } from '../model/AuthUser.model';
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { ResetPassword } from '../model/reset-password-model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,18 @@ export class AuthService {
 
     console.log("Change Password Works");
     return this.http.put(this.baseUrl + "/api/Authuser/changepassword", data, { responseType: 'text' })
+  }
+
+  forgotPassword(data:any){
+    console.log(data);
+    return this.http.post(this.baseUrl+`/api/Authuser/send-reset-email/${data}`,{responseType:'text'
+    })
+  }
+
+  resetPassword(resetpasswordObj :ResetPassword){
+    console.log(resetpasswordObj);
+    return this.http.post(this.baseUrl+"/api/Authuser/reset-password",resetpasswordObj,{responseType:'text'
+  })
   }
 
   getAllUser(): Observable<AuthUser[]> {
