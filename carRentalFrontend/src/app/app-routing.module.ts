@@ -27,11 +27,11 @@ const routes: Routes = [
   },
   {
     path: 'customer',
-    canActivate: [AuthenticationGuard,HasRoleGuard],
-    data: {
-      role: 'user',
-      role1: 'admin'
-    },
+    // canActivate: [AuthenticationGuard],
+    // data: {
+    //   role: 'user',
+    //   role1: 'admin'
+    // },
     loadChildren: () => import('./customer/customer.module').then(x => x.CustomerModule)
   },
   { path: '**', redirectTo: 'home' }, // Redirect any unknown route to 'home'

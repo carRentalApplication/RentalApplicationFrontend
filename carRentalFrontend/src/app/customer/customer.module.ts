@@ -9,10 +9,13 @@ import { CustomerNavComponent } from './customer-NavBar/customer-nav.component';
 import { AboutComponent } from './about us/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
-
-
+import{CalendarModule} from 'primeng/calendar'
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
 import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
 import { ToastrService } from 'ngx-toastr';
+import { VehicleBookingComponent } from './vehicle-booking/vehicle-booking.component';
 
 
 @NgModule({
@@ -23,14 +26,17 @@ import { ToastrService } from 'ngx-toastr';
     ContactComponent,
     VehicleDetailsComponent,
     ViewBookingsComponent,
+    VehicleBookingComponent,
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
-
+    CalendarModule,
+    MessageModule,
+    MessagesModule,
+    InputSwitchModule
 
   ],
   exports:[

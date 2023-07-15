@@ -45,6 +45,10 @@ export class VehicleService {
 
      return this.http.delete(this.baseUrl+`/api/Vehicles/${vehicleId}`)
    }
+   getVehicleStatus(fromDate:Date,toDate:Date,vehicleId:string ):Observable<boolean>{
 
+    console.log(fromDate.toISOString())
+      return this.http.get<boolean>(this.baseUrl+`/api/Vehicles/status?pickUpTime=${fromDate.toISOString()}&dropTime=${toDate.toISOString()}&VehicleId=${vehicleId}`)
+    }
 
 }

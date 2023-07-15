@@ -119,14 +119,12 @@ export class DisplaycarsComponent implements OnInit {
   }
 
   updateDisplayedVehicles() {
-    this.showLoader();
     const filteredVehicles = this.vehiclesBasedOn;
 
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.displayedVehicles = filteredVehicles.slice(startIndex, endIndex);
-    this.hideLoader();
-  }
+ }
 
   // Calculate the total number of pages
   get totalPages(): number {

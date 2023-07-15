@@ -1,0 +1,173 @@
+<div class="container-fluid">
+  <div class="form-container">
+    <div class="row">
+      <div class="col"><h2 class="text-dark text-center">
+        <div class="site-name">
+          <img src="assets/img/carlogo.png" height="30" style="margin-top: 2px" />
+          <b style="color: rgba(94, 92, 92, 0.788); font-size: medium"> Book Now</b>
+        </div>
+      </h2>
+    </div>
+
+    </div>
+
+    <form [formGroup]="bookingForm" (ngSubmit)="submitBookingForm()">
+
+      <div class="row mb-2 mt-3">
+        <div class="row">
+          <div class="form-group">
+            <div style="display: flex;">
+              <label for="checked" style="margin-right: 0.5rem;">Traveller is same as Registered User</label>
+              <p-inputSwitch id="checked" (onChange)="ValueChanged()" formControlName="checked"></p-inputSwitch>
+            </div>
+          </div>
+        </div>
+        <!-- first name filed start -->
+        <div class="col">
+          <label for="travellerName"><i class="fas fa-user"></i> Traveller Name</label>
+          <input type="text" id="travellerName" [formControlName]="'travellerName'"
+            class="form-control ng-invalid ng-dirty" required />
+        </div>
+        <div *ngIf="
+              bookingForm.get('travellerName')?.invalid &&
+              bookingForm.get('travellerName')?.touched
+            " class="error">
+          <p-message *ngIf="bookingForm.get('travellerName')?.hasError('required')" class="pmsg" severity="error"
+            text="Traveller Name is Required"></p-message>
+          <p-message *ngIf="bookingForm.get('travellerName')?.hasError('pattern')" class="pmsg" severity="error"
+            text="Name Should Not Start With"></p-message>
+        </div>
+        <!-- first name filed start -->
+        <!-- second name filed start -->
+        <div class="col">
+          <div class="form-group">
+            <div class="ddd">
+              <div>
+                <label for="travellerNumber"><i class="fas fa-phone"></i> Traveller Number</label>
+                <input type="text" id="travellerNumber" formControlName="travellerNumber" class="form-control" required
+                  maxlength="10" />
+              </div>
+              <div *ngIf="
+                bookingForm.get('travellerNumber')?.invalid &&
+                bookingForm.get('travellerNumber')?.touched
+              " class="error">
+                <p-message severity="error" text="Please Enter 10 digit Mobile Number"></p-message>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- second name filed end -->
+        <div class="row mb-2 mt-3">
+          <!-- password filed start -->
+          <div class="col">
+            <div class="form-group">
+              <div class="ddd">
+                <label for="pickUpDate"><i class="fas fa-calendar"></i> Pick-Up Date</label>
+                <br>
+                <p-calendar id="pickUpDate" formControlName="pickUpDate" [showTime]="true" [showIcon]="true"
+                  hourFormat="12" [minDate]="pickUpDate" [maxDate]="pickUpDate"></p-calendar>
+              </div>
+              <div *ngIf="
+                    bookingForm.get('pickUpDate')?.invalid &&
+                    bookingForm.get('pickUpDate')?.touched
+                  " class="error">
+                <p-message severity="error" text="Please enter the pick-up date"></p-message>
+              </div>
+            </div>
+          </div>
+          <!-- password filed end -->
+          <!--confimr password filed start -->
+          <div class="col">
+            <div class="form-group">
+              <div class="ddd">
+                <div>
+                  <label for="dropDate"><i class="fas fa-calendar"></i> Drop Date</label>
+                  <!-- <input
+                  type="date"
+                  id="dropDate"
+                  formControlName="dropDate"
+                  class="form-control"
+                  required
+                /> -->
+                  <br>
+                  <p-calendar id="dropDate" formControlName="dropDate" [showTime]="true" [showIcon]="true"
+                    hourFormat="12" [minDate]="pickUpDate" [maxDate]="pickUpDate" readonly></p-calendar>
+                </div>
+                <div *ngIf="
+                    bookingForm.get('dropDate')?.invalid &&
+                    bookingForm.get('dropDate')?.touched
+                  " class="error">
+                  <p-message severity="error" text="Please enter the drop date
+                "></p-message>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--confimr password filed end -->
+        </div>
+        <!-- email filed start -->
+        <div class="mb-2 mt-3">
+          <div class="form-group">
+            <div class="ddd">
+              <div>
+                <label for="pickUpAddress"><i class="fas fa-location"></i> Pick-Up Address</label>
+                <input type="text" id="pickUpAddress" formControlName="pickUpAddress" class="form-control" required />
+              </div>
+              <div *ngIf="
+          bookingForm.get('pickUpAddress')?.invalid &&
+          bookingForm.get('pickUpAddress')?.touched
+        " class="error">
+                <p-message severity="error" text="Please Enter PickUpAddress"></p-message>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- email filed end -->
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <div class="ddd">
+                <div>
+                  <label for="paymentType">Payment Type</label>
+                  <select id="paymentType" class="form-control" formControlName="paymentType">
+                    <!-- <option *ngIf="editable">{{brandn}}</option> -->
+                    <option *ngFor="let payType of paymentTypes" [value]="payType.paymentMode">
+                      {{payType.paymentMode}}
+                    </option>
+                  </select>
+                </div>
+                <div *ngIf="
+            bookingForm.get('paymentType')?.invalid &&
+            bookingForm.get('paymentType')?.touched
+          " class="error">
+                  <p-message severity="error" text="Please Select Payment Type"></p-message>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <div class="ddd">
+                  <label for="advanceAmount"><i class="fas fa-rupee-sign"></i> Total Amount:</label>
+                  <h3>{{totalAmountDisplay | number: '1.0-0'}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col"><button type="submit" [disabled]="bookingForm.invalid" class="btn btn-primary">
+              <i class="fas fa-calendar-check"></i> Book Now
+            </button></div>
+          <div class="col"><button type="submit" routerLink="/customer" class="btn btn-danger">
+              <i class="fas fa-calendar-check"></i> Cancel
+            </button></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="done==true">
+    <p-messages [(value)]="messages" severity="success" [showTransitionOptions]="'500ms'"
+      [hideTransitionOptions]="'500ms'" [enableService]="false"></p-messages>
+  </div>
+</div>

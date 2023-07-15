@@ -27,6 +27,10 @@ export class HasRoleGuard implements CanActivate {
       //admin can also acess the customer routers
       return true;
     }
+    else if(route.data['role3'] == ""){
+      //admin can also acess the customer routers
+      return true;
+    }
     else {
       if (this.userStore.getRoleFromJwtToken() === 'admin') {
         // Redirect to the admin home page

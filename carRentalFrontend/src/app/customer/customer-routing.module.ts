@@ -5,6 +5,7 @@ import { AboutComponent } from './about us/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 import { ViewBookingsComponent } from './view-bookings/view-bookings.component';
+import { VehicleBookingComponent } from './vehicle-booking/vehicle-booking.component';
 
 
 const routes: Routes = [ // Redirect empty path to 'customer'
@@ -13,6 +14,8 @@ const routes: Routes = [ // Redirect empty path to 'customer'
   { path: 'contact', component: ContactComponent },
   { path: 'vehicle-details/:id', component: VehicleDetailsComponent },
   { path: 'view-bookings', component: ViewBookingsComponent },
+  { path: 'vehicle-booking', component: VehicleBookingComponent },
+
 
 ];
 

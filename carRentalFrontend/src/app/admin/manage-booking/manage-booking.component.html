@@ -25,7 +25,7 @@
             <th>VehicleName</th>
             <th>Seats</th>
             <th>FuelType</th>
-            <th>Email</th>
+            <!-- <th>Email</th> -->
             <th>Payment Mode</th>
             <th>Status</th>
           </tr>
@@ -34,12 +34,12 @@
           <tr *ngFor="let item of booking |filter:searchText,let i=index">
             <td *ngIf="item.status.statusName=='Pending'">
               <button type="button" class="btn btn-link invest-now-btn" data-toggle="modal"
-                data-target="#investmentInitModal" (click)="openBookingForm()">
+                data-target="#investmentInitModal" (click)="openBookingForm(item.bookingId)">
                 <i class="fas fa-calendar-plus"></i> Response Here
               </button>
             </td>
-            <td  *ngIf="item.status.statusName=='Confirm' ||item.status.statusName=='Cancel' ">
-              <h5>{{item.status.statusName}}</h5>
+            <td  *ngIf="item.status.statusName=='accept' ||item.status.statusName=='reject' ">
+              <h6>{{item.status.statusName.toUpperCase()}}</h6>
             </td>
             <td>{{i+1}}</td>
             <td>{{item.travellerName}}</td>
@@ -52,7 +52,7 @@
             <td>{{item.vehicle.vehicleName}}</td>
             <td>{{item.vehicle.seatingCapacity}}</td>
             <td>{{item.vehicle.fuelType}}</td>
-            <td>{{item.authUser.email}}</td>
+            <!-- <td>{{item.authUser.email}}</td> -->
             <td>{{item.paymentType.paymentMode}}</td>
             <td>{{item.status.statusName}}</td>
           </tr>
@@ -70,10 +70,15 @@
     </div>
     <h2>Response Now</h2>
     <div class="button">
-      <button class="btn btn-sm btn-success">Confirm Booking</button>
+      <button class="btn btn-sm btn-success" (click)="bookingAction('accept')">Confirm Booking</button>
     </div>
+    <!-- <button (click)="edit(vehicle.vehicleId)" class="bordernone" >
+      <i
+        class="fa-solid fa-pen-to-square fa-lg"
+        style="color: #1160e8"
+      ></i></button> -->
     <div class="button">
-      <button class="btn btn-sm btn-danger">Cancel Booking</button>
+      <button class="btn btn-sm btn-danger" (click)="bookingAction('reject')">Cancel Booking</button>
     </div>
   </div>
 </div>

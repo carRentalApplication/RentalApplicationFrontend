@@ -1,12 +1,14 @@
+
 import { Booking } from './../../model/Booking.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthUser } from 'src/app/model/AuthUser.model';
 import { Vehicle } from 'src/app/model/Vehicle.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { BookingsService } from 'src/app/services/bookings.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-vehicle-details',
   templateUrl: './vehicle-details.component.html',
@@ -27,14 +29,25 @@ export class VehicleDetailsComponent implements OnInit {
   vehicleImages: any[] = [];
   currentImage: string = '';
   currentIndex: number = 0;
+  examEndTime?: string;
+  currentDateTime?: string;
 
+  fromMinDate:Date=new Date();
+  fromCurrentDate:Date=new Date();
+  toMinDate:Date=new Date()
+  toCurrentDate:Date=new Date()
+  //minDateTime  :Date;
   constructor(
     private userService: AuthService,
     private vehicleService: VehicleService,
     private activeRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
-  ) {}
+    private formBuilder: FormBuilder,
+    private route:Router,
+    private bookingService:BookingsService
 
+  ) {
+
+  }
 
     get logedInCustomer(): boolean {
       return this.userService.isLoggedIn();
@@ -44,6 +57,14 @@ export class VehicleDetailsComponent implements OnInit {
 
 
     }
+    getMinDate() {
+
+      const today = new Date();
+      const day = today.getDate();
+      const month = today.getMonth() + 1; // January is 0
+      const year = today.getFullYear();
+      return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
+    }
     createBookingForm(): void {
       this.bookingForm = this.formBuilder.group({
         travellerName: ['', Validators.required],
@@ -62,19 +83,43 @@ export class VehicleDetailsComponent implements OnInit {
       this.isBooked=false;
     }
     openBookingForm(): void {
-      this.showBookingForm = true;
+      console.log(this.fromMinDate,this.fromCurrentDate,this.toMinDate,this.toCurrentDate)
+      this.vehicleService.getVehicleStatus(this.fromMinDate,this.toMinDate,this.vehicle.vehicleId!.toString())
+      .subscribe(vehicleStatus=>{
+        if(vehicleStatus){
+          this.bookingService.pickUpDate=this.fromMinDate
+          this.bookingService.dropDate=this.toMinDate
+          this.bookingService.vehicle=this.vehicle
+          const timeDiff = this.fromMinDate.getTime() - this.toMinDate.getTime();
+          console.log(timeDiff)
+            this.route.navigateByUrl('/customer/vehicle-booking')
+        }
+        else{
+          Swal.fire({
+            title:`${this.vehicle.vehicleName} Not Available For Selected Date`,
+            icon:'error',
+            allowOutsideClick:false
+          })
+        }
+      })
+
     }
 
     closeBookingForm(): void {
+
+
       this.showBookingForm = false;
       this.bookingForm.reset();
     }
     submitBookingForm(): void {
       if (this.bookingForm.valid) {
-
+        // Perform the necessary logic for booking the vehicle
+        // You can access the form values using this.bookingForm.value
+        // Example: Make an API call to book the vehicle
         console.log('Booking form submitted');
         console.log(this.bookingForm.value);
 
+        // Close the booking form
         this.closeBookingForm();
       }
     }

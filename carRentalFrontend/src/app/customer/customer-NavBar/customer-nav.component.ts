@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthUser } from 'src/app/model/AuthUser.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-customer-nav',
@@ -14,7 +15,8 @@ export class CustomerNavComponent implements OnInit {
   isScrolled = false;
   navbarHeight = 100; // Set the height of your navbar here
   public userName:string='';
-  constructor(private userService:AuthService,private route:Router,private toastr: ToastrService) { }
+  constructor(private userService:AuthService,
+    private userStore:UserStoreService,private route:Router,private toastr: ToastrService) { }
 
 
   get customer():any{
@@ -53,8 +55,10 @@ export class CustomerNavComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userName = this.userService.getFirstNameFromToken();
-
+  this.userStore.getFirstNameFromStore().subscribe(res=>{
+  let firstNameFromToken = this.userService.getFirstNameFromToken();
+  this.userName= res || firstNameFromToken
+  })
   }
 
 }

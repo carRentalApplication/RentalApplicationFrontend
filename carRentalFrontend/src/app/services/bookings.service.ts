@@ -1,0 +1,36 @@
+
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { Booking } from '../model/Booking.model';
+import { Vehicle } from '../model/Vehicle.model';
+import { BookingModel } from '../model/BookingModel.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BookingsService {
+  pickUpDate!:Date;
+  dropDate!:Date;
+  baseUrl = environment.urlCar;
+  vehicle!:Vehicle;
+  constructor(private http: HttpClient, private route: Router) { }
+
+  getAllBookings():Observable<Booking[]>{
+    console.log("Booking Service all Bookings control");
+    return this.http.get<Booking[]>(this.baseUrl + '/api/Booking');
+  }
+  addBooking(model:BookingModel):Observable<Booking>{
+    console.log(model);
+
+    return this.http.post<Booking>(this.baseUrl+`/api/Booking`,model)
+  }
+
+  updateBooking(id:any,data:string){
+    console.log(id);
+    console.log(data);
+    return this.http.put(this.baseUrl+`/api/Booking/${id}/${data}`,{})
+  }
+}
