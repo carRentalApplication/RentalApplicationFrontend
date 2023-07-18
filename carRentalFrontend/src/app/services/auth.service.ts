@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { AuthUser } from '../model/AuthUser.model';
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { ResetPassword } from '../model/reset-password-model';
+import { Booking } from '../model/Booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -72,8 +73,16 @@ export class AuthService {
   }
   logoutMethod() {
     localStorage.clear()
-    this.route.navigate(['home'])
+
   }
+
+//   getUserBookings(): Observable<Booking[]> {
+//     // Get the user ID from the token or any other way
+//    var user= this.decodedToken()
+//    var userId=user.id
+//    return this.http.get<Booking[]>(`https://localhost:9002/api/Booking/user/${userId}`);
+//   }
+
   getToken() {
     return localStorage.getItem('token')
   }

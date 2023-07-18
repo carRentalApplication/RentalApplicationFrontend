@@ -13,7 +13,7 @@
       <!-- {{ vehicleData | json }} -->
       <thead>
         <tr>
-          <th><strong>ID</strong></th>
+          <th><strong>Sl.no</strong></th>
           <th><strong>Vehicle Name</strong></th>
           <th><strong>Vehicle Number</strong></th>
           <th><strong>Seats</strong></th>
@@ -31,7 +31,7 @@
           <td>{{ vehicle.seatingCapacity }}</td>
           <td>{{ vehicle.fuelType }}</td>
           <td>{{ vehicle.brand?.brandName }}</td>
-          <td>{{ vehicle.rent?.rentAmount }}</td>
+          <td>{{ vehicle.rent?.rentAmount | currency: 'INR' }}</td>
 
           <td>
             <button (click)="edit(vehicle.vehicleId)" class="bordernone" >

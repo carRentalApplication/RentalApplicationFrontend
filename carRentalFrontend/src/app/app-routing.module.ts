@@ -10,8 +10,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect empty path to 'home'
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'customer', pathMatch: 'full' }, // Redirect empty path to 'home'
+  // { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'changepassword', component: ChangepasswordComponent },
@@ -34,7 +34,7 @@ const routes: Routes = [
     // },
     loadChildren: () => import('./customer/customer.module').then(x => x.CustomerModule)
   },
-  { path: '**', redirectTo: 'home' }, // Redirect any unknown route to 'home'
+  { path: '**', redirectTo: 'customer' }, // Redirect any unknown route to 'home'
 ];
 
 @NgModule({

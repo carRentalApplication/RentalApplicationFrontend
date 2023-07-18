@@ -16,7 +16,17 @@ export class CustomerNavComponent implements OnInit {
   navbarHeight = 100; // Set the height of your navbar here
   public userName:string='';
   constructor(private userService:AuthService,
-    private userStore:UserStoreService,private route:Router,private toastr: ToastrService) { }
+    private userStore:UserStoreService,private route:Router,private toastr: ToastrService,private authUser:AuthService) { }
+
+    public isLoggedInDetails = false;
+
+  ngOnInit(): void {
+    this.isLoggedIn()
+  this.userStore.getFirstNameFromStore().subscribe(res=>{
+  let firstNameFromToken = this.userService.getFirstNameFromToken();
+  this.userName= res || firstNameFromToken
+  })
+  }
 
 
   get customer():any{
@@ -30,8 +40,25 @@ export class CustomerNavComponent implements OnInit {
   }
   viewbookings()
   {
-    this.route.navigateByUrl(`/customer/view-bookings`);
-    this.toastr.success('Welcome to Your bookings!', 'Success');
+    if(this.authUser.isLoggedIn()){
+      this.route.navigateByUrl(`/customer/view-bookings`);
+      this.toastr.success('Welcome to Your bookings!', 'Success');
+    }
+    else{
+      this.route.navigateByUrl("/login");
+    }
+
+  }
+
+
+  role() {
+    return this.userStore.getRoleFromJwtToken();
+  }
+
+  isLoggedIn() {
+    this.isLoggedInDetails = this.authUser.isLoggedIn();
+    console.log(this.authUser.isLoggedIn());
+    return this.isLoggedInDetails
   }
 
   showDropdown() {
@@ -44,7 +71,7 @@ export class CustomerNavComponent implements OnInit {
 
   removeCustomer(){
     this.userService.logoutMethod();
-    this.route.navigateByUrl("/home");
+    this.route.navigateByUrl("/customer");
     this.toastr.success('You are Logout Successfully..!','Logout')
   }
 
@@ -53,12 +80,5 @@ export class CustomerNavComponent implements OnInit {
   }
 
 
-
-  ngOnInit(): void {
-  this.userStore.getFirstNameFromStore().subscribe(res=>{
-  let firstNameFromToken = this.userService.getFirstNameFromToken();
-  this.userName= res || firstNameFromToken
-  })
-  }
 
 }

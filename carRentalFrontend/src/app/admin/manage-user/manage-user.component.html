@@ -2,13 +2,13 @@
   <div class="d-flex page__box p-3 mt-2">Registered Users</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="search-data">
-      <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search here">
+      <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search here based on name,m.no,email">
      </div>
     <!-- {{authUser | json }} -->
     <table class="table" *ngIf="authUser && authUser.length > 0" border="1">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Sl.no</th>
           <th scope="col">FirstName</th>
           <th scope="col">LastName</th>
           <th scope="col">Email</th>
@@ -49,8 +49,6 @@
     [rowData]="rowData"
     [columnDefs]="columnDefs">
   </ag-grid-angular> -->
-
-
   <!-- </div> -->
 </div>
 

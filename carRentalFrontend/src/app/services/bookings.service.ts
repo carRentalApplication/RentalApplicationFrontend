@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +17,7 @@ export class BookingsService {
   dropDate!:Date;
   baseUrl = environment.urlCar;
   vehicle!:Vehicle;
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router,private authService:AuthService) { }
 
   getAllBookings():Observable<Booking[]>{
     console.log("Booking Service all Bookings control");
@@ -33,4 +34,11 @@ export class BookingsService {
     console.log(data);
     return this.http.put(this.baseUrl+`/api/Booking/${id}/${data}`,{})
   }
+
+  getUserBookings(): Observable<Booking[]> {
+    // Get the user ID from the token or any other way
+   var user= this.authService.decodedToken()
+   var userId=user.id
+   return this.http.get<Booking[]>(`https://localhost:9002/api/Booking/user/${userId}`);
+  }
 }

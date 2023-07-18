@@ -1,7 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { AuthUser } from 'src/app/model/AuthUser.model';
+import { Booking } from 'src/app/model/Booking.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { BookingsService } from 'src/app/services/bookings.service';
 
 
 @Component({
@@ -17,32 +18,34 @@ export class ViewBookingsComponent implements OnInit {
 
   rows = 10;
 
-  constructor(private userService: AuthService) {}
-
+  constructor(private userService: BookingsService) {}
+bookings:Booking[]=[];
   ngOnInit() {
       //this.userService.getCustomersLarge().then((customers) => (this.customers = customers));
-  }
+    // this.BookingsByID;
+    this.userService.getUserBookings().subscribe(data=>{
+      console.log(data);
 
-  next() {
-      this.first = this.first + this.rows;
-  }
-
-  prev() {
-      this.first = this.first - this.rows;
-  }
-
-  reset() {
-      this.first = 0;
-  }
-
-  isLastPage(): boolean {
-      return this.customers ? this.first === this.customers.length - this.rows : true;
-  }
-
-  isFirstPage(): boolean {
-      return this.customers ? this.first === 0 : true;
-  }
+      this.bookings=data
+    })
+    }
 
 
 
+//   fetchUserBookings() {
+//     this.userService.getUserBookings().subscribe((bookings: Booking[]) => {
+//       if (bookings.length > 0) {
+//         this.booking = bookings[0]; // Assuming you want to display the first booking only
+//         // this.vehicle = this.booking.vehicle;
+//         console.log(bookings)
+//       }
+//       });
+//     }
+
+//   get BookingsByID(){
+//    return this.userService.getUserBookings().subscribe(res=>{
+//       console.log(res);
+//       
+//       })
+//     }
 }

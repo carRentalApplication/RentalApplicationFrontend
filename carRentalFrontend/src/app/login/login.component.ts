@@ -42,11 +42,12 @@ export class LoginComponent implements OnInit {
         .subscribe(
           res => {
           if (res == "Login Not Success") {
-            console.log("Internal Server Error");
+            console.log();
+            this.sharedModule.showToast("Internal Server Error","","info")
           }
           else if (res == "Failed to LoginIn") {
             this.isUserValid = false;
-            alert("Invalid Credentials")
+            this.sharedModule.showToast("Invalid Credentials","","error")
           }
           else {
             this.isUserValid = true;
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['admin/dashboard'])
             }
             else{
-              this.router.navigate(['home'])
+              this.router.navigate(['customer'])
             }
           }
         })

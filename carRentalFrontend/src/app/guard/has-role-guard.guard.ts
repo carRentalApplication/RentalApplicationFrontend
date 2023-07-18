@@ -37,7 +37,7 @@ export class HasRoleGuard implements CanActivate {
         return this.router.navigate(['admin/dashboard']);
       } else if (this.userStore.getRoleFromJwtToken() === 'user') {
         // Redirect to the customer home page
-        return this.router.navigate(['home']);
+        return this.router.navigate(['/customer']);
       } else {
         // Redirect to a default page for other roles or unauthorized access
         return this.router.navigate(['login']);

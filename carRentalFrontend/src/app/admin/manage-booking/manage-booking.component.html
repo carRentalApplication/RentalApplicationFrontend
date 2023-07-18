@@ -14,8 +14,9 @@
         <thead>
           <tr>
             <th>Action</th>
-            <th>Id</th>
-            <th>TravellerName</th>
+            <th>Sl.no</th>
+            <!-- <th>Email</th> -->
+            <th><strong>Traveller Name</strong></th>
             <th>TravellerNumber</th>
             <th>PickUpDate</th>
             <th>DropDate</th>
@@ -25,9 +26,8 @@
             <th>VehicleName</th>
             <th>Seats</th>
             <th>FuelType</th>
-            <!-- <th>Email</th> -->
             <th>Payment Mode</th>
-            <th>Status</th>
+            <!-- <th>Status</th> -->
           </tr>
         </thead>
         <tbody>
@@ -38,23 +38,24 @@
                 <i class="fas fa-calendar-plus"></i> Response Here
               </button>
             </td>
-            <td  *ngIf="item.status.statusName=='accept' ||item.status.statusName=='reject' ">
-              <h6>{{item.status.statusName.toUpperCase()}}</h6>
-            </td>
+            <td  *ngIf="item.status.statusName=='accept'  ||item.status.statusName=='reject' ">
+              <h6 [ngClass]="{'green': item.status.statusName === 'accept', 'red': item.status.statusName === 'reject'}">
+                {{item.status.statusName.toUpperCase()}}
+              </h6> </td>
             <td>{{i+1}}</td>
+            <!-- <td>{{item.authUser.email}}</td> -->
             <td>{{item.travellerName}}</td>
             <td>{{item.travellerNumber}}</td>
             <td>{{item.pickUpDate | date}}</td>
             <td>{{item.dropDate |date}}</td>
             <td>{{item.bookingTime | date:'hh:mm a'}}</td>
             <td>{{item.pickUpAddress}}</td>
-            <td>{{item.totalAmount}}</td>
+            <td>{{item.totalAmount | currency: 'INR'}}</td>
             <td>{{item.vehicle.vehicleName}}</td>
             <td>{{item.vehicle.seatingCapacity}}</td>
             <td>{{item.vehicle.fuelType}}</td>
-            <!-- <td>{{item.authUser.email}}</td> -->
             <td>{{item.paymentType.paymentMode}}</td>
-            <td>{{item.status.statusName}}</td>
+            <!-- <td>{{item.status.statusName}}</td> -->
           </tr>
         </tbody>
       </table>

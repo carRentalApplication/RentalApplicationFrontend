@@ -132,8 +132,8 @@
                   <label for="paymentType">Payment Type</label>
                   <select id="paymentType" class="form-control" formControlName="paymentType">
                     <!-- <option *ngIf="editable">{{brandn}}</option> -->
-                    <option *ngFor="let payType of paymentTypes" [value]="payType.paymentMode">
-                      {{payType.paymentMode}}
+                    <option *ngFor="let payType of paymentTypes,let i=index" [value]="payType.paymentMode">
+                     {{i+1}}.{{payType.paymentMode}}
                     </option>
                   </select>
                 </div>
@@ -155,7 +155,7 @@
             </div>
           </div>
         </div>
-        <div class="row text-center">
+        <div class="row text-center m-1">
           <div class="col"><button type="submit" [disabled]="bookingForm.invalid" class="btn btn-primary">
               <i class="fas fa-calendar-check"></i> Book Now
             </button></div>

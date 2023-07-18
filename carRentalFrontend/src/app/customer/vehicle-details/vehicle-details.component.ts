@@ -43,7 +43,8 @@ export class VehicleDetailsComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private route:Router,
-    private bookingService:BookingsService
+    private bookingService:BookingsService,
+
 
   ) {
 
@@ -84,25 +85,28 @@ export class VehicleDetailsComponent implements OnInit {
     }
     openBookingForm(): void {
       console.log(this.fromMinDate,this.fromCurrentDate,this.toMinDate,this.toCurrentDate)
-      this.vehicleService.getVehicleStatus(this.fromMinDate,this.toMinDate,this.vehicle.vehicleId!.toString())
-      .subscribe(vehicleStatus=>{
-        if(vehicleStatus){
-          this.bookingService.pickUpDate=this.fromMinDate
-          this.bookingService.dropDate=this.toMinDate
-          this.bookingService.vehicle=this.vehicle
-          const timeDiff = this.fromMinDate.getTime() - this.toMinDate.getTime();
-          console.log(timeDiff)
-            this.route.navigateByUrl('/customer/vehicle-booking')
-        }
-        else{
-          Swal.fire({
-            title:`${this.vehicle.vehicleName} Not Available For Selected Date`,
-            icon:'error',
-            allowOutsideClick:false
-          })
-        }
-      })
-
+      if(this.userService.isLoggedIn()){
+        this.vehicleService.getVehicleStatus(this.fromMinDate,this.toMinDate,this.vehicle.vehicleId!.toString())
+        .subscribe(vehicleStatus=>{
+          if(vehicleStatus){
+            this.bookingService.pickUpDate=this.fromMinDate
+            this.bookingService.dropDate=this.toMinDate
+            this.bookingService.vehicle=this.vehicle
+            const timeDiff = this.fromMinDate.getTime() - this.toMinDate.getTime();
+            console.log(timeDiff)
+              this.route.navigateByUrl('/customer/vehicle-booking')
+          }
+          else{
+            Swal.fire({
+              title:`${this.vehicle.vehicleName} Not Available For Selected Date`,
+              icon:'error',
+              allowOutsideClick:false
+            })
+          }
+        })
+      }else{
+        this.route.navigate(['login'])
+      }
     }
 
     closeBookingForm(): void {

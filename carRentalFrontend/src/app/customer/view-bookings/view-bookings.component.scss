@@ -1,0 +1,287 @@
+/* Add custom CSS styles here */
+.hy-title {
+  /* Your desired styles for the "HY" title */
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  font-weight: bold;
+  color: #333; /* Adjust color as needed */
+}
+
+.booking-container {
+  /* Your desired styles for the booking container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  background-color: #f9f9f9;
+  // border: 2px solid #343a40;
+  padding: 20px;
+  // border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-horizontal {
+  /* Your desired styles for the booking cards */
+  border: 2px solid #343a40;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-horizontal:hover {
+  /* Add hover effect */
+  transform: scale(1.05);
+}
+
+.card-horizontal:hover {
+  transform: scale(1.05);
+}
+
+/* Styles for the button inside the booking card */
+.card-body button {
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Styles for the status button */
+.text-success {
+  // background-color: #28a745;
+  color: #fff;
+}
+
+.text-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.text-danger {
+  // background-color: #dc3545;
+  color: #fff;
+}
+
+.text-success:hover,
+.text-dark:hover,
+.text-danger:hover {
+  opacity: 0.9;
+}
+
+/* Additional styles for the container and card title */
+.booking-container h5.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Additional styles for the pick-up and drop-off dates */
+.booking-container li.list-group-item {
+  font-size: 16px;
+}
+
+/* Additional styles for the traveller information */
+.booking-container div li.list-group-item {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+// ===============================================================
+.body{
+  margin: 0;
+  overflow-x:hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/*---------------------------about page----------------*/
+.co-banner1{
+  position: relative;
+}
+.banner_main {
+  position: absolute;
+  top: 20%;
+}
+.co-banner1 img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+.banner_main h1 {
+  position: relative;
+  color:#d53537;
+  font-size: 60px;
+  line-height: 1.2em;
+  font-weight: 600;
+  margin-bottom: 80px;
+  padding-left: 45px;
+}
+.banner_inner {
+  position: relative;
+  display: inline-block;
+  padding-left: 45px;
+  padding-right: 25px;
+  z-index: 8;
+}
+.banner_inner:before {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  right: 0;
+  background: #ffffff;
+  content: "";
+  height: 100%;
+  transform: skew(-35deg);
+  box-shadow: 0 8px 29px rgb(0 0 0 / 35%);
+}
+.banner_inner li {
+  position: relative;
+  display: inline-block;
+  padding: 10px 0;
+  margin-right: 10px;
+  padding-right: 10px;
+  color: #222222;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+}
+.banner_inner li a {
+  color: #222222;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+}
+.banner_inner li::after {
+  position: absolute;
+  content: "-";
+  right: -5px;
+  top: 10px;
+  font-size: 15px;
+}
+.banner_inner li:last-child:after{
+  display: none;
+}
+.banner_inner li:last-child {
+  padding-right: 0px;
+  margin-right: 0px;
+}
+.banner_inner:after {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  background:#d53537;
+  content: "";
+  height: 100%;
+  width: 10000%;
+  transform: skew(-35deg);
+  z-index: -1;
+}
+/*--------------about section-------------*/
+.in_about .inner-about {
+  position: relative;
+  text-align: right;
+  margin-right: -15px;
+}
+.in_about{
+  position: relative;
+  padding:30px 0 100px;
+}
+.in_about:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  // background-image: url('../image/pattern-10.png');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 50%;
+  opacity: 0.38;
+  content: "";
+}
+.image-1 {
+  right: 50px;
+  position: relative;
+}
+.image-2 {
+  position: absolute;
+  right: 300px;
+  top: 200px;
+  left: -70px;
+  z-index: 99;
+}
+.image-3 {
+  position: absolute;
+  display: inline-block;
+  margin-top: 0;
+  right: 20px;
+  z-index: 3;
+  bottom: -70px;
+}
+.in_about img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+.about_disc{
+  padding-top: 40px;
+}
+.abt_chk {
+  float: left;
+  width: 100%;
+  font-size: 16px;
+  color: #757575;
+  text-align: left;
+  text-transform: capitalize;
+}
+.abt_chk ul {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  float: left;
+}
+.abt_chk ul li i {
+  position: relative;
+  top: 2px;
+  transition: all 0.5s;
+}
+.about_disc h3 {
+  font-size: 40px;
+  font-weight: 700;
+  padding:15px 0;
+}
+.content_chck ul li i {
+  font-size: 16px;
+  color:#d53537;
+  margin-right: 10px;
+}
+.about_disc h4 {
+  color: #d53537;
+  font-size: 20px;
+}
+.zoom, .small{
+  padding: 0;
+  width: 300px;
+  height: 300px;
+  float:left;
+  margin:10px;
+}
+.zoom img {
+  transition-duration: 4s;
+  margin: 0 auto;
+  display: block;
+}
+.zoom img:hover {
+  transform: scale(1.2);
+  z-index: 0;
+}
+.col-box:hover i {
+  transform: rotate(360deg);
+}
+/*---------vision - mission---------*/

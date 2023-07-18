@@ -10,13 +10,16 @@
         <b style="color: rgba(94, 92, 92, 0.788); font-size: medium"
           >Rentalcars.com</b>
   </div>
+
   <div class="site-menu">
 
     <ul class="list">
-      <li></li>
       <li>
-        <button class="buttons" [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/home">HOME</button>
+        <button class="buttons" *ngIf="role() == 'admin' " [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/admin/dashboard">Admin DashBoard</button>
       </li>
+        <!-- <li>
+          <button class="buttons" [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/home">HOME</button>
+        </li> -->
       <li>
         <button class="buttons" routerLink="/customer" [ngClass]="{'buttons-scrolled': isScrolled}"
           routerLinkActive="router-link-active">
@@ -32,19 +35,19 @@
       <li>
         <button class="buttons" [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/contact">CONTACT US</button>
       </li>
-    
+
     </ul>
   </div>
 
   <div style="float: right; padding-right: 3rem">
-    <button class=" login" style="margin-right: 10px;" [ngClass]="{'buttons-scrolled': isScrolled}" *ngIf="customer == null" routerLink="/login">
+    <button class=" login" style="margin-right: 10px;" [ngClass]="{'buttons-scrolled': isScrolled}" *ngIf="!isLoggedInDetails" routerLink="/login">
       SIGN IN
     </button>
-    <button class=" login" [ngClass]="{'buttons-scrolled': isScrolled}" *ngIf="customer == null" routerLink="/register">
+    <button class=" login" [ngClass]="{'buttons-scrolled': isScrolled}" *ngIf="!isLoggedInDetails" routerLink="/register">
       REGISTER
     </button>
 
-    <div style="padding-right: 3rem" class="profile" *ngIf="customer != null"
+    <div style="padding-right: 3rem" class="profile" *ngIf="isLoggedInDetails"
       [ngClass]="{'buttons-scrolled': isScrolled}" (mouseenter)="showDropdown()">
       {{ userName + " "
       }}<span style="
@@ -53,6 +56,9 @@
       <div class="dropdown" *ngIf="isDropdownVisible">
         <div class="dropdown-content">
           <ul (mouseleave)="hideDropdown()">
+            <li>
+              <a class="dropdown-option view-bookings" [routerLink]="['/changepassword']"><i class="fa-solid fa-lock fa-flip"></i>&nbsp;Change Password</a>
+            </li>
             <li class="dropdown-option view-bookings" (click)="viewbookings()" (mouseover)="holdDropdown()">
               <i class="fas fa-calendar-alt"></i> View Bookings
             </li>

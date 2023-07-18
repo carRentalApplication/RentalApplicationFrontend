@@ -99,10 +99,9 @@ export class VehicleBookingComponent implements OnInit {
   totalAmountDisplay:any;
   submitBookingForm(): void {
     if (this.bookingForm.valid) {
-
      var authUser=this.authService.decodedToken()
      console.log(authUser)
-      this.model.travallerName=this.bookingForm.get('travellerNumber')?.value
+      this.model.travallerName=this.bookingForm.get('travellerName')?.value
       this.model.travallerNumber=Number.parseInt(this.bookingForm.get('travellerNumber')?.value)
       this.model.pickUpDate=this.pickUpDate.toISOString()
       this.model.dropDate=this.dropDate.toISOString()
@@ -116,13 +115,13 @@ export class VehicleBookingComponent implements OnInit {
       console.log(this.bookingForm.get('paymentType')?.value)
       console.log(this.model)
       this.bookingService.addBooking(this.model).subscribe(data=> {
-        this.done=true
+        // this.done=true
         console.log('Booking form submitted');
         this.sharedModule.showToast("Booking form submitted","","success")
         this.route.navigate(['customer'])
         console.log(data)
       })
-      this.done=true
+      // this.done=true
       console.log(this.bookingForm.value);
 
       // Close the booking form
