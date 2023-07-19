@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +13,8 @@ export class ChangepasswordComponent implements OnInit {
 
   changePasswordForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private router:Router,private authService:AuthService)
+  constructor(private formBuilder: FormBuilder,
+    private sharedModule:SharedModule,   private router:Router,private authService:AuthService)
   {
     this.changePasswordForm = this.formBuilder.group({
       oldPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)]],
@@ -41,14 +43,14 @@ export class ChangepasswordComponent implements OnInit {
         console.log(res);
         if(res==="Password changed successfully")
         {
+          this.sharedModule.showToast("Password changed successfully","","success")
           this.router.navigate(['login'])
         }
         else if(res==="Previous password is incorrect"){
-          alert("Previous password is incorrect")
+          this.sharedModule.showToast("Previous password is incorrect","","error")
         }
         else{
           console.log("Thulu");
-
         }
       });
     }

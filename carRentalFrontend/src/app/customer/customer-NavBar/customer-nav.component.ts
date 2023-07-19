@@ -71,7 +71,7 @@ export class CustomerNavComponent implements OnInit {
 
   removeCustomer(){
     this.userService.logoutMethod();
-    this.route.navigateByUrl("/customer");
+    this.viewbookings();
     this.toastr.success('You are Logout Successfully..!','Logout')
   }
 

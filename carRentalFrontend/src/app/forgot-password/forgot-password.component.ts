@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   submitted: boolean = false;
   constructor(private formBuilder: FormBuilder,
-    private authService:AuthService) {
+    private authService:AuthService,
+    private sharedModule:SharedModule) {
     this.fogotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
     });
@@ -26,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
     console.log(this.fogotPasswordForm.value);
     this.authService.forgotPassword(this.fogotPasswordForm.value.email).subscribe(res=>{
       console.log(res);
-
+      this.sharedModule.showToast("we have successfully sended email","","success")
     })
   }
 }

@@ -18,8 +18,9 @@
                           <label for="seatingcapacity">Seating Capacity</label>
                           <select id="seatingcapacity" class="form-control" formControlName="seatingcapacity" [(ngModel)]="vehicle.seatingCapacity">
                               <option *ngIf="editable" [value]="vehicle.seatingCapacity">{{vehicle.seatingCapacity}}</option>
+                              <option >4</option>
                               <option >6</option>
-                              <option >7</option>
+                              <option >8</option>
                               <option >9</option>
                           </select>
 

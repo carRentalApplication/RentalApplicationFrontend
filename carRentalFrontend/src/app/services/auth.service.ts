@@ -73,7 +73,6 @@ export class AuthService {
   }
   logoutMethod() {
     localStorage.clear()
-
   }
 
 //   getUserBookings(): Observable<Booking[]> {

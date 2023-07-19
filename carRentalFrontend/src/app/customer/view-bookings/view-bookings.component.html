@@ -36,10 +36,10 @@
             <div class="col-md-4">
               <img src={{booking?.vehicle?.vehicleImages![0].imageUrl}} class="card-img" alt="Fissure in Sandstone">
               <div>
-                <li class="list-group-item">Traveller Name: {{ booking.travellerName }}</li>
+                <li class="list-group-item"><b>Traveller Name:</b> {{ booking.travellerName }}</li>
               </div>
               <div>
-                <li class="list-group-item">Traveller No:{{ booking.travellerNumber }}</li>
+                <li class="list-group-item"><b>Mobile No:</b>{{ booking.travellerNumber }}</li>
               </div>
             </div>
             <div class="col-md-8">
@@ -47,23 +47,23 @@
                 <h5 class="card-title m-2" style="text-align: right;">
                   <span></span>
                   <button
-                    [ngClass]="{'text-success': booking.status?.statusName === 'accept', 'text-dark': booking.status?.statusName === 'Pending', 'text-danger': booking.status?.statusName === 'reject'}">
+                    [ngClass]="{'text-success': booking.status?.statusName === 'accept', 'text-info': booking.status?.statusName === 'Pending', 'text-danger': booking.status?.statusName === 'reject'}">
                     {{ booking.status?.statusName?.toUpperCase() }}
                   </button>
                 </h5>
                 <h5 class="card-title">{{booking.vehicle?.brand?.brandName}},{{booking.vehicle?.vehicleName }} </h5><br>
                 <!-- <h5 class="card-title"></h5><br> -->
                 <div>
-                  <li class="list-group-item">Pick-up Date: {{ booking.pickUpDate | date}}</li>
+                  <li class="list-group-item"><b>Pick-up Date:</b> {{ booking.pickUpDate | date}}</li>
                 </div>
                 <div>
-                  <li class="list-group-item">Drop-off Date: {{ booking.dropDate | date}}</li>
+                  <li class="list-group-item"><b>Drop-off Date: </b>{{ booking.dropDate | date}}</li>
                 </div><br>
                 <div>
-                  <li class="list-group-item">Pick-up Address: {{ booking.pickUpAddress }}</li>
+                  <li class="list-group-item"><b>Pick-up Address: </b>{{ booking.pickUpAddress }}</li>
                 </div>
                 <div>
-                  <li class="list-group-item">Total Amount: {{ booking.totalAmount }}</li>
+                  <li class="list-group-item"><b>Total Amount: </b> {{ booking.totalAmount  | currency: 'INR' }}</li>
                 </div>
               </div>
             </div>
