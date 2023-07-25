@@ -1,7 +1,8 @@
+import { BookingsService } from 'src/app/services/bookings.service';
 import { SharedModule } from './../../shared/shared.module';
-import { BookingsService } from './../../services/bookings.service';
 import { Booking } from './../../model/Booking.model';
 import { Component, OnInit } from '@angular/core';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-manage-booking',
@@ -11,12 +12,18 @@ import { Component, OnInit } from '@angular/core';
 export class ManageBookingComponent implements OnInit {
 
   constructor(private bookingsService: BookingsService,
+    private userStore : UserStoreService,
     private sharedModule: SharedModule) {
     this.getAllBookings()
   }
   fadeOutAnimation: boolean = false;
 
   statusdetail: boolean = false;
+
+  role() {
+    return this.userStore.getRoleFromJwtToken();
+  }
+
 
   ngOnInit(): void { }
   searchText: any;
@@ -71,4 +78,28 @@ export class ManageBookingComponent implements OnInit {
     })
     this.closeBookingForm()
   }
+
+  onDeleteBooking(id: any) {
+
+    // Event listener for the button click
+
+            //  Swal.fire('Hello!', 'This is a SweetAlert popup!', 'success');
+
+        const confirmed = window.confirm('Are you sure you want to delete this booking?');
+
+        if(confirmed){
+        this.bookingsService.deleteBooking(id).subscribe(
+          (response) => {
+            console.log('Booking deleted successfully:', response);
+            // You can handle the success response here (e.g., show a success message).
+            this.getAllBookings();
+          },
+          (error) => {
+            console.error('Error deleting booking:', error);
+            // You can handle the error response here (e.g., show an error message).
+          }
+        );
+      }
+    }
+
 }

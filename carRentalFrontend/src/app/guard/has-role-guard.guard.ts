@@ -23,7 +23,11 @@ export class HasRoleGuard implements CanActivate {
 
     if (this.userStore.getRoleFromJwtToken().includes(route.data['role'])) {
       return true;
-    }else if(route.data['role1'] == "admin"){
+    }else if(route.data['role2'] == "superadmin"){
+      //admin can also acess the customer routers
+      return true;
+    }
+    else if(route.data['role1'] == "admin"){
       //admin can also acess the customer routers
       return true;
     }

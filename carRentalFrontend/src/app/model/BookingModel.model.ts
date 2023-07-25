@@ -8,5 +8,6 @@ export class BookingModel{
   totalAmount?:number
   vehicleId?:number
   userId?:string
-
+  formFile?:any
+  imageUrls?:string
 }

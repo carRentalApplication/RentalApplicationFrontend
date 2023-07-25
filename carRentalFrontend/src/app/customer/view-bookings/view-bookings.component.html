@@ -50,6 +50,11 @@
                     [ngClass]="{'text-success': booking.status?.statusName === 'accept', 'text-info': booking.status?.statusName === 'Pending', 'text-danger': booking.status?.statusName === 'reject'}">
                     {{ booking.status?.statusName?.toUpperCase() }}
                   </button>
+                  <div class="row no-gutters">
+                    <div class="col-md-12 text-right mt-2" *ngIf="booking.status?.statusName !== 'reject'">
+                      <button class="btn btn-danger" (click)="onDeleteBooking(booking.bookingId)">Cancel Booking</button>
+                    </div>
+                  </div>
                 </h5>
                 <h5 class="card-title">{{booking.vehicle?.brand?.brandName}},{{booking.vehicle?.vehicleName }} </h5><br>
                 <!-- <h5 class="card-title"></h5><br> -->

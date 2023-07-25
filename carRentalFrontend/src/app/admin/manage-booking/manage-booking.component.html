@@ -32,16 +32,26 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of booking |filter:searchText,let i=index">
+
+
             <td *ngIf="item.status.statusName=='Pending'">
               <button type="button" class="btn btn-link invest-now-btn" data-toggle="modal"
                 data-target="#investmentInitModal" (click)="openBookingForm(item.bookingId)">
                 <i class="fas fa-calendar-plus"></i> Response Here
               </button>
             </td>
-            <td  *ngIf="item.status.statusName=='accept'  ||item.status.statusName=='reject' ">
+            <td  *ngIf="item.status.statusName=='accept'  || item.status.statusName=='reject' ">
               <h6 [ngClass]="{'green': item.status.statusName === 'accept', 'red': item.status.statusName === 'reject'}">
                 {{item.status.statusName.toUpperCase()}}
-              </h6> </td>
+              </h6>
+              <!-- For Super most Admin -->
+              <div class="row no-gutters">
+                <div class="col-md-12 text-right mt-2" *ngIf="item.status.statusName !== 'reject' && role() == 'superadmin'">
+                  <button class="btn btn-danger" (click)="onDeleteBooking(item.bookingId)">Cancel Booking</button>
+                </div>
+              </div>
+            </td>
+
             <td>{{i+1}}</td>
             <!-- <td>{{item.authUser.email}}</td> -->
             <td>{{item.travellerName}}</td>

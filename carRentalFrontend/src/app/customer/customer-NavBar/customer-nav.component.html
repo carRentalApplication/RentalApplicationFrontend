@@ -15,7 +15,7 @@
 
     <ul class="list">
       <li>
-        <button class="buttons" *ngIf="role() == 'admin' " [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/admin/dashboard">Admin DashBoard</button>
+        <button class="buttons" *ngIf="role() == 'admin' || role()=='superadmin'"  [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/admin/dashboard">Admin DashBoard</button>
       </li>
         <!-- <li>
           <button class="buttons" [ngClass]="{'buttons-scrolled': isScrolled}" routerLink="/home">HOME</button>

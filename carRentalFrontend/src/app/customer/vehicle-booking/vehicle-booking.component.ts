@@ -60,6 +60,7 @@ export class VehicleBookingComponent implements OnInit {
   console.log(this.totalAmount)
   this.totalAmountDisplay=this.totalAmount
   }
+
   createBookingForm(): void {
     this.bookingForm = this.formBuilder.group({
       travellerName: ['', [Validators.required, Validators.pattern(/^[^\s].*$/)]],
@@ -97,6 +98,12 @@ export class VehicleBookingComponent implements OnInit {
     }
   }
   totalAmountDisplay:any;
+  selectedFile:any;
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
   submitBookingForm(): void {
     if (this.bookingForm.valid) {
      var authUser=this.authService.decodedToken()
@@ -114,8 +121,25 @@ export class VehicleBookingComponent implements OnInit {
       console.log(this.bookingForm.get('paymentType'))
       console.log(this.bookingForm.get('paymentType')?.value)
       console.log(this.model)
-      this.bookingService.addBooking(this.model).subscribe(data=> {
+
+      const formData= new FormData();
+      formData.append("travallerName",this.model.travallerName!);
+      formData.append("travallerNumber",this.model.travallerNumber!.toString());
+      formData.append("pickUpDate",this.model.pickUpDate!);
+      formData.append("dropDate",this.model.dropDate!);
+      formData.append("pickUpAddress",this.model.pickUpAddress!);
+      formData.append("paymentMode",this.model.paymentMode!);
+      formData.append("totalAmount",this.model.totalAmount!.toString());
+      formData.append("vehicleId",this.model.vehicleId!.toString());
+      formData.append("userId",this.model.userId!);
+      formData.append("pickUpAddress",this.model.pickUpAddress!);
+
+      if (this.selectedFile) {
+        formData.append('formFile', this.selectedFile, this.selectedFile.name);
+        console.log(formData);
+      this.bookingService.addBooking(formData).subscribe(data=> {
         // this.done=true
+        
         console.log('Booking form submitted');
         this.sharedModule.showToast("Booking form submitted","","success")
         this.route.navigate(['customer'])
@@ -131,4 +155,5 @@ export class VehicleBookingComponent implements OnInit {
       console.log("=============")
     }
   }
+}
 }

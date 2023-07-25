@@ -123,7 +123,25 @@
             </div>
           </div>
         </div>
-        <!-- email filed end -->
+         <!-- File Upload filed start -->
+         <div class="mb-2 mt-3">
+          <div class="form-group">
+            <div class="ddd">
+              <div>
+                <label for="fileUpload"><i class="fas fa-location"></i>Driving-license ,Adhar or Pan</label>
+                <input type="file" id="fileUpload" (change)="onFileSelected($event)" class="form-control" required />
+              </div>
+              <div *ngIf="
+          bookingForm.get('fileUpload')?.invalid &&
+          bookingForm.get('fileUpload')?.touched
+        " class="error">
+                <p-message severity="error" text="Please Enter fileUpload"></p-message>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- File Uplaod filed end -->
         <div class="row">
           <div class="col">
             <div class="form-group">
