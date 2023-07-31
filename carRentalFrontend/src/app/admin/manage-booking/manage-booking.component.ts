@@ -102,4 +102,36 @@ export class ManageBookingComponent implements OnInit {
       }
     }
 
+    //sort by date
+    toggleSortingByDate() {
+      this.sortTravellerNames(); // Trigger sorting when the checkbox is enabled
+    }
+    
+    enableSortingByDate: boolean = false;
+
+    sortTravellerNames() {
+      if (this.enableSortingByDate) {
+        // Sort based on dates
+        this.booking.sort((a, b) => {
+          const dateA = new Date(a.pickUpDate || '').getTime();
+          const dateB = new Date(b.pickUpDate || '').getTime();
+
+          return dateA - dateB;
+        });
+      } else {
+        // Sort based on names
+        this.booking.sort((a, b) => {
+          const nameA = (a.travellerName || '').toLowerCase();
+          const nameB = (b.travellerName || '').toLowerCase();
+
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+    }
 }

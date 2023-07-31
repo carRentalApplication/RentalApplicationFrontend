@@ -8,19 +8,27 @@
           <div class="search-data">
             <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search...">
           </div>
+          <div class="search-data">
+            <td style="display: flex; align-items: center;">
+              <span style="font-size: 18px;">Sort by date</span>
+              <div class="form-check form-switch" style="margin-left: 10px;">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="enableSortingByDate" (change)="toggleSortingByDate()">
+              </div>
+            </td>
+           </div>
         </th>
       </tr>
       <table class="table text-center">
         <thead>
           <tr>
             <th>Action</th>
-            <th>Sl.no</th>
+            <!-- <th>Sl.no</th> -->
             <!-- <th>Email</th> -->
+            <th>BookingTime</th>
             <th><strong>Traveller Name</strong></th>
             <th>TravellerNumber</th>
             <th>PickUpDate</th>
             <th>DropDate</th>
-            <th>BookingTime</th>
             <th>PickUpAddress</th>
             <th>TotalAmount</th>
             <th>VehicleName</th>
@@ -52,13 +60,13 @@
               </div>
             </td>
 
-            <td>{{i+1}}</td>
+            <!-- <td>{{i+1}}</td> -->
             <!-- <td>{{item.authUser.email}}</td> -->
+            <td>{{item.bookingTime | date:'hh:mm a'}}</td>
             <td>{{item.travellerName}}</td>
             <td>{{item.travellerNumber}}</td>
             <td>{{item.pickUpDate | date}}</td>
             <td>{{item.dropDate |date}}</td>
-            <td>{{item.bookingTime | date:'hh:mm a'}}</td>
             <td>{{item.pickUpAddress}}</td>
             <td>{{item.totalAmount | currency: 'INR'}}</td>
             <td>{{item.vehicle.vehicleName}}</td>

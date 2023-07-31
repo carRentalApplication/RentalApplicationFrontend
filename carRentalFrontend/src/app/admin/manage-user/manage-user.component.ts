@@ -58,7 +58,8 @@ export class ManageUserComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getAllUser().subscribe((response) => {
       console.log(response);
-      this.authUser = response
+      this.authUser = response;
+      this.rowData = this.sortUsersByFirstName();
     })
   }
   onChange(status:any,id:any){
@@ -81,6 +82,7 @@ console.log(data);
       else{
         this.sharedModule.showToast("User updated successfully","",'success')
       }
+      this.rowData = this.sortUsersByFirstName();
 
    },(error:any)=>{
      console.log(error.error?.message);
@@ -91,4 +93,19 @@ console.log(data);
      }
    })
    }
+
+   sortUsersByFirstName() {
+    return this.authUser.sort((a, b) => {
+      const nameA = a.firstname.toLowerCase();
+      const nameB = b.firstname.toLowerCase();
+
+      if (nameA < nameB) {
+        return -1;
+      } else if (nameA > nameB) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  }
 }
